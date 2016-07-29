@@ -1,0 +1,25 @@
+[
+  {
+    request: {
+      url: '/hoge/fuga',
+      method: 'GET',
+      query: {
+        q: 'foo',
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        message: 'hello world',
+      },
+    },
+  },
+  './hoge/foo.json',
+  './foo/bar.yaml',
+  {
+    request: './qux/request.json',
+    response: './qux/response.json',
+  },
+]
