@@ -27,7 +27,7 @@ module.exports = [
       url: '/path/:id',
       method: 'GET',
       // value for test client
-      value: {
+      values: {
         id: 'yosuke',
       },
     },
@@ -37,7 +37,7 @@ module.exports = [
       },
       body: {
         // :id is for request value
-        message: 'hello :id',
+        message: 'hello {:id}',
       },
     },
   },

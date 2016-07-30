@@ -97,3 +97,29 @@ test('server: DELETE API', (done) => {
     });
   });
 });
+
+test('server: GET with :id ', (done) => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.js',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const options = {
+        host: 'localhost',
+        method: 'GET',
+        path: '/path/fuga',
+        port: port,
+      };
+      const req = http.request(options, (res) => {
+        assert(res.statusCode === 200);
+        const assertStream = new AssertStream();
+        assertStream.expect({ message: "hello fuga" });
+        res.pipe(assertStream);
+        server.close();
+      }).on('error', console.error);
+      req.end();
+    });
+  });
+});
