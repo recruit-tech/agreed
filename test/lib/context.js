@@ -2,7 +2,7 @@ const Context = require(`${process.cwd()}/lib/context.js`);
 const test = require('eater/runner').test;
 const http = require('http');
 
-test('smoke(context): check instanciation', () => {
+test('smoke(context): check instantiation', () => {
   const context = new Context({ path: 'test/agrees/agrees.js' });
 
   const req = {
