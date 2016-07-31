@@ -1,7 +1,7 @@
 {
   'request': {
     method: 'POST',
-    url: '/hoge/:foo',
+    path: '/hoge/:foo',
     body: {
       message: 'foobarbaz',
     },

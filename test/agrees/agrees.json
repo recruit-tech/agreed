@@ -1,7 +1,7 @@
 [
   {
     request: {
-      url: '/hoge/fuga',
+      path: '/hoge/fuga',
       method: 'GET',
       query: {
         q: 'foo',

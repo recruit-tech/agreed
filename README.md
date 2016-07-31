@@ -17,13 +17,15 @@ $ npm install agreed-core --dev
 
 # Usage
 
-1. Create agreed.js file
+# 
+
+- Create agreed file (this file is used as a contract between frontend and backend)
 
 ```javascript
 module.exports = [
   {
     request: {
-      url: '/hoge/fuga',
+      path: '/user/:id',
       method: 'GET',
       query: {
         q: 'foo',
@@ -34,14 +36,16 @@ module.exports = [
         'x-csrf-token': 'csrf-token', 
       },
       body: {
-        message: 'hello world',
+        message: 'hello {:id}',
       },
     },
   },
 ]
 ```
 
-2. Create server structure
+- Create server
+
+We support express, pure node.js and any other frameworks can use agreed.
 
 ```javascript
 'use strinct';
@@ -61,15 +65,76 @@ app.use((err, req, res, next) => {
   res.send(`Error is occurred : ${err}`);
 });
 app.listen(3000);
-
 ```
 
-3. call server
-
 ```
-$ curl http://localhost:3000/hoge/fuga?q=foo
-{ "message": "hello world" }
+$ node server.js
 ```
 
-That's it.
+- call server from client
+
+```
+$ curl http://localhost:3000/user/alice?q=foo
+{ "message": "hello alice" }
+```
+
+# APIs
+
+## Agreement
+
+### how to define API specs
+
+Agreement file can be written in JSON5/YAML/JavaScript format. You can choose your favorite format.
+
+- JSON5 example
+
+```javascript
+[
+  {
+    "request": {
+      "path": '/hoge/fuga',
+      "method": 'GET',
+      // you can write query
+      "query": {
+        "q": 'foo',
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        message: 'hello world',
+      },
+    },
+  },
+  {
+    "request": {
+      // you can write regexp path, 
+      // match /users/yosuke
+      "path": '/users/:id',
+      "method": 'GET',
+    },
+    response: {
+      // embed path :id to your response body 
+      // if request path /users/yosuke
+      // return { "message": "hello yosuke" }
+      body: {
+        message: 'hello {:id}',
+      },
+    },
+  },
+  // you can write json file
+  // see test/agrees/hoge/foo.json
+  './hoge/foo.json',
+  // you can write yaml file
+  // see test/agrees/foo/bar.yaml
+  './foo/bar.yaml',
+  // you can separate request/response json
+  {
+    request: './qux/request.json',
+    response: './qux/response.json',
+  },
+]
+```
 

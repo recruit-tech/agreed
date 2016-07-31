@@ -1,7 +1,7 @@
 module.exports = [
   {
     request: {
-      url: '/hoge/fuga',
+      path: '/hoge/fuga',
       method: 'GET',
       query: {
         q: 'foo',
@@ -24,7 +24,7 @@ module.exports = [
   },
   {
     request: {
-      url: '/path/:id',
+      path: '/path/:id',
       method: 'GET',
       // value for test client
       values: {
