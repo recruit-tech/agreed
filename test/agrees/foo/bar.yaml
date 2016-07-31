@@ -1,5 +1,5 @@
 request: 
-  url: '/foo/:bar'
+  path: '/foo/:bar'
   method: 'PUT'
   body:
     a: 'b'

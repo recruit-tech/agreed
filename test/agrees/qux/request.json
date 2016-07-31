@@ -1,4 +1,4 @@
 {
-  url: '/qux/fuga',
+  path: '/qux/fuga',
   method: 'DELETE',
 }
