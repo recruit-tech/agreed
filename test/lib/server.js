@@ -1,7 +1,7 @@
 const agreedServer = require('../helper/server.js');
 const test = require('eater/runner').test;
 const http = require('http');
-const AssertStream = require('../helper/AssertStream');
+const AssertStream = require('assert-stream');
 const plzPort = require('plz-port');
 const assert = require('power-assert');
 
