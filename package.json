@@ -1,0 +1,37 @@
+{
+  "name": "agreed-server",
+  "version": "0.2.0",
+  "description": "agreed server",
+  "main": "index.js",
+  "scripts": {
+    "test": "eater"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recruit-tech/agreed-server.git"
+  },
+  "keywords": [
+    "agreed",
+    "server",
+    "mock",
+    "port"
+  ],
+  "author": "yosuke-furukawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/recruit-tech/agreed-server/issues"
+  },
+  "homepage": "https://github.com/recruit-tech/agreed-server#readme",
+  "peerDependencies": {
+    "agreed-core": "^0.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "assert-stream": "^1.0.0",
+    "eater": "^3.0.0-5",
+    "plz-port": "^1.0.0"
+  }
+}
