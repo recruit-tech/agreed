@@ -32,6 +32,7 @@
     "yamljs": "^0.2.8"
   },
   "devDependencies": {
+    "assert-stream": "^1.0.0",
     "body-parser": "^1.15.2",
     "eater": "^3.0.0-5",
     "espower-loader": "^1.0.0",

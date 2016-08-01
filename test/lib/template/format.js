@@ -9,3 +9,31 @@ test('format: {:id} = {:aa}', () => {
   });
   assert(result === 'fooo = barrr');
 });
+
+test('format: {:id.foo} = {:aa.bar}', () => {
+  const result = format('{:id.foo} = {:aa.bar}', {
+    id: {
+      foo: 'fooo'
+    },
+    aa: {
+      bar: 'barrr'
+    },
+  });
+  assert(result === 'fooo = barrr');
+});
+
+test('format: {:id.foo.bar} = {:aa.bar.baz}', () => {
+  const result = format('{:id.foo.bar} = {:aa.bar.baz}', {
+    id: {
+      foo: {
+        bar: 'fooo'
+      }
+    },
+    aa: {
+      bar: {
+        baz: 'barrr'
+      }
+    },
+  });
+  assert(result === 'fooo = barrr');
+});

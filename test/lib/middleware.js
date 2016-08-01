@@ -1,6 +1,6 @@
 const Context = require(`${process.cwd()}/lib/context.js`);
 
-const AssertStream = require('../helper/AssertStream');
+const AssertStream = require('assert-stream');
 const test = require('eater/runner').test;
 const http = require('http');
 const plzPort = require('plz-port');
