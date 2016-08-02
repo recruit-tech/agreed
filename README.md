@@ -28,7 +28,7 @@ module.exports = [
       path: '/user/:id',
       method: 'GET',
       query: {
-        q: 'foo',
+        q: '{:someQueryStrings}',
       },
     },
     response: {
@@ -36,7 +36,7 @@ module.exports = [
         'x-csrf-token': 'csrf-token', 
       },
       body: {
-        message: 'hello {:id}',
+        message: 'hello {:id} {:someQueryStrings}',
       },
     },
   },
@@ -134,6 +134,34 @@ Agreement file can be written in JSON5/YAML/JavaScript format. You can choose yo
   {
     request: './qux/request.json',
     response: './qux/response.json',
+  },
+  {
+    request: {
+      path: '/path/:id',
+      method: 'POST',
+      // query embed data, any query is ok.
+      query: {
+        meta: "{:meta}",
+      },
+      body: {
+        message: "{:message}"
+      },
+      // value for test client
+      values: {
+        id: 'yosuke',
+        meta: true,
+        message: 'foobarbaz'
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        // :id is for request value
+        message: 'hello {:id}, {:meta}, {:message}',
+      },
+    },
   },
 ]
 ```
