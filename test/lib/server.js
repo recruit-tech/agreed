@@ -78,7 +78,7 @@ test('server: PUT API', (done) => {
 test('server: DELETE API', (done) => {
   plzPort().then((port) => {
     const server = agreedServer({
-      path: 'test/agrees/agrees.json',
+      path: 'test/agrees/agrees.json5',
       port: port,
     });
 
@@ -119,6 +119,40 @@ test('server: GET with :id ', (done) => {
         res.pipe(assertStream);
         server.close();
       }).on('error', console.error);
+      req.end();
+    });
+  });
+});
+
+test('server: POST with :id ', (done) => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.js',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const postData = JSON.stringify({
+        message: 'foobarbaz',
+      });
+      const options = {
+        host: 'localhost',
+        method: 'POST',
+        path: '/path/fuga?meta=fooo',
+        port: port,
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      };
+      const req = http.request(options, (res) => {
+        assert(res.statusCode === 200);
+        const assertStream = new AssertStream();
+        assertStream.expect({ message: "hello fuga, fooo, foobarbaz" });
+        res.pipe(assertStream);
+        server.close();
+      }).on('error', console.error);
+      req.write(postData);
       req.end();
     });
   });
