@@ -22,10 +22,8 @@
     "url": "https://github.com/recruit-tech/agreed-server/issues"
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
-  "peerDependencies": {
-    "agreed-core": "^0.2.0"
-  },
   "dependencies": {
+    "agreed-core": "*",
     "body-parser": "^1.15.2",
     "express": "^4.14.0"
   },
