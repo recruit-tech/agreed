@@ -18,7 +18,7 @@ test('feat(client): check request to server', () => {
         port: port 
       });
 
-      const agrees = require('../agrees/agrees.js');
+      const agrees = client.getAgreement();
 
       const promises = client.executeAgreement(agrees);
       Promise.all(promises).then(mustCall((responses) => {
