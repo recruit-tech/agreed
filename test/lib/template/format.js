@@ -37,3 +37,21 @@ test('format: {:id.foo.bar} = {:aa.bar.baz}', () => {
   });
   assert(result === 'fooo = barrr');
 });
+
+test('format: object format', () => {
+  const obj = {
+    a: '{:abc}',
+    b: '{:def}',
+    c: '{:ghi}',
+  };
+  const result = format(obj, {
+    abc: true,
+    def: [
+      1, 2, 3, null
+    ],
+    ghi: {
+      'aaaa': 'bbb'
+    },
+  });
+  assert.deepEqual(result, {a: true, b: [1,2,3, null], c: { aaaa: 'bbb' }});
+});

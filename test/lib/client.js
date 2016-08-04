@@ -5,6 +5,7 @@ const AssertStream = require('assert-stream');
 const assert = require('power-assert');
 const plzPort = require('plz-port');
 const mustCall = require('must-call');
+const isEmpty = require('is-empty');
 
 test('feat(client): check request to server', () => {
   plzPort().then((port) => {
@@ -18,18 +19,15 @@ test('feat(client): check request to server', () => {
         port: port 
       });
 
-      const agrees = require('../agrees/agrees.js');
+      const agrees = client.getAgreement();
 
       const promises = client.executeAgreement(agrees);
-      Promise.all(promises).then(mustCall((responses) => {
-        server.close();
-        responses.forEach((res, i) => {
-          const assertStream = new AssertStream();
-          assertStream.expect(agrees[i].response.body);
-          res.pipe(assertStream);
-          assert(res.statusCode === agrees[i].response.status);
+      client.checkResponse(promises, agrees).then((results) => {
+        results.forEach((result) => {
+          assert(isEmpty(result));
         });
-      }));
+        server.close();
+      });
     });
   });
 });
