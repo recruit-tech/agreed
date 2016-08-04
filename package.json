@@ -26,7 +26,6 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
-    "deep-equal": "^1.0.1",
     "json5": "^0.5.0",
     "path-to-regexp": "^1.5.3",
     "yamljs": "^0.2.8"
@@ -37,6 +36,7 @@
     "eater": "^3.0.0-5",
     "espower-loader": "^1.0.0",
     "express": "^4.14.0",
+    "is-empty": "^1.0.0",
     "must-call": "^1.0.0",
     "plz-port": "^1.0.0",
     "power-assert": "^1.4.1"

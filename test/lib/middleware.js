@@ -1,4 +1,4 @@
-const Context = require(`${process.cwd()}/lib/context.js`);
+const Server = require(`${process.cwd()}/lib/server.js`);
 
 const AssertStream = require('assert-stream');
 const test = require('eater/runner').test;
@@ -7,9 +7,9 @@ const plzPort = require('plz-port');
 
 test('feat(middleware): http GET API', () => {
   plzPort().then((port) => {
-    const context = new Context({ path: 'test/agrees/agrees.js' });
+    const agreedServer = new Server({ path: 'test/agrees/agrees.js' });
     const server = http.createServer((req, res) => {
-      context.useMiddleware(req, res);
+      agreedServer.useMiddleware(req, res);
     }).listen(port);
 
     server.on('listening', () => {
@@ -25,9 +25,9 @@ test('feat(middleware): http GET API', () => {
 
 test('feat(middleware): http PORT API', (done) => {
   plzPort().then((port) => {
-    const context = new Context({ path: 'test/agrees/agrees.js' });
+    const agreedServer = new Server({ path: 'test/agrees/agrees.js' });
     const server = http.createServer((req, res) => {
-      context.useMiddleware(req, res);
+      agreedServer.useMiddleware(req, res);
     }).listen(port);
 
 

@@ -157,3 +157,47 @@ test('server: POST with :id ', (done) => {
     });
   });
 });
+
+test('server: check response when expect is filled', (done) => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.js',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const postData = JSON.stringify({
+        message: 'foobarbaz',
+      });
+      const options = {
+        host: 'localhost',
+        method: 'POST',
+        path: '/embed/from/response/fuga?meta=true',
+        port: port,
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      };
+      const req = http.request(options, (res) => {
+        assert(res.statusCode === 200);
+        const assertStream = new AssertStream();
+        assertStream.expect({ 
+          message: "hello fuga true foobarbaz",
+          image: 'http://imgfp.hotp.jp/SYS/cmn/images/front_002/logo_hotopepper_264x45.png',
+          topics: [ 
+            { 
+              a: 'a' 
+            }, { 
+              b: 'b'
+            } 
+          ],
+        });
+        res.pipe(assertStream);
+        server.close();
+      }).on('error', console.error);
+      req.write(postData);
+      req.end();
+    });
+  });
+});

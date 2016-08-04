@@ -1,4 +1,4 @@
-agreed
+agreed-core
 ====================
 
 agreed is Consumer Driven Contract tool with JSON mock server.
@@ -6,8 +6,14 @@ agreed is Consumer Driven Contract tool with JSON mock server.
 agreed has 3 features.
 
 1. Create contract file as json(json5/yaml/etc) file
-1. test utility for frontend development.
+1. mock server for frontend development.
 1. test client for backend development
+
+`agreed-core` is a library to create test client and mock server. `agreed-core` provide the following features.
+
+1. json5/yaml require hook, you can write require('foo.json5') / require('bar.yaml') using agreed-core/register.
+1. server middleware, agreed-core provides express/pure node http middleware.
+1. test client, agreed-core provides response check.
 
 # Install
 
@@ -17,7 +23,7 @@ $ npm install agreed-core --dev
 
 # Usage
 
-# 
+## Usage as Frontend Mock Server
 
 - Create agreed file (this file is used as a contract between frontend and backend)
 
@@ -30,14 +36,30 @@ module.exports = [
       query: {
         q: '{:someQueryStrings}',
       },
+      values: {
+        id: 'yosuke',
+        someQueryStrings: 'foo'
+      },
     },
     response: {
       headers: {
         'x-csrf-token': 'csrf-token', 
       },
       body: {
-        message: 'hello {:id} {:someQueryStrings}',
+        message: '{:greeting} {:id} {:someQueryStrings}',
+        images: '{:images}',
+        themes: '{:themes}',
       },
+      values: {
+        greeting: 'hello',
+        images: [
+          'http://example.com/foo.jpg',
+          'http://example.com/bar.jpg',
+        ],
+        themes: {
+          name: 'green',
+        },
+      }
     },
   },
 ]
@@ -75,8 +97,93 @@ $ node server.js
 
 ```
 $ curl http://localhost:3000/user/alice?q=foo
-{ "message": "hello alice" }
+{ 
+  "message": "hello alice foo",
+  "images": [
+    "http://example.com/foo.jpg",
+    "http://example.com/bar.jpg"
+  ],
+  "themes": {
+    "name": "green",
+  },
+}
 ```
+
+## Usage as Backend test client
+
+agreed can be test client.
+
+- Reuse agreed file
+
+```javascript
+module.exports = [
+  {
+    request: {
+      path: '/user/:id',
+      method: 'GET',
+      query: {
+        q: '{:someQueryStrings}',
+      },
+      values: {
+        id: 'yosuke',
+        someQueryStrings: 'foo'
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        message: '{:greeting} {:id} {:someQueryStrings}',
+        images: '{:images}',
+        themes: '{:themes}',
+      },
+      values: {
+        greeting: 'hello',
+        images: [
+          'http://example.com/foo.jpg',
+          'http://example.com/bar.jpg',
+        ],
+        themes: {
+          name: 'green',
+        },
+      }
+    },
+  },
+]
+```
+
+- Create test client 
+
+```javascript
+'use strinct';
+const AgreedClient = require('agreed-core').client;
+const client = new AgreedClient({
+  path: './agreed/file/agreed.js',
+  host: 'example.com',
+  port: 12345,
+});
+
+// Get Agreements as array.
+const agrees = client.getAgreement();
+
+// request to servers.
+// in this case, GET example.com:12345/user/yosuke?q=foo
+const responses = client.executeAgreement(agrees);
+
+// Check response object.
+client.checkResponse(responses, agrees).then((diffs) => {
+  // if the response is mismatched to agreed response,
+  // you can get diff.
+  // but if no difference, you can get empty object {}
+  diffs.forEach((diff) => {
+    if (Object.keys(diff).length > 0) {
+      console.error('your request does not matched: ', diff);
+    }
+  });
+});
+```
+
 
 # APIs
 
@@ -161,6 +268,39 @@ Agreement file can be written in JSON5/YAML/JavaScript format. You can choose yo
         // :id is for request value
         message: 'hello {:id}, {:meta}, {:message}',
       },
+    },
+  },
+  {
+    request: {
+      path: '/images/:id',
+      method: 'GET',
+      query: {
+        q: '{:someQueryStrings}',
+      },
+      values: {
+        id: 'yosuke',
+        someQueryStrings: 'foo'
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        message: '{:greeting} {:id} {:someQueryStrings}',
+        images: '{:images}',
+        themes: '{:themes}',
+      },
+      values: {
+        greeting: 'hello',
+        images: [
+          'http://example.com/foo.jpg',
+          'http://example.com/bar.jpg',
+        ],
+        themes: {
+          name: 'green',
+        },
+      }
     },
   },
 ]
