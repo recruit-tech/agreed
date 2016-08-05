@@ -1,0 +1,26 @@
+[
+  {
+    request: {
+      path: '/foo/ba/:hoge',
+      method: 'GET',
+      query: {
+        id: '{:id}'
+      },
+      values: {
+        id: '123',
+        hoge: 'hoge'
+      }
+    },
+    response: {
+      status: 200,
+      body: {
+        message: 'hi!',
+        path: '{:hoge}',
+      },
+      values: {
+        name: 'yosuke'
+      }
+    },
+  },
+]
+

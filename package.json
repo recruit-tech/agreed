@@ -1,0 +1,36 @@
+{
+  "name": "agreed",
+  "version": "0.3.0",
+  "description": "Agreed is a tool for Consumer Driven Contract with JSON mock server",
+  "main": "index.js",
+  "scripts": {
+    "test": "eater"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/recruit-tech/agreed"
+  },
+  "keywords": [
+    "agreed",
+    "consumer",
+    "driven",
+    "contract",
+    "mock",
+    "json",
+    "server"
+  ],
+  "author": "yosuke-furukawa",
+  "bin": {
+    "agreed-server": "./bin/agreed-server.js",
+    "agreed-client": "./bin/agreed-client.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eater": "^3.0.0-5",
+    "plz-port": "^1.0.0"
+  },
+  "dependencies": {
+    "agreed-client": "^0.3.0",
+    "agreed-server": "^0.2.1"
+  }
+}
