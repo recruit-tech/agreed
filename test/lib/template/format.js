@@ -57,3 +57,25 @@ test('format: object format', () => {
   });
   assert.deepEqual(result, {a: true, b: [1,2,3, null], c: { aaaa: 'bbb' }});
 });
+
+test('format: nested json and format is unmatched', () => {
+  const obj = {
+    a: {
+      abc: '{:abc}'
+    },
+    b: '{:def}',
+    c: '{:ghi}',
+  };
+  const result = format(obj, {
+    id: 'fooo',
+    aa: 'barrr',
+    ghi: '123'
+  });
+  assert.deepEqual(result, {
+    a: {
+      abc: '{:abc}'
+    },
+    b: '{:def}',
+    c: '123',
+  });
+});
