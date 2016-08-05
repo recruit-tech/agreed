@@ -5,6 +5,3 @@ node_js:
   - "6"
 script: npm test
 sudo: false
-cache:
-  directories:
-    - node_modules
