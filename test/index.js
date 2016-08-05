@@ -1,3 +1,4 @@
+'use strict';
 const client = require('../index');
 const server = require('agreed-server');
 const test = require('eater/runner').test;

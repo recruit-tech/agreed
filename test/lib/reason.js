@@ -1,3 +1,5 @@
+'use strict';
+
 const reason = require(`${process.cwd()}/lib/reason`);
 const test = require('eater/runner').test;
 
