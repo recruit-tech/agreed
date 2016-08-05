@@ -1,3 +1,5 @@
+'use strict';
+
 const agreedServer = require('../helper/server.js');
 const Client = require(`${process.cwd()}/lib/client.js`);
 const test = require('eater/runner').test;

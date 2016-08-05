@@ -1,3 +1,5 @@
+'use strict';
+
 const test = require('eater/runner').test;
 const diff = require(`${process.cwd()}/lib/check/diff`);
 const assert = require('power-assert');

@@ -1,3 +1,5 @@
+'use strict';
+
 const agreedServer = require('../helper/server.js');
 const test = require('eater/runner').test;
 const http = require('http');
