@@ -55,7 +55,7 @@ test('format: object format', () => {
       'aaaa': 'bbb'
     },
   });
-  assert.deepEqual(result, {a: true, b: [1,2,3, null], c: { aaaa: 'bbb' }});
+  assert.deepStrictEqual(result, {a: true, b: [1,2,3, null], c: { aaaa: 'bbb' }});
 });
 
 test('format: nested json and format is unmatched', () => {
@@ -71,7 +71,7 @@ test('format: nested json and format is unmatched', () => {
     aa: 'barrr',
     ghi: '123'
   });
-  assert.deepEqual(result, {
+  assert.deepStrictEqual(result, {
     a: {
       abc: '{:abc}'
     },
@@ -95,7 +95,9 @@ test('format: array format', () => {
     aa: 'barrr',
     ghi: '123'
   });
-  assert.deepEqual(result, {
+  
+  console.log(result);
+  assert.deepStrictEqual(result, {
     a: {
       abc: '{:abc}'
     },
@@ -119,10 +121,11 @@ test('format: number format', () => {
     ghi: '123'
   });
   console.log(result);
-  assert.deepEqual(result, {
+  assert.deepStrictEqual(result, {
     a: {
       abc: 1
     },
     c: '123',
   });
 });
+
