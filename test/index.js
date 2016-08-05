@@ -1,3 +1,4 @@
+'use strict';
 const test = require('eater/runner').test;
 const plzPort = require('plz-port');
 const agreedServer = require('../');

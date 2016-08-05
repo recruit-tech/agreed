@@ -1,4 +1,5 @@
 # Agreed Server
+[![Build Status](https://travis-ci.org/recruit-tech/agreed-server.svg?branch=add_travis)](https://travis-ci.org/recruit-tech/agreed-server)
 
 [Agreed](https://www.npmjs.com/package/agreed-core) mock server
 

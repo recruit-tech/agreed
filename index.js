@@ -1,4 +1,4 @@
-'use strinct';
+'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const agreed = require('agreed-core');
