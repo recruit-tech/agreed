@@ -4,7 +4,9 @@
   "description": "agreed is a mock server and test client, agreed will be helper for Consumer Driven Contract",
   "main": "index.js",
   "scripts": {
-    "test": "eater"
+    "test": "eater",
+    "lcov": "nyc --reporter=lcov npm test",
+    "codecov": "npm run lcov && codecov"
   },
   "repository": {
     "type": "git",
@@ -33,11 +35,13 @@
   "devDependencies": {
     "assert-stream": "^1.0.0",
     "body-parser": "^1.15.2",
+    "codecov": "^1.0.1",
     "eater": "^3.0.0-5",
     "espower-loader": "^1.0.0",
     "express": "^4.14.0",
     "is-empty": "^1.0.0",
     "must-call": "^1.0.0",
+    "nyc": "^7.1.0",
     "plz-port": "^1.0.0",
     "power-assert": "^1.4.1"
   }
