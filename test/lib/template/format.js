@@ -79,3 +79,50 @@ test('format: nested json and format is unmatched', () => {
     c: '123',
   });
 });
+
+test('format: array format', () => {
+  const obj = {
+    a: {
+      abc: '{:abc}'
+    },
+    b: [
+      1, 2, 3
+    ],
+    c: '{:ghi}',
+  };
+  const result = format(obj, {
+    id: 'fooo',
+    aa: 'barrr',
+    ghi: '123'
+  });
+  assert.deepEqual(result, {
+    a: {
+      abc: '{:abc}'
+    },
+    b: [
+      1, 2, 3
+    ],
+    c: '123',
+  });
+});
+
+test('format: number format', () => {
+  const obj = {
+    a: {
+      abc: 1
+    },
+    c: '{:ghi}',
+  };
+  const result = format(obj, {
+    id: 'fooo',
+    aa: 'barrr',
+    ghi: '123'
+  });
+  console.log(result);
+  assert.deepEqual(result, {
+    a: {
+      abc: 1
+    },
+    c: '123',
+  });
+});
