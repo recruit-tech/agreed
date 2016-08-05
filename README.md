@@ -69,7 +69,17 @@ $ agreed-server --path ./agreed.js --port 3010
 - curl to the mock server
 
 ```
-$ curl http://localhost:3000?q=foo
+$ curl http://localhost:3000/user/yosuke?q=foo
+{
+  "message": "hello yosuke foo",
+  "images": [
+    "http://example.com/foo.jpg",
+    "http://example.com/bar.jpg"
+  ],
+  "themes": {
+    "name": "green"
+  }
+}
 ```
 
 ## Usage as Backend test client
