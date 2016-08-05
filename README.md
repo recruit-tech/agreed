@@ -1,5 +1,6 @@
 agreed-client
 ===================
+[![Build Status](https://travis-ci.org/recruit-tech/agreed-client.svg?branch=master)](https://travis-ci.org/recruit-tech/agreed-client)
 
 An agreed client for check response.
 
