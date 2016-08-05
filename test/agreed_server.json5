@@ -1,0 +1,19 @@
+[
+  {
+    request: {
+      path: "/users/:id",
+      method: "GET",
+      values: {
+        id: 'foo'
+      }
+    },
+    response: {
+      body: {
+        message: 'hi {:id}',
+        id: '{:id}',
+      }
+    }
+  }
+]
+
+

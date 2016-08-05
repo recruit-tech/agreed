@@ -1,0 +1,31 @@
+{
+  "name": "agreed-client",
+  "version": "0.3.0",
+  "description": "agreed client, testing utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "eater"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/recruit-tech/agreed-client"
+  },
+  "keywords": [
+    "agreed",
+    "client",
+    "test",
+    "confirmation"
+  ],
+  "author": "yosuke-furukawa",
+  "license": "MIT",
+  "dependencies": {
+    "agreed-core": "*",
+    "colo": "^0.3.2",
+    "is-empty": "^1.0.0"
+  },
+  "devDependencies": {
+    "agreed-server": "^0.2.1",
+    "eater": "^3.0.0-5",
+    "plz-port": "^1.0.0"
+  }
+}
