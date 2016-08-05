@@ -1,3 +1,5 @@
+'use strict';
+
 const Server = require(`${process.cwd()}/lib/server.js`);
 
 const AssertStream = require('assert-stream');

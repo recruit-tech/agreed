@@ -1,3 +1,5 @@
+'use strict';
+
 const test = require('eater/runner').test;
 const bind = require(`${process.cwd()}/lib/template/bind`);
 const assert = require('power-assert');
