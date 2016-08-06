@@ -86,3 +86,23 @@ test('diff: check object not deep equality', () => {
     } 
   });
 });
+
+test('diff: check object', () => {
+  const small = {
+    abc: 'abc {:test}',
+    def: '{:aaa}',
+    ghi: 1,
+  };
+
+  const large = {
+    abc: 'aaa test',
+    def: 'aaa',
+    ghi: 'aaaaa',
+  };
+
+  const d = diff(small, large);
+  assert.deepEqual(d, {
+    abc: ['abc {:test}', 'aaa test'],
+    ghi: [1, 'aaaaa'],
+  });
+});
