@@ -129,3 +129,75 @@ test('format: number format', () => {
   });
 });
 
+test('format: brackets notation :ghi[:id]', () => {
+  const obj = {
+    a: {
+      abc: 1
+    },
+    c: '{:ghi[:id]}',
+  };
+  const result = format(obj, {
+    id: 'fooo',
+    aa: 'barrr',
+    ghi: {
+      fooo: '123',
+      baaa: '234'
+    }
+  });
+  console.log(result);
+  assert.deepStrictEqual(result, {
+    a: {
+      abc: 1
+    },
+    c: '123',
+  });
+});
+
+test('format: brackets notation :ghi[:id][:aa]', () => {
+  const obj = {
+    a: {
+      abc: 1
+    },
+    c: '{:ghi[:id][:aa]}',
+  };
+  const result = format(obj, {
+    id: 'fooo',
+    aa: 'barrr',
+    ghi: {
+      fooo: {
+        barrr: '123'
+      },
+      baaa: '234'
+    }
+  });
+  console.log(result);
+  assert.deepStrictEqual(result, {
+    a: {
+      abc: 1
+    },
+    c: '123',
+  });
+});
+
+test('format: brackets notation to use array', () => {
+  const obj = {
+    a: {
+      abc: 1
+    },
+    c: '{:ghi[:id]}',
+  };
+  const result = format(obj, {
+    id: 1,
+    aa: 'barrr',
+    ghi: [
+      1, 2, 3
+    ]
+  });
+  assert.deepStrictEqual(result, {
+    a: {
+      abc: 1
+    },
+    c: 2,
+  });
+});
+

@@ -164,4 +164,25 @@ module.exports = [
       }
     },
   },
+  {
+    request: {
+      path: '/list/:index',
+      method: 'GET',
+      values: {
+        index: 1
+      }
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
 ]

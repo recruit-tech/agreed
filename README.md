@@ -36,10 +36,12 @@ module.exports = [
       method: 'GET',
       query: {
         q: '{:someQueryStrings}',
+        index: '{:index}',
       },
       values: {
         id: 'yosuke',
-        someQueryStrings: 'foo'
+        someQueryStrings: 'bye',
+        index: 2,
       },
     },
     response: {
@@ -47,8 +49,11 @@ module.exports = [
         'x-csrf-token': 'csrf-token', 
       },
       body: {
+        // hello yosuke bye
         message: '{:greeting} {:id} {:someQueryStrings}',
-        images: '{:images}',
+        // http://example.com/baz.jpg 
+        image: '{:images[:index]}',
+        // { name: 'green' }
         themes: '{:themes}',
       },
       values: {
@@ -56,6 +61,7 @@ module.exports = [
         images: [
           'http://example.com/foo.jpg',
           'http://example.com/bar.jpg',
+          'http://example.com/baz.jpg',
         ],
         themes: {
           name: 'green',
