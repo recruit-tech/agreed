@@ -16,8 +16,8 @@ module.exports = [
       },
     },
   },
-  require('./hoge/foo.json'),
-  require('./foo/bar.yaml'),
+  './hoge/foo.json',
+  './foo/bar.yaml',
   {
     request: require('./qux/request.json'),
     response: require('./qux/response.json'),
