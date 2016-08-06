@@ -96,7 +96,6 @@ test('format: array format', () => {
     ghi: '123'
   });
   
-  console.log(result);
   assert.deepStrictEqual(result, {
     a: {
       abc: '{:abc}'
@@ -120,7 +119,6 @@ test('format: number format', () => {
     aa: 'barrr',
     ghi: '123'
   });
-  console.log(result);
   assert.deepStrictEqual(result, {
     a: {
       abc: 1
@@ -144,7 +142,6 @@ test('format: brackets notation :ghi[:id]', () => {
       baaa: '234'
     }
   });
-  console.log(result);
   assert.deepStrictEqual(result, {
     a: {
       abc: 1
@@ -170,7 +167,6 @@ test('format: brackets notation :ghi[:id][:aa]', () => {
       baaa: '234'
     }
   });
-  console.log(result);
   assert.deepStrictEqual(result, {
     a: {
       abc: 1
