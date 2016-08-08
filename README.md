@@ -53,8 +53,14 @@ module.exports = [
         message: '{:greeting} {:id} {:someQueryStrings}',
         // http://example.com/baz.jpg 
         image: '{:images[:index]}',
-        // { name: 'green' }
-        themes: '{:themes}',
+        themes: [
+          // { name: 'green' }
+          {
+            name: '{:themes.0.name}'
+          },
+          // { name: 'blue' }, { name: 'red' }
+          '{:themes.1-last}'
+        ],
       },
       values: {
         greeting: 'hello',
@@ -63,9 +69,17 @@ module.exports = [
           'http://example.com/bar.jpg',
           'http://example.com/baz.jpg',
         ],
-        themes: {
-          name: 'green',
-        },
+        themes: [
+          {
+            name: 'green',
+          },
+          {
+            name: 'blue',
+          },
+          {
+            name: 'red',
+          },
+        ]
       }
     },
   },
