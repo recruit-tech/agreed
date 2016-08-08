@@ -197,3 +197,92 @@ test('format: brackets notation to use array', () => {
   });
 });
 
+test('format: array 1-last notation to spread array', () => {
+  const obj = {
+    arr: [
+      {
+        name: '{:ghi.0.name}'
+      },
+      '{:ghi.1-last}',
+    ]
+  };
+  const result = format(obj, {
+    ghi: [
+      {
+        name: 'foo',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+    ]
+  });
+
+
+  console.log(result);
+  assert.deepStrictEqual(result, {
+    arr: [
+      {
+        name: 'foo',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+    ]
+  });
+});
+
+test('format: array 1-4 notation to spread array', () => {
+  const obj = {
+    arr: [
+      {
+        name: '{:ghi.0.name}'
+      },
+      '{:ghi.1-4}',
+    ]
+  };
+  const result = format(obj, {
+    ghi: [
+      {
+        name: 'foo',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+    ]
+  });
+
+
+  console.log(result);
+  assert.deepStrictEqual(result, {
+    arr: [
+      {
+        name: 'foo',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+      {
+        name: 'bar',
+      },
+    ]
+  });
+});
+
