@@ -62,6 +62,23 @@ module.exports = [
           '{:themes.1-last}'
         ],
       },
+      // you can write json schema
+      // schema: {
+      //   type: 'object',
+      //   properties: {
+      //     message: { type: 'string' },
+      //     image: { type: 'string' },
+      //     themes: { 
+      //       type: 'array',
+      //       items: { 
+      //         type: 'object',
+      //         properties: {
+      //           name: { type: 'string' }
+      //         }
+      //       }
+      //     }
+      //   }
+      // },
       values: {
         greeting: 'hello',
         images: [
@@ -321,6 +338,36 @@ Agreement file can be written in JSON5/YAML/JavaScript format. You can choose yo
         themes: {
           name: 'green',
         },
+      }
+    },
+  },
+  {
+    request: {
+      path: '/useschema/:index',
+      method: 'GET',
+      values: {
+        index: 1
+      }
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      // you can write json schema
+      schema: {
+        type: 'object',
+        properties: {
+          result: {
+            type: 'string'
+          }
+        },
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
       }
     },
   },

@@ -29,6 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "json5": "^0.5.0",
+    "jsonschema": "^1.1.0",
     "path-to-regexp": "^1.5.3",
     "yamljs": "^0.2.8"
   },
