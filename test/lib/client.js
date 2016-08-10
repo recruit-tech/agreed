@@ -26,7 +26,7 @@ test('feat(client): check request to server', () => {
       const promises = client.executeAgreement(agrees);
       client.checkResponse(promises, agrees).then((results) => {
         results.forEach((result) => {
-          assert(isEmpty(result));
+          assert(isEmpty(result.diff));
         });
         server.close();
       });
