@@ -185,4 +185,55 @@ module.exports = [
       }
     },
   },
+  {
+    request: {
+      path: '/useschema/:index',
+      method: 'GET',
+      values: {
+        index: 1
+      }
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      schema: {
+        type: 'object',
+        properties: {
+          result: {
+            type: 'string'
+          }
+        },
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
+  {
+    request: {
+      path: '/useschema/withstring/:index',
+      method: 'GET',
+      values: {
+        index: 1
+      }
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      schema: './schema/hi.json',
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
 ]
