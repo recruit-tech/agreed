@@ -10,5 +10,7 @@ plzPort().then((port) => {
     console.log(result);
     assert(result.indexOf('✔ pass') >= 0);
     proc.kill();
+
+    process.exit(0);
   }, 1000);
 });

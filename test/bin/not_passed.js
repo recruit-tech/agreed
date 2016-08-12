@@ -12,6 +12,8 @@ plzPort().then((port) => {
     console.log(result);
     assert(result.indexOf('✗ fail') >= 0);
     proc.kill();
+
+    process.exit(0);
   }, 1000);
 });
 
