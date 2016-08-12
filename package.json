@@ -32,6 +32,7 @@
   "dependencies": {
     "agreed-client": "^0.3.0",
     "agreed-server": "^0.2.1",
+    "colo": "^0.3.2",
     "minimist": "^1.2.0"
   }
 }
