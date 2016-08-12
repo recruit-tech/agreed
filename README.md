@@ -1,6 +1,7 @@
 agreed-core
 ====================
 [![Build Status](https://travis-ci.org/recruit-tech/agreed-core.svg?branch=master)](https://travis-ci.org/recruit-tech/agreed-core)
+[![codecov](https://codecov.io/gh/recruit-tech/agreed-core/branch/master/graph/badge.svg)](https://codecov.io/gh/recruit-tech/agreed-core)
 
 agreed is Consumer Driven Contract tool with JSON mock server.
 
