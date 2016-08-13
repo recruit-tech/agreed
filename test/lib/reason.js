@@ -16,5 +16,5 @@ test('reporter: show reason', () => {
     } 
   };
 
-  reason(diff);
+  reason.diff(diff);
 });

@@ -13,6 +13,24 @@
         id: '{:id}',
       }
     }
+  },
+  {
+    request: {
+      path: "/users/schema/:id",
+      method: "GET",
+      values: {
+        id: 'foo'
+      }
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+        id: '{:val}',
+      },
+      values: {
+        id: '2'
+      }
+    }
   }
 ]
 
