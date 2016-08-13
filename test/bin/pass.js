@@ -11,6 +11,8 @@ plzPort().then((port) => {
     assert(result.indexOf('✔ pass') >= 0);
     proc.kill();
 
-    process.exit(0);
+    setTimeout(() => {
+      process.exit(0);
+    }, 500);
   }, 1000);
 });
