@@ -7,7 +7,7 @@ const AssertStream = require('assert-stream');
 const plzPort = require('plz-port');
 const assert = require('power-assert');
 
-test('server: POST API', (done) => {
+test('server: POST API', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.js',
@@ -42,7 +42,7 @@ test('server: POST API', (done) => {
 });
 
 
-test('server: PUT API', (done) => {
+test('server: PUT API', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.js',
@@ -77,7 +77,7 @@ test('server: PUT API', (done) => {
   });
 });
 
-test('server: DELETE API', (done) => {
+test('server: DELETE API', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.json5',
@@ -100,7 +100,7 @@ test('server: DELETE API', (done) => {
   });
 });
 
-test('server: GET with :id ', (done) => {
+test('server: GET with :id ', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.js',
@@ -126,7 +126,7 @@ test('server: GET with :id ', (done) => {
   });
 });
 
-test('server: POST with :id ', (done) => {
+test('server: POST with :id ', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.js',
@@ -160,7 +160,7 @@ test('server: POST with :id ', (done) => {
   });
 });
 
-test('server: check response when expect is filled', (done) => {
+test('server: check response when expect is filled', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.js',
@@ -199,6 +199,38 @@ test('server: check response when expect is filled', (done) => {
         server.close();
       }).on('error', console.error);
       req.write(postData);
+      req.end();
+    });
+  });
+});
+
+test('server: check response when header values are exists', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.js',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const options = {
+        host: 'localhost',
+        method: 'GET',
+        path: '/headers/2/',
+        port: port,
+        headers: {
+          'x-token': 'abcdefghi',
+          'x-api-key': '123456789',
+        }
+      };
+      const req = http.request(options, (res) => {
+        assert(res.statusCode === 200);
+        const assertStream = new AssertStream();
+        assertStream.expect({ 
+          result: "dunke abcdefghi 123456789",
+        });
+        res.pipe(assertStream);
+        server.close();
+      }).on('error', console.error);
       req.end();
     });
   });
