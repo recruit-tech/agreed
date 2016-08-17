@@ -236,4 +236,52 @@ module.exports = [
       }
     },
   },
+  {
+    request: {
+      path: '/headers/:index',
+      method: 'GET',
+      headers: {
+        'x-token': '{:token}', 
+        'x-api-key': '{:apiKey}', 
+      },
+      values: {
+        index: 2,
+        token: 'nyan',
+        apiKey: 'nyaaan'
+      },
+    },
+    response: {
+      body: {
+        result : '{:list[:index]} {:token} {:apiKey}'
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
+  {
+    request: {
+      path: '/headers/:index',
+      method: 'GET',
+      values: {
+        index: 1,
+      },
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
 ]
