@@ -58,3 +58,41 @@ test('isInclude: check nested array is include', () => {
   const is = isInclude(small, large);
   assert(is);
 });
+
+test('isInclude: check large value is empty string', () => {
+  const small = {
+    abc: 'abc',
+    def: '{:aaa}',
+    ghi: '{:hoo}',
+    jkl: '{:array}',
+  };
+
+  const large = {
+    abc: 'abc',
+    def: { a: '123' },
+    ghi: 0,
+    jkl: '',
+  };
+
+  const is = isInclude(small, large);
+  assert(is);
+});
+
+test('isInclude: false, check large value is empty string', () => {
+  const small = {
+    abc: 'abc',
+    def: '{:aaa}',
+    ghi: '{:hoo}',
+    jkl: '{:array}',
+  };
+
+  const large = {
+    abc: 'abc',
+    def: { a: '123' },
+    ghi: null,
+    jkl: undefined,
+  };
+
+  const is = isInclude(small, large);
+  assert(!is);
+});
