@@ -1,6 +1,6 @@
 {
   "name": "agreed",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Agreed is a tool for Consumer Driven Contract with JSON mock server",
   "main": "index.js",
   "scripts": {
