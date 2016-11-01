@@ -30,8 +30,8 @@
     "plz-port": "^1.0.0"
   },
   "dependencies": {
-    "agreed-client": "^0.3.0",
-    "agreed-server": "^0.2.1",
+    "agreed-client": "^0.4.1",
+    "agreed-server": "^0.2.2",
     "minimist": "^1.2.0"
   }
 }
