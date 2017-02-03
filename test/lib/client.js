@@ -33,3 +33,14 @@ test('feat(client): check request to server', () => {
     });
   });
 });
+
+
+test('feat(client): support single agree file', () => {
+  const client = new Client({
+    path: 'test/agrees/hoge/foo.json'
+  });
+
+  const agrees = client.getAgreement();
+  
+  assert(Array.isArray(agrees));
+});
