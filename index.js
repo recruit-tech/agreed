@@ -16,6 +16,16 @@ module.exports = (opts) => {
   const port = opts.port || 3000;
 
   app.use(bodyParser.json());
+
+  if (opts.middlewares) {
+    if (!Array.isArray(opts.middlewares)) {
+      throw new Error('[agreed-server] option.middlewares must be an array.');
+    }
+    opts.middlewares.forEach((fn) => {
+      app.use(fn);
+    });
+  }
+
   app.use(agreed.middleware(opts));
   app.use((err, req, res, next) => {
     res.statusCode = 500;
@@ -23,5 +33,4 @@ module.exports = (opts) => {
   });
   return app.listen(opts.port);
 };
-
 

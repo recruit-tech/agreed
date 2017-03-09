@@ -4,6 +4,7 @@ const plzPort = require('plz-port');
 const agreedServer = require('../');
 const AssertStream = require('assert-stream');
 const http = require('http');
+const assert = require('assert');
 
 test('agreed-core: call server', () => {
   plzPort().then((port) => {
@@ -24,3 +25,26 @@ test('agreed-core: call server', () => {
     });
   });
 });
+
+test('pass middlewares option', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: './test/agreed',
+      port: port,
+      middlewares: [
+        (req, res, next) => {
+          res.set({"access-control-allow-origin": "*"});
+          next();
+        }
+      ]
+    });
+
+    server.on('listening', () => {
+      http.get(`http://localhost:${port}/users/yosuke`, (res) => {
+        server.close();
+        assert.deepEqual(res.headers["access-control-allow-origin"], "*");
+      });
+    });
+  });
+});
+
