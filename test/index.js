@@ -41,3 +41,42 @@ test('agreed-server: static server', () => {
     });
   });
 });
+
+test('agreed-server: static server without prefix', () => {
+  const server = agreedServer({
+    path: './test/agreed',
+    static: './test/static',
+    port: '0',
+  });
+
+  server.on('listening', () => {
+    const port = server.address().port;
+    http.get(`http://localhost:${port}/test.jpg`, (res) => {
+      server.close();
+      assert.strictEqual(res.headers['content-type'], 'image/jpeg');
+      assert.strictEqual(res.statusCode, 200);
+    });
+  });
+});
+
+test('pass middlewares option', () => {
+  const server = agreedServer({
+    path: './test/agreed',
+    port: 0,
+    middlewares: [
+      (req, res, next) => {
+        res.set({"access-control-allow-origin": "*"});
+        next();
+      }
+    ]
+  });
+
+  server.on('listening', () => {
+    const port = server.address().port;
+    http.get(`http://localhost:${port}/users/yosuke`, (res) => {
+      server.close();
+      assert.deepEqual(res.headers["access-control-allow-origin"], "*");
+    });
+  });
+});
+
