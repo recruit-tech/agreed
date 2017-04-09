@@ -8,8 +8,8 @@ const agreedServer = require('agreed-server');
 
 function showHelp() {
   console.log(`
-    agreed-server [--path agreed path file (required)] [--port server port default 3000]
-    agreed-server --path ./agreed.js --port 4000
+    agreed-server [--path agreed path file (required)] [--port server port default 3000] [--static static file path] [--static-prefix-path static serve path prefix]
+    agreed-server --path ./agreed.js --port 4000 --static ./static --stati-prefix-path /public
   `);
   process.exit(0);
 }

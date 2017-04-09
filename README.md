@@ -1,6 +1,6 @@
 agreed
 ====================
-[![Build Status](https://travis-ci.org/recruit-tech/agreed.svg?branch=add_travis)](https://travis-ci.org/recruit-tech/agreed)
+[![Build Status](https://travis-ci.org/recruit-tech/agreed.svg?branch=master)](https://travis-ci.org/recruit-tech/agreed)
 
 
 agreed is Consumer Driven Contract tool with JSON mock server.
