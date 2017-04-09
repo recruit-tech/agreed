@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const agreed = require('agreed-core');
 const app = express();
@@ -14,14 +15,23 @@ module.exports = (opts) => {
   }
 
   const port = opts.port || 3000;
+  const stat = opts.static;
+  const staticPrefixPath = opts.staticPrefixPath || '';
 
   app.use(bodyParser.json());
+  if (stat) {
+    app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)))
+  }
   app.use(agreed.middleware(opts));
   app.use((err, req, res, next) => {
     res.statusCode = 500;
     res.send(`Error is occurred : ${err}`);
   });
-  return app.listen(opts.port);
+  const server = app.listen(opts.port);
+  if (opts.closeTime) {
+    setTimeout(server.close, opts.closeTime);
+  }
+  return server;
 };
 
 

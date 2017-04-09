@@ -17,6 +17,8 @@ const agreedServer = require('agreed-server');
 agreedServer({
   path: 'agreed/agreed.json',
   port: 3001,
+  static: './static', // serve files from ./static
+  staticPrefixPath: '/public',
 });
 ```
 
