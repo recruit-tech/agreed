@@ -16,11 +16,12 @@ module.exports = (opts) => {
 
   const port = opts.port || 3000;
   const stat = opts.static;
+  const staticPrefixPath = opts['static-prefix-path'] || opts.staticPrefixPath;
 
   app.use(bodyParser.json());
   if (stat) {
-    if (opts.staticPrefixPath) {
-      app.use(opts.staticPrefixPath, express.static(path.join(process.cwd(), stat)))
+    if (staticPrefixPath) {
+      app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)))
     } else {
       app.use(express.static(path.join(process.cwd(), stat)))
     }
