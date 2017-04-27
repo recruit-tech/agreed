@@ -284,4 +284,29 @@ module.exports = [
       }
     },
   },
+  {
+    request: {
+      path: '/headers/test/:index',
+      method: 'GET',
+      headers: {
+        'x-test-token': '{:xTestToken}'
+      },
+      values: {
+        index: 1,
+        xTestToken: 'fdajfdsaoijfdoajofdjaoj',
+      },
+    },
+    response: {
+      body: {
+        result : '{:list[:index]}'
+      },
+      values: {
+        list: [
+          'hello',
+          'hi',
+          'dunke',
+        ]
+      }
+    },
+  },
 ]
