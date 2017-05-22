@@ -80,3 +80,21 @@ test('pass middlewares option', () => {
   });
 });
 
+test('pass defaultHeaders option', () => {
+  const server = agreedServer({
+    path: './test/agreed',
+    port: 0,
+    defaultHeaders: {
+      'access-control-allow-origin': '*'
+    }
+  });
+
+  server.on('listening', () => {
+    const port = server.address().port;
+    http.get(`http://localhost:${port}/users/yosuke`, (res) => {
+      server.close();
+      assert.deepEqual(res.headers["access-control-allow-origin"], "*");
+    });
+  });
+});
+
