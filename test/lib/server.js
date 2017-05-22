@@ -6,6 +6,7 @@ const http = require('http');
 const AssertStream = require('assert-stream');
 const plzPort = require('plz-port');
 const assert = require('power-assert');
+const mustCall = require('must-call');
 
 test('server: POST API', () => {
   plzPort().then((port) => {
@@ -231,6 +232,57 @@ test('server: check response when header values are exists', () => {
         res.pipe(assertStream);
         server.close();
       }).on('error', console.error);
+      req.end();
+    });
+  });
+});
+
+test('server: response header has format string', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.json5',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const options = {
+        host: 'localhost',
+        method: 'GET',
+        path: '/path/header/format',
+        port: port,
+      };
+      const req = http.request(options, (res) => {
+        assert(res.statusCode === 200);
+        assert(res.headers['access-control-allow-origin'] === '*')
+        server.close();
+      }).on('error', console.error);
+      req.end();
+    });
+  });
+});
+
+test('server: response header using default headers', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.json5',
+      port: port,
+      defaultHeaders: {
+        'access-control-allow-origin': 'test'
+      }
+    });
+
+    server.on('listening', () => {
+      const options = {
+        host: 'localhost',
+        method: 'GET',
+        path: '/path/default/header/',
+        port: port,
+      };
+      const req = http.request(options, mustCall((res) => {
+        assert(res.statusCode === 200);
+        assert(res.headers['access-control-allow-origin'] === 'test')
+        server.close();
+      })).on('error', console.error);
       req.end();
     });
   });

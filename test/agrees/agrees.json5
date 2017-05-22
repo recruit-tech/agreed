@@ -69,4 +69,32 @@
       },
     },
   },
+  {
+    request: {
+      path: '/path/header/format',
+      method: 'GET',
+    },
+    response: {
+      headers: {
+        'access-control-allow-origin': '{:acao}'
+      },
+      body: {
+        message: 'hello',
+      },
+      values: {
+        'acao': '*'
+      }
+    },
+  },
+  {
+    request: {
+      path: '/path/default/header/',
+      method: 'GET',
+    },
+    response: {
+      body: {
+        message: 'hello',
+      },
+    },
+  },
 ]
