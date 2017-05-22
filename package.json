@@ -1,6 +1,6 @@
 {
   "name": "agreed-client",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "agreed client, testing utilities",
   "main": "index.js",
   "scripts": {
