@@ -106,3 +106,33 @@ test('diff: check object', () => {
     ghi: [1, 'aaaaa'],
   });
 });
+
+test('diff: check rest array string', () => {
+  const small = {
+    abc: 'abc {:test}',
+    def: '{:aaa}',
+    ghi: [
+      {
+        a: '{:ghi.0.a}',
+        c: '{:ghi.0.c}',
+        e: '{:ghi.0.e}'
+      },
+      '{:ghi.1-last}'
+    ],
+  };
+
+  const large = {
+    abc: 'abc test',
+    def: 'aaa',
+    ghi: [
+      {
+        a: 'b',
+        c: 'd',
+        e: 'e'
+      },
+    ],
+  };
+
+  const d = diff(small, large);
+  assert.deepEqual(d, {});
+});
