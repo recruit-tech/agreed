@@ -97,4 +97,18 @@
       },
     },
   },
+  {
+    request: {
+      path: '/path/default/request/header/',
+      method: 'GET',
+      headers: {
+        'x-forwarded-for': 'forward'
+      },
+    },
+    response: {
+      body: {
+        message: 'forward',
+      },
+    },
+  },
 ]
