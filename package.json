@@ -42,7 +42,7 @@
     "express": "^4.14.0",
     "is-empty": "^1.0.0",
     "must-call": "^1.0.0",
-    "nyc": "^7.1.0",
+    "nyc": "^10.3.2",
     "plz-port": "^1.0.0",
     "power-assert": "^1.4.1"
   }

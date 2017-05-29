@@ -261,12 +261,12 @@ test('server: response header has format string', () => {
   });
 });
 
-test('server: response header using default headers', () => {
+test('server: response header using default response headers', () => {
   plzPort().then((port) => {
     const server = agreedServer({
       path: 'test/agrees/agrees.json5',
       port: port,
-      defaultHeaders: {
+      defaultResponseHeaders: {
         'access-control-allow-origin': 'test'
       }
     });
@@ -281,6 +281,37 @@ test('server: response header using default headers', () => {
       const req = http.request(options, mustCall((res) => {
         assert(res.statusCode === 200);
         assert(res.headers['access-control-allow-origin'] === 'test')
+        server.close();
+      })).on('error', console.error);
+      req.end();
+    });
+  });
+});
+
+test('server: response header using default request headers', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.json5',
+      port: port,
+      defaultRequestHeaders: {
+        'x-forwarded-for': 'forward'
+      }
+    });
+
+    server.on('listening', () => {
+      const options = {
+        host: 'localhost',
+        method: 'GET',
+        path: '/path/default/request/header',
+        port: port,
+      };
+      const req = http.request(options, mustCall((res) => {
+        assert(res.statusCode === 200);
+        const assertStream = new AssertStream();
+        assertStream.expect({ 
+          message: "forward",
+        });
+        res.pipe(assertStream);
         server.close();
       })).on('error', console.error);
       req.end();
