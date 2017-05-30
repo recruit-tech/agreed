@@ -2,6 +2,7 @@
 
 const agreed = require('agreed-core');
 const filter = require('./lib/filter');
+const requestPromise = require('./lib/requestPromise');
 const reporter = require('./lib/reporter');
 
 module.exports = (opts) => {
@@ -19,6 +20,17 @@ module.exports = (opts) => {
 
   const client = agreed.createClient(opts);
   const agrees = filter(client.getAgreement(), opts.filter);
-  const responses = client.executeAgreement(agrees);
-  return client.checkResponse(responses, agrees).then(reporter(agrees, opts));
+
+  const request = requestPromise(client, agrees);
+  const repo = reporter(agrees);
+
+  return {
+    // low level api
+    client,
+    agrees,
+    
+    // high level api
+    request,
+    reporter: repo,
+  };
 };
