@@ -8,5 +8,28 @@
         message: 'hello {:id}',
       }
     }
+  },
+  {
+    request: {
+      path: "/users/header/:id",
+      values: {
+        jwt: 'testtesttesttest'
+      },
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+      }
+    }
+  },
+  {
+    request: {
+      path: "/shops/:id",
+    },
+    response: {
+      body: {
+        message: 'shop {:id}',
+      }
+    }
   }
 ]

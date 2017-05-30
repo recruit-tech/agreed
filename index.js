@@ -37,14 +37,23 @@ module.exports = (opts) => {
   }
 
   app.use(agreed.middleware(opts));
-  app.use((err, req, res, next) => {
-    res.statusCode = 500;
-    res.send(`Error is occurred : ${err}`);
-  });
-  const server = app.listen(opts.port);
-  if (opts.closeTime) {
-    setTimeout(server.close, opts.closeTime);
-  }
-  return server;
+
+  const createServer = (appServer = app) => {
+    appServer.use((err, req, res, next) => {
+      res.statusCode = 500;
+      res.send(`Error is occurred : ${err}`);
+    });
+    const server = appServer.listen(opts.port);
+    if (opts.closeTime) {
+      setTimeout(server.close, opts.closeTime);
+    }
+    return server;
+  };
+  return { 
+    // low level
+    app, 
+    // high level
+    createServer 
+  };
 };
 

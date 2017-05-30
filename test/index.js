@@ -9,7 +9,7 @@ test('agreed-server: call server', () => {
   const server = agreedServer({
     path: './test/agreed',
     port: '0',
-  });
+  }).createServer();
 
   server.on('listening', () => {
     const port = server.address().port;
@@ -30,7 +30,7 @@ test('agreed-server: static server', () => {
     static: './test/static',
     staticPrefixPath: '/public',
     port: '0',
-  });
+  }).createServer();
 
   server.on('listening', () => {
     const port = server.address().port;
@@ -47,7 +47,7 @@ test('agreed-server: static server without prefix', () => {
     path: './test/agreed',
     static: './test/static',
     port: '0',
-  });
+  }).createServer();
 
   server.on('listening', () => {
     const port = server.address().port;
@@ -69,7 +69,7 @@ test('pass middlewares option', () => {
         next();
       }
     ]
-  });
+  }).createServer();
 
   server.on('listening', () => {
     const port = server.address().port;
@@ -80,20 +80,52 @@ test('pass middlewares option', () => {
   });
 });
 
-test('pass defaultHeaders option', () => {
+test('pass defaultResponseHeaders option', () => {
   const server = agreedServer({
     path: './test/agreed',
     port: 0,
-    defaultHeaders: {
+    defaultResponseHeaders: {
       'access-control-allow-origin': '*'
     }
-  });
+  }).createServer();
 
   server.on('listening', () => {
     const port = server.address().port;
     http.get(`http://localhost:${port}/users/yosuke`, (res) => {
       server.close();
       assert.deepEqual(res.headers["access-control-allow-origin"], "*");
+    });
+  });
+});
+
+test('pass defaultRequestHeaders option', () => {
+  const server = agreedServer({
+    path: './test/agreed',
+    port: 0,
+    defaultRequestHeaders: {
+      'x-jwt-token': 'testtesttest'
+    }
+  }).createServer();
+
+  server.on('listening', () => {
+    const port = server.address().port;
+    const options = {
+      host: 'localhost',
+      method: 'GET',
+      path: '/users/header/yosuke',
+      port: port,
+      headers: {
+        'Content-Type': 'application/json',
+        'x-jwt-token': 'testtesttest'
+      }
+    };
+    http.get(options, (res) => {
+      server.close();
+      const assertStream = new AssertStream();
+      assertStream.expect({
+        message: 'hello yosuke'
+      });
+      res.pipe(assertStream);
     });
   });
 });
