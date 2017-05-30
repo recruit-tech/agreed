@@ -304,6 +304,9 @@ test('server: response header using default request headers', () => {
         method: 'GET',
         path: '/path/default/request/header',
         port: port,
+        headers: {
+          'x-forwarded-for': 'forward'
+        },
       };
       const req = http.request(options, mustCall((res) => {
         assert(res.statusCode === 200);
