@@ -2,8 +2,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const agreed = require('agreed-core');
-const app = express();
+const Agreed = require('agreed-core');
+const httpProxy = require('express-http-proxy');
 
 module.exports = (opts) => {
   if (!opts) {
@@ -14,16 +14,27 @@ module.exports = (opts) => {
     throw new Error('[agreed-server] option.path is required.');
   }
 
+  const app = express();
   const port = opts.port || 3000;
   const stat = opts.static;
   const staticPrefixPath = opts['static-prefix-path'] || opts.staticPrefixPath;
+  const proxy = opts.proxy;
+  const proxyPrefixPath = opts['proxy-prefix-path'] || opts.proxyPrefixPath;
 
   app.use(bodyParser.json());
   if (stat) {
     if (staticPrefixPath) {
-      app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)))
+      app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)));
     } else {
-      app.use(express.static(path.join(process.cwd(), stat)))
+      app.use(express.static(path.join(process.cwd(), stat)));
+    }
+  }
+
+  if (proxy) {
+    if (proxyPrefixPath) {
+      app.use(proxyPrefixPath, httpProxy(proxy));
+    } else {
+      app.use(httpProxy(proxy));
     }
   }
 
@@ -36,6 +47,7 @@ module.exports = (opts) => {
     });
   }
 
+  const agreed = new Agreed();
   app.use(agreed.middleware(opts));
 
   const createServer = (appServer = app) => {

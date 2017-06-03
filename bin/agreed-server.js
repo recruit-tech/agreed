@@ -5,13 +5,15 @@ const argv = minimist(process.argv.slice(2));
 const path = require('path');
 const colo = require('colo');
 const JSON5 = require('json5');
+const url = require('url');
 const agreedServer = require('../');
 
 function showHelp(exitcode) {
   console.log(`
-    agreed-server [--path agreed path file (required)] [--port server port default 3000] [--static static file path] [--static-prefix-path static serve path prefix] [--default-response-headers default response headers object] [--default-request-headers default request headers object]
+    agreed-server [--path agreed path file (required)] [--port server port default 3000] [--static static file path] [--static-prefix-path static serve path prefix] [--default-response-headers default response headers object] [--default-request-headers default request headers object] [--proxy proxy host] [--proxy-prefix-path proxy server path prefix]
     agreed-server --path ./agreed.js --port 4000
     agreed-server --path ./agreed.js --port 4000 --static ./static --stati-prefix-path /public --default-response-headers "{ 'access-control-allow-origin': '*' }" --default-request-headers "{ 'x-jwt-token': 'foobarbaz' }"
+    agreed-server --path ./agreed.js --port 4000 --proxy example.com --proxy-prefix-path /proxy
   `);
   process.exit(exitcode);
 }
