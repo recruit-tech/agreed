@@ -22,6 +22,8 @@ module.exports = (opts) => {
   const proxyPrefixPath = opts['proxy-prefix-path'] || opts.proxyPrefixPath;
 
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  
   if (stat) {
     if (staticPrefixPath) {
       app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)));
