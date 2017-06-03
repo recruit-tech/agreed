@@ -1,0 +1,13 @@
+[
+  {
+    request: {
+      path: "/test/proxy"
+    },
+    response: {
+      body: {
+        message: 'hello proxy',
+      }
+    }
+  },
+]
+
