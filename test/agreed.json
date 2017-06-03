@@ -31,5 +31,24 @@
         message: 'shop {:id}',
       }
     }
+  },
+  {
+    request: {
+      path: "/urlencoded/test",
+      method: "POST",
+      body: {
+        foo: "bar",
+        bar: "baz",
+        hoge: "fuga"
+      },
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+    },
+    response: {
+      body: {
+        message: 'hello wwwurlencoded',
+      }
+    }
   }
 ]
