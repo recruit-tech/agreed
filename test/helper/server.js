@@ -2,7 +2,8 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const agreed = require('../../index');
+const Agreed = require('../../index');
+const agreed = new Agreed();
 const app = express();
 
 module.exports = (opts) => {
