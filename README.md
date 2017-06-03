@@ -3,22 +3,66 @@
 
 [Agreed](https://www.npmjs.com/package/agreed-core) mock server
 
+`agreed-server` is a mock server based on `agreed`.
+This module provides CLI executable command and 2 programmable interface.
+If you want to use `agreed` as mock, you would be better to install `agreed-server`.
+
 # Install
 
 ```
-$ npm install agreed-server --save
+$ npm install agreed-server --save-dev
 ```
 
-# Usage
+# Basic Usage
+
+Usage as CLI
+
+```
+$ agreed-server --path ./test/agreed.json --port 10101
+```
+
+Usage as programming
 
 ```js
 const agreedServer = require('agreed-server');
 
-agreedServer({
+const server = agreedServer({
   path: 'agreed/agreed.json',
   port: 3001,
   static: './static', // serve files from ./static
   staticPrefixPath: '/public',
-});
+}).createServer();
 ```
 
+# Advanced Usage
+
+Usage as Express pure server
+
+```js
+const agreedServer = require('agreed-server');
+
+const { app, createServer } = agreedServer({
+  path: 'agreed/agreed.json',
+  port: 3001,
+  static: './static', // serve files from ./static
+  staticPrefixPath: '/public',
+  middlewares: [
+    logger,
+    perfTool,
+    secureHeaders,
+  ],
+  defaultRequestHeaders: {
+    'x-forwarded-for': 'nginx'
+  },
+  defaultResponseHeaders: {
+    'access-control-allow-origin': '*'
+  },
+});
+
+app.use(someGoodMiddleware);
+app.use((err, req, res, next) => {
+  res.statusCode = 500;
+  res.send(`Error is occurred : ${err}, you should see log`);
+});
+const server = createServer(app);
+```
