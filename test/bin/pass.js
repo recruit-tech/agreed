@@ -4,9 +4,9 @@ const cp = require('child_process');
 
 const path = './test/agreed.json5';
 plzPort().then((port) => {
-  const proc = cp.exec(`node ${process.cwd()}/bin/agreed-server.js --port ${port} --path ${path}`);
+  const proc = cp.exec(`${process.cwd()}/node_modules/.bin/agreed-server --port ${port} --path ${path}`);
   setTimeout(() => {
-    const result = cp.execSync(`node ${process.cwd()}/bin/agreed-client.js --port ${port} --path ${path}`).toString();
+    const result = cp.execSync(`${process.cwd()}/node_modules/.bin/agreed-client --port ${port} --path ${path}`).toString();
     console.log(result);
     assert(result.indexOf('✔ pass') >= 0);
     proc.kill();
@@ -18,9 +18,9 @@ plzPort().then((port) => {
 });
 
 plzPort().then((port) => {
-  const proc = cp.exec(`node ${process.cwd()}/bin/agreed-server.js --port ${port} --path ${path} --default-headers " { 'access-control-allow-origin': '*' } "`);
+  const proc = cp.exec(`${process.cwd()}/node_modules/.bin/agreed-server --port ${port} --path ${path} --default-headers " { 'access-control-allow-origin': '*' } "`);
   setTimeout(() => {
-    const result = cp.execSync(`node ${process.cwd()}/bin/agreed-client.js --port ${port} --path ${path}`).toString();
+    const result = cp.execSync(`${process.cwd()}/node_modules/.bin/agreed-client --port ${port} --path ${path}`).toString();
     console.log(result);
     assert(result.indexOf('✔ pass') >= 0);
     proc.kill();
