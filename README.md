@@ -13,14 +13,24 @@ $ npm install agreed-client -D
 # Usage
 
 ```javascript
-const client = require('agreed-client');
+const agreedClient = require('agreed-client');
 
-client({
+const {
+  client,
+  agrees,
+  responses,
+  reporter,
+} = agreedClient({
   path: './test/agreed.json5', // required
   scheme: 'http', // optional, default is http
   host: 'localhost', // optional, default is localhost
   port: 30103, // optional, default is 80
-}).then(() => {
-  console.log('DONE!!!');
+  defaultRequestHeaders: {
+    'x-jwt-token': 'foobarbaz'
+  }
 });
+
+client.checkResponse(responses, agrees)
+  .then(reporter(agrees))
+  .then(() => console.log('DONE!!!'));
 ```

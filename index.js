@@ -1,8 +1,9 @@
 'use strict';
 
-const agreed = require('agreed-core');
+const Agreed = require('agreed-core');
 const filter = require('./lib/filter');
-const reporter = require('./lib/reporter');
+const requestPromise = require('./lib/requestPromise');
+const agreedReporter = require('./lib/reporter');
 
 module.exports = (opts) => {
   if (!opts) {
@@ -17,8 +18,15 @@ module.exports = (opts) => {
   opts.host = opts.host || 'localhost';
   opts.port = opts.port || 80;
 
+  const agreed = new Agreed();
   const client = agreed.createClient(opts);
   const agrees = filter(client.getAgreement(), opts.filter);
-  const responses = client.executeAgreement(agrees);
-  return client.checkResponse(responses, agrees).then(reporter(agrees, opts));
+  client.requestPromise = requestPromise;
+  const reporter = agreedReporter(agrees);
+
+  return {
+    client,
+    agrees,
+    reporter,
+  };
 };
