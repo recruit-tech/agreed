@@ -35,8 +35,8 @@ if (argv['default-request-headers']) {
   argv.defaultRequestHeaders = JSON5.parse(argv['default-request-headers']);
 }
 
-const { request, reporter } = agreedClient(argv);
-request.then(reporter).catch((e) => {
+const { client, agrees, reporter } = agreedClient(argv);
+client.requestPromise(agrees).then(reporter).catch((e) => {
   console.error(e);
   process.exit(1);
 });

@@ -1,21 +1,21 @@
 'use strict';
 const agreedClient = require('../index');
-const server = require('agreed-server');
+const agreedServer = require('agreed-server');
 const test = require('eater/runner').test;
 
 test('client: smoke', () => {
-  const app = server({
+  const server = agreedServer({
     path: './test/agreed_server.json5',
     port: 0,
-  });
+  }).createServer();
 
-  app.on('listening', () => {
-    const { client, agrees, requestPromise, reporter } = agreedClient({
+  server.on('listening', () => {
+    const { client, agrees, reporter } = agreedClient({
       path: './test/agreed.json5',
-      port: app.address().port,
+      port: server.address().port,
     });
-    client.checkResponse(responses, agrees).then(reporter(agrees)).then(() => {
-      app.close();
+    client.requestPromise(agrees).then(reporter).then(() => {
+      server.close();
     });
   });
 });
