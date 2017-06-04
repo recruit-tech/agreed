@@ -21,8 +21,8 @@
   ],
   "author": "yosuke-furukawa",
   "bin": {
-    "agreed-server": "./bin/agreed-server.js",
-    "agreed-client": "./bin/agreed-client.js"
+    "agreed-server": "./node_modules/.bin/agreed-server",
+    "agreed-client": "./node_modules/.bin/agreed-client"
   },
   "license": "MIT",
   "devDependencies": {
@@ -30,8 +30,8 @@
     "plz-port": "^1.0.0"
   },
   "dependencies": {
-    "agreed-client": "^1.0.0",
-    "agreed-server": "^1.0.0",
+    "agreed-client": "^2.0.0",
+    "agreed-server": "^2.0.0",
     "colo": "^0.3.2",
     "json5": "^0.5.1",
     "minimist": "^1.2.0"
