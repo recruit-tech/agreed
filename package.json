@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Agreed is a tool for Consumer Driven Contract with JSON mock server",
   "main": "index.js",
+  "bin": {
+    "agreed-server": "./bin/agreed-server.js",
+    "agreed-client": "./bin/agreed-client.js"
+  },
   "scripts": {
     "test": "eater"
   },
@@ -20,10 +24,6 @@
     "server"
   ],
   "author": "yosuke-furukawa",
-  "bin": {
-    "agreed-server": "./node_modules/.bin/agreed-server",
-    "agreed-client": "./node_modules/.bin/agreed-client"
-  },
   "license": "MIT",
   "devDependencies": {
     "eater": "^3.0.0-5",
