@@ -112,7 +112,8 @@ We support express, pure node.js and any other frameworks can use agreed.
 'use strinct';
 const express = require('express');
 const bodyParser = require('body-parser');
-const agreed = require('agreed-core');
+const Agreed = require('agreed-core');
+const agreed = new Agreed();
 const app = express();
 
 app.use(bodyParser.json());
@@ -196,8 +197,9 @@ module.exports = [
 
 ```javascript
 'use strinct';
-const AgreedClient = require('agreed-core').client;
-const client = new AgreedClient({
+const Agreed = require('agreed-core');
+const agreed = new Agreed();
+const client = agreed.createClient({
   path: './agreed/file/agreed.js',
   host: 'example.com',
   port: 12345,
