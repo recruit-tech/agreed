@@ -111,4 +111,18 @@
       },
     },
   },
+  {
+    request: {
+      path: '/test/case/insensitive/headers',
+      method: 'GET',
+      headers: {
+        'This-Headers-Should-Be-Lower-Case': 'true'
+      },
+    },
+    response: {
+      body: {
+        message: 'hello case insensitive headers',
+      },
+    },
+  },
 ]
