@@ -125,4 +125,23 @@
       },
     },
   },
+  {
+    request: {
+      path: '/test/null/agreed/values',
+    },
+    response: {
+      body: {
+        messages: [
+          { message: '{:messages.0.message}' },
+          '{:messages.1-last}'
+        ],
+      },
+      values: {
+        messages: [
+          { message: null },
+          { message: 'test' },
+        ]
+      },
+    },
+  },
 ]

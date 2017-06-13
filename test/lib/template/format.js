@@ -266,8 +266,6 @@ test('format: array 1-4 notation to spread array', () => {
     ]
   });
 
-
-  console.log(result);
   assert.deepStrictEqual(result, {
     arr: [
       {
@@ -281,6 +279,58 @@ test('format: array 1-4 notation to spread array', () => {
       },
       {
         name: 'bar',
+      },
+    ]
+  });
+});
+
+test('format: array 1-last notation to spread array with null', () => {
+  const obj = {
+    arr: [
+      {
+        name: '{:ghi.0.name}'
+      },
+      '{:ghi.1-last}',
+    ]
+  };
+  const result = format(obj, {
+    ghi: [
+      {
+        name: null,
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: null,
+      },
+    ]
+  });
+
+
+  console.log(result);
+  assert.deepStrictEqual(result, {
+    arr: [
+      {
+        name: null,
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: 'baz',
+      },
+      {
+        name: 'bar',
+      },
+      {
+        name: null,
       },
     ]
   });
