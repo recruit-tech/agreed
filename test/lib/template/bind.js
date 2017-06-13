@@ -14,3 +14,7 @@ test('bind: { key: { foo: "{:value}" }, { key: { foo: "foo"} } => { value: "foo"
   assert.deepEqual(result, {value: "foo"});
 });
 
+test('bind: { key: { foo: "{:value}" }, { key: { foo: null } } => { value: null }', () => {
+  const result = bind({ key: { foo: "{:value}" }}, { key: { foo: null }});
+  assert.deepEqual(result, {value: null });
+});
