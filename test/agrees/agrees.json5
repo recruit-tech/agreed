@@ -144,4 +144,17 @@
       },
     },
   },
+  {
+    request: {
+      path: '/test/randomint/agreed/values',
+    },
+    response: {
+      body: {
+        random: '{randomInt:random}'
+      },
+      values: {
+        random: '1-1000'
+      },
+    },
+  },
 ]
