@@ -28,6 +28,7 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
+    "deepmerge": "^1.4.4",
     "json5": "^0.5.0",
     "jsonschema": "^1.1.0",
     "path-to-regexp": "^1.5.3",

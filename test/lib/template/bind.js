@@ -19,13 +19,27 @@ test('bind: { key: { foo: "{:value}" }, { key: { foo: null } } => { value: null 
   assert.deepEqual(result, {value: null });
 });
 
-test('bind: { key: { foo: "{:value.foo}" }, { key: { value: { foo: 12345 } } } => { value: { foo: 12345 } }', () => {
-  const result = bind({ key: { foo: "{:value.foo}" }}, { key: { value: { foo: 12345 } } });
-  assert.deepEqual(result, {value: { foo: 12345 } });
+test('bind: { key: { foo: "{:value.foo}" }, { key: { foo: { value: { foo: 12345 } } } } => { value: { foo: 12345 } }', () => {
+  const result = bind({ key: { foo: "{:value.foo}" }}, { key: { foo: { value: { foo: 12345 } } } });
+  assert.deepEqual(result, { value: { foo: 12345 } });
 });
 
-test('bind: { key: { foo: "{:value.foo.bar.0.baz}" }, { key: { value: { foo: { bar: [ { baz : 12345 } ] } } } } => { value: { foo: { bar: [ { baz: 12345 } ] } } }', () => {
-  const result = bind({ key: { foo: "{:value.foo.bar.0.baz}" } }, { key: { value: { foo: { bar: [ { baz : 12345 } ] } } } });
-  const expect = { value: { foo: { bar: [ { baz: 12345 } ] } } };
-  assert.deepStrictEqual(result, expect);
+test('bind: { key: { time: { start: "{:time.start}", end: "{:time.end}" } } }, { key: { time: { start: 12345, end: 3456 } } } => { time: { start: 12345, end: 3456 } }', () => {
+  const result = bind({ 
+    key: { 
+      time: {
+        start: "{:time.start}",
+        end: "{:time.end}",
+      }
+    }
+  }, { 
+    key: { 
+      time: { 
+        start: 12345,
+        end: 3456 
+      } 
+    } 
+  });
+  assert.deepEqual(result, { time: { start: 12345, end: 3456 } });
 });
+
