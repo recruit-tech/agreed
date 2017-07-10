@@ -157,4 +157,14 @@
       },
     },
   },
+  {
+    request: {
+      path: '/test/parseint/agreed/values/:id',
+    },
+    response: {
+      body: {
+        id: '{parseInt:id}'
+      },
+    },
+  },
 ]

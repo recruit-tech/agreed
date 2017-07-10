@@ -23,3 +23,7 @@ test('format: {randomInt:id} but range 1000-100', () => {
   assert(result.id <= 1000);
 });
 
+test('format: {parseInt:id}', () => {
+  const result = format({ id: '{parseInt:id}' }, { id: '10000' });
+  assert.deepStrictEqual(result.id, 10000);
+});
