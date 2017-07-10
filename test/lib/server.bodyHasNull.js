@@ -15,15 +15,13 @@ test('server: check post to list', () => {
 
   server.on('listening', () => {
     const body = { 
-      messages: [
-        { message: 'hoge' },
-      ]
+      test: null
     };
     const bodyString = JSON.stringify(body);
     const options = {
       host: 'localhost',
       method: 'POST',
-      path: '/test/agreed/messages',
+      path: '/test/agreed/use/null/obj',
       port: server.address().port,
       headers: {
         'Content-Type': 'application/json',
@@ -31,12 +29,11 @@ test('server: check post to list', () => {
       },
     };
     const req = http.request(options, mustCall((res) => {
-      res.pipe(process.stdout)
       let data = '';
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
         const actual = JSON.parse(data);
-        const expected = { results: [ { message: null }, { message: 'test' } ] };
+        const expected = { results: null };
         assert.deepStrictEqual(actual, expected);
       }));
       server.close();
@@ -47,3 +44,4 @@ test('server: check post to list', () => {
     req.end();
   });
 });
+

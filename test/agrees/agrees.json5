@@ -197,4 +197,22 @@
       }
     },
   },
+  {
+    request: {
+      path: '/test/agreed/use/null/obj',
+      method: 'POST',
+      body: {
+        test: '{:test}'
+      },
+      values: {
+        test: null,
+      }
+    },
+    response: {
+      status: 201,
+      body: {
+        results: '{:test}'
+      },
+    },
+  },
 ]
