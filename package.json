@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
   "dependencies": {
-    "agreed-core": "^2.1.2",
+    "agreed-core": "^2.4.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-http-proxy": "^1.0.3"
@@ -32,6 +32,7 @@
   "devDependencies": {
     "assert-stream": "^1.0.0",
     "eater": "^3.0.0-5",
+    "must-call": "^1.0.0",
     "plz-port": "^1.0.0"
   }
 }

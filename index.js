@@ -63,11 +63,15 @@ module.exports = (opts) => {
     }
     return server;
   };
+
+  const notifier = agreed.server.notifier;
+
   return { 
     // low level
     app, 
     // high level
-    createServer 
+    createServer,
+    notifier
   };
 };
 
