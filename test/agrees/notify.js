@@ -25,4 +25,29 @@ module.exports = [
       }
     },
   },
+  {
+    request: {
+      path: '/messages2',
+      method: 'POST',
+      body: {
+        message: '{:message}'
+      },
+      values: {
+        message: 'test',
+      },
+    },
+    response: {
+      body: {
+        result : '{:message}'
+      },
+      values: {
+        message: 'test',
+      },
+      notify: {
+        body: {
+          message: 'message2 {:message}'
+        }
+      }
+    },
+  },
 ];
