@@ -66,3 +66,74 @@ app.use((err, req, res, next) => {
 });
 const server = createServer(app);
 ```
+
+## notifier
+
+Usage as notification event
+
+### agreed file
+
+```js
+module.exports = [
+  {
+    request: {
+      path: '/messages',
+      method: 'POST',
+      body: {
+        message: '{:message}'
+      },
+      values: {
+        message: 'test',
+      },
+    },
+    response: {
+      body: {
+        result : '{:message}'
+      },
+      values: {
+        message: 'test',
+      },
+      // add notify property for notification
+      notify: {
+        body: {
+          message: 'message! {:message}'
+        }
+      }
+    },
+  },
+]
+```
+
+
+```js
+const agreedServer = require('agreed-server');
+
+const { app, createServer, notifier } = agreedServer({
+  path: 'agreed/agreed.json',
+  port: 3001,
+  static: './static', // serve files from ./static
+  staticPrefixPath: '/public',
+  middlewares: [
+    logger,
+    perfTool,
+    secureHeaders,
+  ],
+  defaultRequestHeaders: {
+    'x-forwarded-for': 'nginx'
+  },
+  defaultResponseHeaders: {
+    'access-control-allow-origin': '*'
+  },
+});
+
+notifier.on('message', (data) => {
+  console.log(data) // { message: 'message! hoge' }
+});
+
+app.use(someGoodMiddleware);
+app.use((err, req, res, next) => {
+  res.statusCode = 500;
+  res.send(`Error is occurred : ${err}, you should see log`);
+});
+const server = createServer(app);
+```
