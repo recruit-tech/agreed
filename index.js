@@ -20,6 +20,7 @@ module.exports = (opts) => {
   const staticPrefixPath = opts['static-prefix-path'] || opts.staticPrefixPath;
   const proxy = opts.proxy;
   const proxyPrefixPath = opts['proxy-prefix-path'] || opts.proxyPrefixPath;
+  const proxyOpts = opts.proxyOpts || {};
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,9 +35,9 @@ module.exports = (opts) => {
 
   if (proxy) {
     if (proxyPrefixPath) {
-      app.use(proxyPrefixPath, httpProxy(proxy));
+      app.use(proxyPrefixPath, httpProxy(proxy, proxyOpts));
     } else {
-      app.use(httpProxy(proxy));
+      app.use(httpProxy(proxy, proxyOpts));
     }
   }
 

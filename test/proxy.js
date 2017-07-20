@@ -76,3 +76,50 @@ test('proxy prefix proxy path option', () => {
   });
 });
 
+test('proxy prefix proxy path option with proxyMaybeSkipToNextHandler', () => {
+  const proxyServer = agreedServer({
+    path: './test/agreedProxy',
+    port: 0,
+  }).createServer();
+
+  proxyServer.on('listening', () => {
+    const proxyPort = proxyServer.address().port;
+    const server = agreedServer({
+      path: './test/agreed',
+      port: 0,
+      proxy: `127.0.0.1:${proxyPort}`,
+      proxyOpts: {
+        filter: (req, res) => {
+          return req.originalUrl === '/foo'
+        },
+        maybeSkipToNextHandler: (proxyRes) => {
+          return proxyRes.statusCode >= 400;
+        },
+      }
+    }).createServer();
+
+    server.on('listening', () => {
+      const port = server.address().port;
+      ['/foo', '/bar'].forEach((path) => {
+        const options = {
+          host: 'localhost',
+          method: 'GET',
+          path: path,
+          port: port,
+        };
+        http.get(options, (res) => {
+          const assertStream = new AssertStream();
+          assertStream.expect({
+            message: 'hello foo'
+          });
+          res.pipe(assertStream);
+        });
+      });
+      setTimeout(() => {
+        proxyServer.close();
+        server.close();
+      }, 2000);
+    });
+  });
+});
+
