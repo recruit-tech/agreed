@@ -9,5 +9,15 @@
       }
     }
   },
+  {
+    request: {
+      path: "/foo"
+    },
+    response: {
+      body: {
+        message: 'hello foo',
+      }
+    }
+  },
 ]
 

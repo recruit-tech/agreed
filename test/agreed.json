@@ -50,5 +50,15 @@
         message: 'hello wwwurlencoded',
       }
     }
+  },
+  {
+    request: {
+      path: "/bar"
+    },
+    response: {
+      body: {
+        message: 'hello foo',
+      }
+    }
   }
 ]
