@@ -8,13 +8,32 @@ const JSON5 = require('json5');
 const url = require('url');
 const agreedServer = require('../');
 
+const usage = `
+Usage: agreed-server --path <path> [options]
+
+Options:
+  --path <path>                      Agreed file path. Required.
+  --port <port>                      Server port. Default 3000.
+  --static <path>                    Static file path.
+  --static-prefix-path <prefix>      Static serve path prefix.
+  --default-response-headers <json>  Default response headers object.
+  --default-request-headers <json>   Default request headers object.
+  --proxy <hostname>                 Proxy host.
+  --proxy-prefix-path <prefix>       Proxy server path prefix.
+
+Examples:
+  agreed-server --path ./agreed.js --port 4000
+  agreed-server --path ./agreed.js --port 4000 \\
+                --static ./static --stati-prefix-path /public \\
+                --default-response-headers "{ 'access-control-allow-origin': '*' }" \\
+                --default-request-headers "{ 'x-jwt-token': 'foobarbaz' }"
+  agreed-server --path ./agreed.js --port 4000 \\
+                --proxy example.com \\
+                --proxy-prefix-path /proxy
+`.trim();
+
 function showHelp(exitcode) {
-  console.log(`
-    agreed-server [--path agreed path file (required)] [--port server port default 3000] [--static static file path] [--static-prefix-path static serve path prefix] [--default-response-headers default response headers object] [--default-request-headers default request headers object] [--proxy proxy host] [--proxy-prefix-path proxy server path prefix]
-    agreed-server --path ./agreed.js --port 4000
-    agreed-server --path ./agreed.js --port 4000 --static ./static --stati-prefix-path /public --default-response-headers "{ 'access-control-allow-origin': '*' }" --default-request-headers "{ 'x-jwt-token': 'foobarbaz' }"
-    agreed-server --path ./agreed.js --port 4000 --proxy example.com --proxy-prefix-path /proxy
-  `);
+  console.log(usage);
   process.exit(exitcode);
 }
 
