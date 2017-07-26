@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const Agreed = require('agreed-core');
 const httpProxy = require('express-http-proxy');
+const morgan = require('morgan');
 
 module.exports = (opts) => {
   if (!opts) {
@@ -48,6 +49,10 @@ module.exports = (opts) => {
     opts.middlewares.forEach((fn) => {
       app.use(fn);
     });
+  }
+
+  if (opts.logging) {
+    app.use(morgan('tiny'));
   }
 
   const agreed = new Agreed();

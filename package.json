@@ -27,7 +27,8 @@
     "agreed-core": "^2.4.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "express-http-proxy": "1.0.5"
+    "express-http-proxy": "1.0.5",
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
     "assert-stream": "^1.0.0",

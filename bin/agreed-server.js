@@ -1,7 +1,26 @@
 #!/usr/bin/env node
 
 const minimist = require('minimist');
-const argv = minimist(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2), {
+  string: [
+    'path',
+    'port',
+    'static',
+    'static-prefix-path',
+    'default-response-headers',
+    'default-request-headers',
+    'proxy',
+    'proxy-prefix-path'
+  ],
+  boolean: [
+    'help',
+    'version',
+    'logging'
+  ],
+  alias: {
+    l: 'logging'
+  }
+});
 const path = require('path');
 const colo = require('colo');
 const JSON5 = require('json5');
@@ -12,6 +31,8 @@ const usage = `
 Usage: agreed-server --path <path> [options]
 
 Options:
+  --help                             Shows the usage and exits.
+  --version                          Shows version number and exits.
   --path <path>                      Agreed file path. Required.
   --port <port>                      Server port. Default 3000.
   --static <path>                    Static file path.
@@ -20,6 +41,7 @@ Options:
   --default-request-headers <json>   Default request headers object.
   --proxy <hostname>                 Proxy host.
   --proxy-prefix-path <prefix>       Proxy server path prefix.
+  -l, --logging                      Logs requests in console.
 
 Examples:
   agreed-server --path ./agreed.js --port 4000
