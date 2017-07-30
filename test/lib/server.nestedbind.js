@@ -1,13 +1,13 @@
 'use strict';
 
 const agreedServer = require('../helper/server.js');
-const { test } = require('eater/runner');
+const test = require('eater/runner').test;
 const http = require('http');
 const AssertStream = require('assert-stream');
 const assert = require('power-assert');
 const mustCall = require('must-call');
 
-test('server: check post to list', () => {
+test('server: check parseInt', () => {
   const server = agreedServer({
     path: 'test/agrees/agrees.json5',
     port: 0,
@@ -15,35 +15,41 @@ test('server: check post to list', () => {
 
   server.on('listening', () => {
     const body = { 
-      messages: [
-        { message: 'hoge' },
+      time: { start: 1, end: 3, 'break': { start: 2, end: 5 } },
+      members: [
+        {
+          id: 1
+        },
+        {
+          id: 2
+        }
       ]
     };
-    const bodyString = JSON.stringify(body);
+    const bodyStr = JSON.stringify(body);
     const options = {
       host: 'localhost',
       method: 'POST',
-      path: '/test/agreed/messages',
+      path: '/test/bind/nest/object',
       port: server.address().port,
       headers: {
         'Content-Type': 'application/json',
-        'Content-Length': bodyString.length
-      },
+        'Content-Length': bodyStr.length,
+      }
     };
-    const req = http.request(options, mustCall((res) => {
-      res.pipe(process.stdout)
+    const req = http.request(options, (res) => {
       let data = '';
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
-        const actual = JSON.parse(data);
-        const expected = { results: body.messages };
-        assert.deepStrictEqual(actual, expected);
+        const result = JSON.parse(data);
+        console.log(result)
       }));
       server.close();
-    })).on('error', console.error);
+    }).on('error', console.error);
 
-    req.write(bodyString);
-
+    req.write(bodyStr);
     req.end();
   });
 });
+
+
+

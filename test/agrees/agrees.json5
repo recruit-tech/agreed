@@ -215,4 +215,44 @@
       },
     },
   },
+  {
+    request: {
+      path: '/test/bind/nest/object',
+      method: 'POST',
+      body: {
+        time: {
+          start: '{:time.start}',
+          end: '{:time.end}',
+          break: {
+            start: '{:time.break.start}',
+            end: '{:time.break.end}',
+          }
+        },
+        members: [
+          {
+            id: '{:members.0.id}'
+          },
+          '{:members.1-last}'
+        ]
+      }
+    },
+    response: {
+      body: {
+        time: {
+          start: '{:time.start}',
+          end: '{:time.end}'
+        },
+        break: {
+          start: '{:time.break.start}',
+          end: '{:time.break.end}'
+        },
+        members: [
+          {
+            id: '{:id}'
+          },
+          '{:members.1-last}'
+        ]
+      },
+    },
+  }
 ]
