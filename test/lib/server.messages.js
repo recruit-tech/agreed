@@ -36,7 +36,7 @@ test('server: check post to list', () => {
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
         const actual = JSON.parse(data);
-        const expected = { results: [ { message: null }, { message: 'test' } ] };
+        const expected = { results: body.messages };
         assert.deepStrictEqual(actual, expected);
       }));
       server.close();
