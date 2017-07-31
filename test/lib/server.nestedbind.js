@@ -41,7 +41,12 @@ test('server: check parseInt', () => {
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
         const result = JSON.parse(data);
-        console.log(result)
+        const expected = { 
+          time: { start: 1, end: 3 }, 
+          "break": { start: 2, end: 5 }, 
+          members: [ { id: 1 }, { id: 2 } ] 
+        };
+        assert.deepStrictEqual(result, expected);
       }));
       server.close();
     }).on('error', console.error);
