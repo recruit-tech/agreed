@@ -146,6 +146,19 @@
   },
   {
     request: {
+      path: '/test/randomstring/agreed/values',
+    },
+    response: {
+      body: {
+        random: '{randomString:random}'
+      },
+      values: {
+        random: 8
+      },
+    },
+  },
+  {
+    request: {
       path: '/test/randomint/agreed/values',
     },
     response: {
