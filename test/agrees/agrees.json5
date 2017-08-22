@@ -267,5 +267,18 @@
         ]
       },
     },
-  }
+  },
+  {
+    request: {
+      path: '/test/unixtime/agreed/values',
+    },
+    response: {
+      body: {
+        unixtime: '{unixtime:time}',
+      },
+      values: {
+        time: 12344556677,
+      }
+    },
+  },
 ]

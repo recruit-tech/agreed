@@ -27,3 +27,9 @@ test('format: {parseInt:id}', () => {
   const result = format({ id: '{parseInt:id}' }, { id: '10000' });
   assert.deepStrictEqual(result.id, 10000);
 });
+
+test('format: {unixtime:time}', () => {
+  const unixtime = parseInt(Date.now() / 1000)
+  const result = format({ time: '{unixtime:time}' }, { time: '10000' });
+  assert(result.time >= unixtime);
+});
