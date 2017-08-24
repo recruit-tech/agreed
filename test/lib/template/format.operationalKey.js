@@ -44,3 +44,13 @@ test('format: {sub:a,b}', () => {
   const result = format({ sub: '{sub:a,b}' }, { a: 1, b: 2 }, { sub: './test/agrees/sub.js', basedir: process.cwd() });
   assert.strictEqual(result.sub, -1);
 });
+
+test('format: {sub:a,b} but response is array', () => {
+  const result = format({ sub: '{sub:a,b}' }, { a: 1, b: 2 }, { sub: (a, b) => [ a - b, a + b, a * b, a / b ], basedir: process.cwd() });
+  assert.deepStrictEqual(result.sub, [ -1, 3, 2, 0.5 ]);
+});
+
+test('format: {sub:a.0,a.1}', () => {
+  const result = format({ sub: '{sub:a.0,a.1}' }, { a: [0, 4] }, { sub: (a, b) => a - b, basedir: process.cwd() });
+  assert.strictEqual(result.sub, -4 );
+});
