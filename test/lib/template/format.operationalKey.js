@@ -29,7 +29,18 @@ test('format: {parseInt:id}', () => {
 });
 
 test('format: {unixtime:time}', () => {
-  const unixtime = parseInt(Date.now() / 1000)
+  const unixtime = parseInt(Date.now() / 1000);
   const result = format({ time: '{unixtime:time}' }, { time: '10000' });
   assert(result.time >= unixtime);
+});
+
+test('format: {sum:a,b}', () => {
+  const sum = (a, b) => a + b;
+  const result = format({ sum: '{sum:a,b}' }, { a: 1, b: 2 }, { sum: sum });
+  assert.strictEqual(result.sum, 3);
+});
+
+test('format: {sub:a,b}', () => {
+  const result = format({ sub: '{sub:a,b}' }, { a: 1, b: 2 }, { sub: './test/agrees/sub.js', basedir: process.cwd() });
+  assert.strictEqual(result.sub, -1);
 });

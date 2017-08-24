@@ -220,8 +220,6 @@ test('format: array 1-last notation to spread array', () => {
     ]
   });
 
-
-  console.log(result);
   assert.deepStrictEqual(result, {
     arr: [
       {
@@ -313,8 +311,6 @@ test('format: array 1-last notation to spread array with null', () => {
     ]
   });
 
-
-  console.log(result);
   assert.deepStrictEqual(result, {
     arr: [
       {
