@@ -1,4 +1,3 @@
-// eater:only
 'use strict';
 
 const agreedServer = require('../helper/server.js');
