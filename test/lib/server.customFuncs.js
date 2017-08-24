@@ -101,7 +101,7 @@ test('server: check custom function with array response', () => {
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
         const result = JSON.parse(data);
-        assert.strictEqual(result.sum, [ 90, 24000, -50]);
+        assert.deepStrictEqual(result.sum, [ 90, 24000, -50]);
       }));
       server.close();
     }).on('error', console.error);
