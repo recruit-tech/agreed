@@ -136,3 +136,20 @@ test('diff: check rest array string', () => {
   const d = diff(small, large);
   assert.deepEqual(d, {});
 });
+
+test('diff: check value included null', () => {
+  const small = {
+    abc: 'abc',
+    def: '{:aaa}',
+    ghi: 1,
+  };
+
+  const large = {
+    abc: 'abc',
+    def: null,
+    ghi: 1,
+  };
+
+  const d = diff(small, large);
+  assert.deepEqual(d, {});
+});
