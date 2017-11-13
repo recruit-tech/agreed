@@ -13,12 +13,11 @@ $ npm install agreed-client -D
 # Usage
 
 ```javascript
-const agreedClient = require('agreed-client');
+const agreedClient = require('agreed-client')
 
 const {
   client,
   agrees,
-  responses,
   reporter,
 } = agreedClient({
   path: './test/agreed.json5', // required
@@ -28,9 +27,12 @@ const {
   defaultRequestHeaders: {
     'x-jwt-token': 'foobarbaz'
   }
-});
+})
 
-client.checkResponse(responses, agrees)
-  .then(reporter(agrees))
-  .then(() => console.log('DONE!!!'));
+client.requestPromise(agrees)
+  .then(reporter)
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
 ```
