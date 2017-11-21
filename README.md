@@ -71,7 +71,7 @@ $ agreed-server --path ./agreed.js --port 3010
 - curl to the mock server
 
 ```
-$ curl http://localhost:3000/user/yosuke?q=foo
+$ curl http://localhost:3010/user/yosuke?q=foo
 {
   "message": "hello yosuke foo",
   "images": [
