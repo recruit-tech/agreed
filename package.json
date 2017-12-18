@@ -35,5 +35,6 @@
     "colo": "^0.3.2",
     "json5": "^0.5.1",
     "minimist": "^1.2.0"
-  }
+  },
+  "homepage": "https://github.com/recruit-tech/agreed#readme"
 }
