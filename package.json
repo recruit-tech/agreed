@@ -20,7 +20,7 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
-    "agreed-core": "^2.1.1",
+    "agreed-core": "^3.0.0",
     "colo": "^0.3.2",
     "is-empty": "^1.0.0"
   },
