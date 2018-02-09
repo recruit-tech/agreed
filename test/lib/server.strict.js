@@ -57,7 +57,7 @@ test('server: check strict mode - status code', () => {
   });
 });
 
-test('server: check strict mode - status message', () => {
+test('server: check strict mode - message', () => {
   const server = agreedServer({
     agrees: [
       {
@@ -99,7 +99,12 @@ test('server: check strict mode - status message', () => {
       port: server.address().port,
     };
     const req = http.request(options, (res) => {
-      assert.strictEqual(res.statusMessage, 'Ambiguous Request');
+      let data = '';
+      res.on('data', d => data += d);
+      res.on('end', mustCall(() => {
+        const result = JSON.parse(data);
+        assert.strictEqual(result.message, 'Ambiguous Request');
+      }));
       server.close();
     }).on('error', console.error);
 
@@ -155,7 +160,7 @@ test('server: check strict mode - candidates', () => {
       port: server.address().port,
     };
     const req = http.request(options, (res) => {
-      let data = "";
+      let data = '';
       res.on('data', d => data += d);
       res.on('end', mustCall(() => {
         const result = JSON.parse(data);
