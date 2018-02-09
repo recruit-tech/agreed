@@ -15,7 +15,8 @@ const argv = minimist(process.argv.slice(2), {
   boolean: [
     'help',
     'version',
-    'logging'
+    'logging',
+    'strict'
   ],
   alias: {
     l: 'logging'
@@ -42,6 +43,7 @@ Options:
   --proxy <hostname>                 Proxy host.
   --proxy-prefix-path <prefix>       Proxy server path prefix.
   -l, --logging                      Logs requests in console.
+  --strict                           Run strict mode.
 
 Examples:
   agreed-server --path ./agreed.js --port 4000
