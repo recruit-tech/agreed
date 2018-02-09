@@ -48,7 +48,7 @@ test('server: check strict mode - status code', () => {
       port: server.address().port,
     };
     const req = http.request(options, (res) => {
-      assert.strictEqual(res.statusCode, 498);
+      assert.strictEqual(res.statusCode, 500);
       res.resume();
       server.close();
     }).on('error', console.error);
