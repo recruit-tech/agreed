@@ -1,0 +1,22 @@
+# Agreed UI
+
+UI for [Agreed](https://www.npmjs.com/package/agreed-core)
+
+# Install
+
+```
+$ npm install agreed-ui --save-dev
+```
+
+# Usage
+
+```
+$ agreed-ui --path ./test/agreed.json --port 3000
+```
+Serve with [Express](https://www.npmjs.com/package/express)
+Open http://localhost:3000 to view it in the browser.
+
+```
+$ agreed-ui build --path ./test/agreed.json
+```
+Builds the app for static-hosting to the build folder

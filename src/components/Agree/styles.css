@@ -1,0 +1,41 @@
+.contents > .agree {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contents > .agree:first-child {
+  padding-top: 0;
+}
+
+.agree > h1,
+.agree > h2,
+.agree > section,
+.agree .description,
+.agree .definitions {
+  padding: 0 30px;
+}
+
+.agree h2 {
+  color: var(--color);
+  border-left: 2px #aaa solid;
+  padding-left: 28px;
+}
+
+.title {
+  align-items: center;
+  border-left: 2px var(--color) solid;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  margin: 0 0 0 0;
+}
+
+.title > * {
+  margin-right: 0.6rem;
+}
+
+.description {
+  color: var(--color1);
+  margin: 0.25rem 0;
+}
+

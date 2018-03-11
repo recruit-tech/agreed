@@ -1,0 +1,8 @@
+nav {
+  position: absolute;
+  padding-bottom: 20px;
+}
+
+nav p {
+  margin: 4px 0;
+}
