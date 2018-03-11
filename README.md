@@ -2,6 +2,8 @@
 
 UI for [Agreed](https://www.npmjs.com/package/agreed-core)
 
+![ScreenShot](https://raw.githubusercontent.com/recruit-tech/agreed-ui/master/screenshot.png)
+
 # Install
 
 ```
