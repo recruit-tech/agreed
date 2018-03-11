@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const path = require('path')
 const spawn = require('child_process').spawn
 const minimist = require('minimist')
 const colo = require('colo')
@@ -8,9 +9,9 @@ const argv = minimist(process.argv.slice(2))
 function showHelp(exitcode) {
   console.log(`
     agreed-ui [--path agreed path file (required)][--port request server port default 3000]
-    agreed-ui build [--path agreed path file (required)]
+    agreed-ui build [--path agreed path file (required)][--dest output directory(required)]
     agreed-ui --path ./agreed.js --port 4000
-    agreed-ui build --path ./agreed.js
+    agreed-ui build --path ./agreed.js --dest ./build
   `)
   process.exit(exitcode)
 }
@@ -32,13 +33,23 @@ if (!argv.path) {
   showHelp(1)
 }
 
-const child = spawn('npm', [
-  'run',
-  command,
-  '--',
-  `--path=${argv.path}`,
-  `--port=${argv.port || 3000}`,
-])
+if (command === 'build' && !argv.dest) {
+  console.error(colo.red('[agreed-ui]: --dest option is required'))
+  showHelp(1)
+}
+
+const child = spawn(
+  'npm',
+  [
+    'run',
+    command,
+    '--',
+    `--path=${path.resolve(process.cwd(), argv.path)}`,
+    argv.dest && `--dest=${path.resolve(process.cwd(), argv.dest)}`,
+    argv.port && `--port=${argv.port || 3000}`,
+  ].filter(Boolean),
+  { cwd: path.resolve(__dirname, '../') }
+)
 
 child.stdout.on('data', function(data) {
   process.stdout.write(data)

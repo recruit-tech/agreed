@@ -1,4 +1,5 @@
 const fs = require('fs')
+const fse = require('fs-extra')
 const path = require('path')
 const minimist = require('minimist')
 const serialize = require('serialize-javascript')
@@ -10,9 +11,11 @@ const agreesPath = argv.path
 const agrees = getAgreements({ path: agreesPath })
 const serialized = serialize(agrees)
 
-const htmlPath = path.resolve(__dirname, 'build/index.html')
-const destPath = path.resolve(process.cwd(), 'build/index.html')
+const srcPath = path.resolve(__dirname, '../build/index.html')
+const destPath = path.resolve(argv.dest, 'index.html')
 
-const html = fs.readFileSync(htmlPath, 'utf8')
+const html = fs.readFileSync(srcPath, 'utf8')
+
+fse.copySync(path.dirname(srcPath), path.dirname(destPath))
 
 fs.writeFileSync(destPath, html.replace(`"${'__AGREES__'}"`, serialized))
