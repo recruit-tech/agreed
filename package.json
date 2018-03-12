@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": {
     "agreed-server": "./bin/agreed-server.js",
-    "agreed-client": "./bin/agreed-client.js"
+    "agreed-client": "./bin/agreed-client.js",
+    "agreed-ui": "./bin/agreed-ui.js"
   },
   "scripts": {
     "test": "eater"
@@ -32,6 +33,7 @@
   "dependencies": {
     "agreed-client": "^3.0.0",
     "agreed-server": "^3.0.0",
+    "agreed-ui": "^0.1.2",
     "colo": "^0.3.2",
     "json5": "^0.5.1",
     "minimist": "^1.2.0"
