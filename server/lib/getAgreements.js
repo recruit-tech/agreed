@@ -22,7 +22,7 @@ module.exports = function(options) {
     agree.request.formatted = format(agree.request.body, agree.request.values)
 
     agree.response.formatted = format(
-      agree.response.body.results,
+      agree.response.body,
       agree.response.values
     )
 
