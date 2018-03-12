@@ -92,3 +92,12 @@ $ curl http://localhost:3010/user/yosuke?q=foo
 $ agreed-client --path ./agreed.js --port 3030 --host example.com
 ```
 
+## Usage: Agreed Documentation
+
+- Run documentation server
+
+```
+$ agreed-ui --path ./agreed.js --port 3031
+```
+
+![ScreenShot](https://raw.githubusercontent.com/recruit-tech/agreed-ui/master/screenshot.png)
