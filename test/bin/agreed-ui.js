@@ -13,6 +13,7 @@ plzPort().then((port) => {
       response.on('end', () => {
         assert(body.includes("Agreed UI"))
         proc.kill('SIGHUP');
+        process.exit(0);
       });
     });
   }, 3000)
