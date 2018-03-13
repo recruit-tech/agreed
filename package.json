@@ -12,7 +12,11 @@
   "bin": {
     "agreed-ui": "./bin/agreed-ui.js"
   },
-  "homepage": "./",
+  "homepage": "https://github.com/recruit-tech/agreed-ui",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/recruit-tech/agreed-ui.git"
+  },
   "dependencies": {
     "agreed-core": "^3.0.0",
     "axios": "^0.18.0",
