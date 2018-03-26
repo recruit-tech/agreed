@@ -7,7 +7,7 @@
     "start": "node server/index.js",
     "start:dev": "npm run start:dev:server & npm run start -- --port 3001",
     "start:dev:server": "react-scripts start",
-    "build:static": "react-scripts build",
+    "build:static": "PUBLIC_URL=./ react-scripts build",
     "build": "node scripts/build.js"
   },
   "bin": {
@@ -24,6 +24,7 @@
     "express": "^4.16.2",
     "fs-extra": "^5.0.0",
     "json-schema-to-flow-type": "^0.2.6",
+    "lodash.template": "^4.4.0",
     "minimist": "^1.2.0",
     "npm-run-all": "^4.1.2",
     "serialize-javascript": "^1.4.0"

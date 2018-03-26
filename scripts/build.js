@@ -3,6 +3,7 @@ const fse = require('fs-extra')
 const path = require('path')
 const minimist = require('minimist')
 const serialize = require('serialize-javascript')
+const template = require('lodash.template')
 
 const argv = minimist(process.argv.slice(2))
 const getAgreements = require('../server/lib/getAgreements')
@@ -18,4 +19,4 @@ const html = fs.readFileSync(srcPath, 'utf8')
 
 fse.copySync(path.dirname(srcPath), path.dirname(destPath))
 
-fs.writeFileSync(destPath, html.replace(`"${'__AGREES__'}"`, serialized))
+fs.writeFileSync(destPath, template(html, { interpolate: /"<%=([\s\S]+?)%>"/g })({ __AGREES__: serialized }))
