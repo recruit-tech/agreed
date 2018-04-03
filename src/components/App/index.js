@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (window.AGREES !== '__AGREES__') {
+    if (Array.isArray(window.AGREES)) {
       return this.setState({ agrees: window.AGREES })
     }
 
