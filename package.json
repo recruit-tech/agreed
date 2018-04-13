@@ -21,9 +21,9 @@
   "dependencies": {
     "agreed-core": "^3.0.0",
     "colo": "^0.3.2",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "fs-extra": "^5.0.0",
-    "json-schema-to-flow-type": "^0.2.6",
+    "json-schema-to-flow-type": "^0.4.0",
     "lodash.template": "^4.4.0",
     "minimist": "^1.2.0",
     "npm-run-all": "^4.1.2",
@@ -32,13 +32,13 @@
   "devDependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.7.0",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "react-json-tree": "^0.11.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "^1.1.4"
   }
 }
