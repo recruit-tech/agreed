@@ -23,6 +23,25 @@ $ agreed-ui build --path ./test/agreed.json --dest ./build
 ```
 Builds the app for static-hosting to the build folder
 
+# Features
+
+## Set title and description to contract
+
+```
+{
+  title: 'get store information',
+  description: 'get store information',
+  request: {
+    ...
+  },
+  response: {
+    ...
+  }
+}
+```
+
+title and descripion will be displayed at naviation and each section's title
+
 # Development
 
 `npm run start:dev -- --path=./test/agrees/agrees.js `
