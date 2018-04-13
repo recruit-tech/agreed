@@ -10,7 +10,7 @@ const NaviItem = ({ agree, index }) => {
     <p>
       <a href={`#section_${index}`}>
         <MethodLabel method={method} />
-        <span>{path}</span>
+        <span>{agree.title || path}</span>
       </a>
     </p>
   )
