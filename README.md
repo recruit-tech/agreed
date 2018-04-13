@@ -22,3 +22,7 @@ Open http://localhost:3000 to view it in the browser.
 $ agreed-ui build --path ./test/agreed.json --dest ./build
 ```
 Builds the app for static-hosting to the build folder
+
+# Development
+
+`npm run start:dev -- --path=./test/agrees/agrees.js `
