@@ -7,8 +7,8 @@
     "start": "node server/index.js",
     "start:dev": "npm run start:dev:server & npm run start -- --port 3001",
     "start:dev:server": "react-scripts start",
-    "build:static": "PUBLIC_URL=./ react-scripts build",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "build:dev": "PUBLIC_URL=./ react-scripts build"
   },
   "bin": {
     "agreed-ui": "./bin/agreed-ui.js"

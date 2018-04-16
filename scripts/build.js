@@ -19,4 +19,10 @@ const html = fs.readFileSync(srcPath, 'utf8')
 
 fse.copySync(path.dirname(srcPath), path.dirname(destPath))
 
-fs.writeFileSync(destPath, template(html, { interpolate: /"<%=([\s\S]+?)%>"/g })({ __AGREES__: serialized }))
+fs.writeFileSync(
+  destPath,
+  template(html, { interpolate: /"<%=([\s\S]+?)%>"/g })({
+    agrees: serialized,
+    title: argv.title,
+  }),
+)
