@@ -6,9 +6,12 @@
 }
 
 header {
+  align-items: center;
   background: white;
   box-shadow: 0 0 2.25rem #9da5ab;
+  display: flex;
   font-family: 'PT Sans', sans-serif;
+  justify-content: space-between;
   padding: 20px;
   position: relative;
   z-index: 1;
@@ -16,6 +19,10 @@ header {
 
 header h1 {
   margin: 0;
+}
+
+header p {
+  font-weight: bold;
 }
 
 .container {

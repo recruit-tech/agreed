@@ -1,14 +1,14 @@
 {
   "name": "agreed-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "proxy": "http://localhost:3001/",
   "scripts": {
     "start": "node server/index.js",
     "start:dev": "npm run start:dev:server & npm run start -- --port 3001",
     "start:dev:server": "react-scripts start",
-    "build:static": "PUBLIC_URL=./ react-scripts build",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "build:dev": "PUBLIC_URL=./ react-scripts build"
   },
   "bin": {
     "agreed-ui": "./bin/agreed-ui.js"
