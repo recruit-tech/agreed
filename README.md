@@ -109,7 +109,7 @@ module.exports = [
 We support express, pure node.js and any other frameworks can use agreed.
 
 ```javascript
-'use strinct';
+'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const Agreed = require('agreed-core');
