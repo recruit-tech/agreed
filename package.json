@@ -29,22 +29,22 @@
   "license": "MIT",
   "dependencies": {
     "json5": "^0.5.0",
-    "jsonschema": "^1.1.0",
+    "jsonschema": "^1.2.4",
     "path-to-regexp": "^1.5.3",
-    "stable": "^0.1.6",
+    "stable": "^0.1.8",
     "yamljs": "^0.2.8"
   },
   "devDependencies": {
     "assert-stream": "^1.0.0",
-    "body-parser": "^1.15.2",
-    "codecov": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "codecov": "^3.0.2",
     "eater": "^3.2.0",
     "espower-loader": "^1.0.0",
-    "express": "^4.14.0",
+    "express": "^4.16.3",
     "is-empty": "^1.0.0",
     "must-call": "^1.0.0",
-    "nyc": "^10.3.2",
+    "nyc": "^11.8.0",
     "plz-port": "^1.0.0",
-    "power-assert": "^1.4.1"
+    "power-assert": "^1.5.0"
   }
 }
