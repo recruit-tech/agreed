@@ -93,4 +93,49 @@ test('feat(client): check request to server', () => {
   });
 });
 
+test('client: add status-diff to result.diff when response-status is different', () => {
+  const agree = status => {
+    return {
+      request: {
+        path: '/api/sample/:id',
+        method: 'PUT',
+        body: [
+          {value:'test'}
+        ],
+        values: {
+          id: 1,
+        },
+      },
+      response: {
+        status,
+      },
+    }
+  };
+  const serverResponseStatus = 204
+  const invalidClientExpectedStatus = 200
+  const server = agreedServer({
+    port: 0,
+    agrees: [agree(serverResponseStatus)],
+  });
+  server.on('listening', () => {
+    const client = new Client({ 
+      port: server.address().port,
+      agrees: [agree(invalidClientExpectedStatus)],
+    });
 
+    const agrees = client.getAgreement();
+
+    const requests = client.createRequests(agrees);
+    requests.map((request, i) => {
+      request.end();
+      request.on('response', mustCall((response) => {
+        client.checkResponse(response, agrees[i]).on('result', mustCall((result) => {
+          assert(result.diff.status);
+          assert.deepEqual(result.diff.status, [invalidClientExpectedStatus, serverResponseStatus]);
+          server.close();
+        }));
+      }));
+    });
+  });
+  
+});
