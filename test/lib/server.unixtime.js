@@ -20,9 +20,9 @@ test('server: check unixtime', () => {
       path: '/test/unixtime/agreed/values',
       port: server.address().port,
     };
+    const currentUnix = parseInt(Date.now() / 1000);
     const req = http.request(options, (res) => {
       let data = '';
-      const currentUnix = parseInt(Date.now() / 1000);
       res.on('data', (d) => data += d);
       res.on('end', mustCall(() => {
         const result = JSON.parse(data);
