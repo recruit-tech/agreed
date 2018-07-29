@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "6"
   - "8"
+  - "10"
 script: npm test
 after_success: npm run codecov
 sudo: false
