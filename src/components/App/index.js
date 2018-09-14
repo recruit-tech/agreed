@@ -41,15 +41,17 @@ class App extends Component {
   componentDidMount() {
     const title = window.TITLE === titlePlaceHolder ? '' : (window.TITLE || '')
 
+    const grouped = localStorage.getItem('grouped') === 'true' || this.state.grouped
+
     if (title) document.title = title
 
     if (Array.isArray(window.AGREES)) {
-      return this.setState({ title, agrees: insertId(window.AGREES) })
+      return this.setState({ title, grouped, agrees: insertId(window.AGREES) })
     }
 
     axios
       .get('agrees')
-      .then(({ data }) => this.setState({ title, agrees: insertId(data) }))
+      .then(({ data }) => this.setState({ title, grouped, agrees: insertId(data) }))
   }
 
   onSearchTextChange(value) {
@@ -60,6 +62,7 @@ class App extends Component {
   }
 
   onFilterChange(value) {
+    localStorage.setItem('grouped', value)
     this.setState({
       grouped: value,
     })

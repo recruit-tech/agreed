@@ -51,7 +51,7 @@ const Grouped = ({agrees}) => {
   const pathList = Object.keys(grouped)
   return (
     <React.Fragment>
-      {pathList.map((path, i) => <Details path={path} agrees={grouped[path]} /> )}
+      {pathList.map((path, i) => <Details key={path} path={path} agrees={grouped[path]} /> )}
     </React.Fragment>
   )
 }

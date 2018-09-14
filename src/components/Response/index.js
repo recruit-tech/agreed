@@ -7,7 +7,7 @@ const Response = ({ data }) => {
   const { status, formatted, schema, flowtype } = data
   return (
     <div>
-      <Definitions title="statusCode" description={status} />
+      <Definitions title="statusCode" description={`${status}`} />
       {formatted && (
         <Body formatted={formatted} schema={schema} flowtype={flowtype} />
       )}

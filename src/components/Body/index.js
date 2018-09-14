@@ -54,11 +54,15 @@ class Body extends Component {
         )}
         {selected === 'flowtype' && <pre className="code">{flowtype}</pre>}
         {selected === 'body' && (
+
           <div className="code">
-            <JSONTree
-              data={formatted}
-              shouldExpandNode={(keyName, data, level) => level < 2}
-            />
+            {(formatted instanceof Object)
+              ? <JSONTree
+                  data={formatted}
+                  shouldExpandNode={(keyName, data, level) => level < 2}
+                />
+              : formatted
+            }
           </div>
         )}
       </section>
@@ -67,9 +71,9 @@ class Body extends Component {
 }
 
 Body.propTypes = {
-  formatted: PropTypes.object.isRequired,
+  formatted: PropTypes.any.isRequired,
   schema: PropTypes.object,
-  flowtype: PropTypes.object,
+  flowtype: PropTypes.any,
 }
 
 export default Body
