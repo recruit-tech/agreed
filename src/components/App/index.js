@@ -5,6 +5,8 @@ import './styles.css'
 import Navigation from '../Navigation'
 import Agrees from '../Agrees'
 
+const titlePlaceHolder = '"<%= title %>"'
+
 const filterAgrees = (search, agrees) => {
   if (!search) return null
 
@@ -34,7 +36,7 @@ class App extends Component {
   defaultTitle = 'Agreed UI'
 
   componentDidMount() {
-    const title = window.TITLE || ''
+    const title = window.TITLE === titlePlaceHolder ? '' : (window.TITLE || '')
 
     if (title) document.title = title
 
