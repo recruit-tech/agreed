@@ -22,12 +22,15 @@ const filterAgrees = (search, agrees) => {
 
 const shoudDisplay = (search) => (value) => value && value.indexOf(search) > -1
 
+const insertId = (agrees) => agrees.map((agree, i) => ({...agree, id: `agree_${i}`}))
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       agrees: null,
       search: '',
+      grouped: false,
       agreesFiltered: null,
       title: '',
     }
@@ -41,23 +44,29 @@ class App extends Component {
     if (title) document.title = title
 
     if (Array.isArray(window.AGREES)) {
-      return this.setState({ title, agrees: window.AGREES })
+      return this.setState({ title, agrees: insertId(window.AGREES) })
     }
 
     axios
       .get('agrees')
-      .then(({ data }) => this.setState({ title, agrees: data }))
+      .then(({ data }) => this.setState({ title, agrees: insertId(data) }))
   }
 
-  onChange(value) {
+  onSearchTextChange(value) {
     this.setState({
       search: value,
       agreesFiltered: filterAgrees(value, this.state.agrees),
     })
   }
 
+  onFilterChange(value) {
+    this.setState({
+      grouped: value,
+    })
+  }
+
   render() {
-    const { agrees, agreesFiltered, title, search } = this.state
+    const { agrees, agreesFiltered, title, search, grouped } = this.state
     if (!agrees) return null
 
     return (
@@ -78,10 +87,19 @@ class App extends Component {
                 className="search__input"
                 placeholder="Search"
                 value={search}
-                onChange={(e) => this.onChange(e.target.value)}
+                onChange={(e) => this.onSearchTextChange(e.target.value)}
               />
+              <span className="search__group">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={grouped}
+                    onChange={(e) => this.onFilterChange(e.target.checked)} />
+                    &nbsp;group by request.path
+                </label>
+              </span>
             </section>
-            <Navigation agrees={agreesFiltered || agrees} />
+            <Navigation grouped={grouped} agrees={agreesFiltered || agrees} />
           </aside>
         </div>
       </div>

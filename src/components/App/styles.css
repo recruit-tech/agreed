@@ -69,3 +69,11 @@ aside {
   display: block;
   border-bottom: 2px solid var(--color5);
 }
+
+.search__group {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+
