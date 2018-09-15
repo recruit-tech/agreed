@@ -7,39 +7,61 @@ const groupByRequestPath = (list) => {
   const ret = {}
   for(let i = 0, len = list.length; i < len; i++) {
     const item = list[i]
-    const path = item.request.path
-    ret[path] = [...(ret[path] || []), item]
+    const key = `${item.request.path}_${item.request.method}`
+    ret[key] = [...(ret[key] || []), item]
   }
   return ret
 }
 
-const NaviItem = ({ agree, grouped }) => {
-  const method = agree.request.method.toLowerCase()
-  const path = agree.request.path
-  const status = agree.response.status
-  return (
-    <p>
-      <a href={`#${agree.id}`}>
-        <MethodLabel method={method} status={status || 200} />
-        <span>{agree.title ||  path}</span>
-      </a>
-    </p>
-  )
+const StatusLabel = ({status}) => (
+  <span className={`statusLabel statusLabel--${Math.floor(status/100)}`}>{status}</span>
+)
+
+StatusLabel.propTypes = {
+  status: PropTypes.number.isRequired,
 }
+
+const NaviItem = ({ agree }) => (
+  <p>
+    <a href={`#${agree.id}`}>
+      <MethodLabel method={agree.request.method} />
+      <span>{agree.title || agree.request.path}</span>
+    </a>
+  </p>
+)
 
 NaviItem.propTypes = {
   agree: PropTypes.object.isRequired,
-  grouped: PropTypes.bool,
 }
 
-const Details = ({path, agrees}) => (
-  <details open>
-    <summary><span>{path}</span>{ agrees.length > 1 && <span className="count">{agrees.length}</span>}</summary>
-    {agrees.map((agree, i) =>
-      <NaviItem key={agree.id} agree={agree} grouped={true} />
-    )}
-  </details>
+const GroupedItem = ({ agree }) => (
+  <p>
+    <a href={`#${agree.id}`}>
+      <StatusLabel status={agree.response.status} />
+      <span>{agree.title || 'no title'}</span>
+    </a>
+  </p>
 )
+
+GroupedItem.propTypes = {
+  agree: PropTypes.object.isRequired,
+}
+
+const Details = ({path, agrees}) => { 
+  const [name, method] = path.split('_')
+  return (
+    <details open>
+      <summary>
+        <MethodLabel method={method} />
+        <span>{name}</span>
+        { agrees.length > 1 && <span className="count">{agrees.length}</span>}
+      </summary>
+        {agrees.map((agree, i) =>
+          <GroupedItem key={agree.id} agree={agree} />
+        )}
+    </details>
+  )
+}
 
 Details.propTypes = {
   path: PropTypes.string.isRequired,

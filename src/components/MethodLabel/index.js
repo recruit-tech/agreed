@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './styles.css'
 
-function MethodLabel({ method, status = 200 }) {
+function MethodLabel({ method }) {
   const m = method.toLowerCase()
-  return <span className={`method ${m}`}>{`${m.toUpperCase()}:${status}`}</span>
+  return <span className={`method ${m}`}>{m.toUpperCase()}</span>
 }
 
 MethodLabel.propTypes = {
   method: PropTypes.string.isRequired,
-  status: PropTypes.number.isRequired,
 }
 
 export default MethodLabel

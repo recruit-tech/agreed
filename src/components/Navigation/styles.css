@@ -8,14 +8,14 @@ nav p {
 }
 
 details {
-  padding-bottom: 5px;
+  padding-bottom: 7px;
 }
 
 summary {
   color: var(--color5);
   cursor: pointer;
   font-size: 0.9rem;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   outline: none;
 }
 
@@ -42,3 +42,30 @@ details summary::-webkit-details-marker {
   position: relative;
   top: -1px;
 }
+
+.statusLabel {
+  border-radius: 6px;
+  color: var(--color0);
+  display: inline-block;
+  font-size: 0.5rem;
+  padding: 2px 4px;
+  margin-right: 0.25rem;
+  opacity: 0.8;
+}
+
+.statusLabel--2 {
+  background: var(--color-green);
+}
+
+.statusLabel--3 {
+  background: var(--color4);
+}
+
+.statusLabel--4 {
+  background: var(--color3);
+}
+
+.statusLabel--5 {
+  background: var(--color5);
+}
+
