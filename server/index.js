@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     template(html, { interpolate: /"<%=([\s\S]+?)%>"/g })({
       agrees: serialized,
       title: argv.title,
-    }),
+    })
   )
 })
 
