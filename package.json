@@ -33,7 +33,7 @@
   "dependencies": {
     "agreed-client": "^3.0.0",
     "agreed-server": "^3.0.0",
-    "agreed-ui": "^0.2.1",
+    "agreed-ui": "^0.2.2",
     "colo": "^0.3.2",
     "json5": "^0.5.1",
     "minimist": "^1.2.0"
