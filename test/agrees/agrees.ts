@@ -1,4 +1,4 @@
-const agree = {
+module.exports = [{
   request: {
     path: '/ts-messages',
     method: 'POST',
@@ -17,6 +17,4 @@ const agree = {
       message: 'test'
     },
   },
-};
-
-module.exports = [agree];
+}];

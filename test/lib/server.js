@@ -7,7 +7,7 @@ const AssertStream = require('assert-stream');
 const plzPort = require('plz-port');
 const assert = require('power-assert');
 const mustCall = require('must-call');
-const {Writable} = require('stream');
+const ts = require('typescript');
 
 test('server: POST API', () => {
   plzPort().then((port) => {
