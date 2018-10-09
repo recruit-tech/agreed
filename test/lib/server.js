@@ -7,6 +7,7 @@ const AssertStream = require('assert-stream');
 const plzPort = require('plz-port');
 const assert = require('power-assert');
 const mustCall = require('must-call');
+const {Writable} = require('stream');
 
 test('server: POST API', () => {
   plzPort().then((port) => {
@@ -317,6 +318,40 @@ test('server: response header using default request headers', () => {
         res.pipe(assertStream);
         server.close();
       })).on('error', console.error);
+      req.end();
+    });
+  });
+});
+
+test('server: POST API with ts agrees', () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: 'test/agrees/agrees.ts',
+      port: port,
+    });
+
+    server.on('listening', () => {
+      const postData = JSON.stringify({
+        message: 'test',
+      });
+      const options = {
+        host: 'localhost',
+        method: 'POST',
+        path: '/ts-messages',
+        port: port,
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      };
+      const req = http.request(options, (res) => {
+        const assert = new AssertStream();
+        assert.expect({"result":"test"});
+        res.pipe(assert);
+        server.close();
+      }).on('error', console.error);
+
+      req.write(postData);
       req.end();
     });
   });
