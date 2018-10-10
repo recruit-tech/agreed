@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const Agreed = require('../../index');
+const express = require("express");
+const bodyParser = require("body-parser");
+const Agreed = require("../../index");
 const agreed = new Agreed();
 const app = express();
 
-module.exports = (opts) => {
+module.exports = opts => {
   app.use(bodyParser.json());
   app.use(agreed.middleware(opts));
   app.use((err, req, res, next) => {
@@ -15,5 +15,3 @@ module.exports = (opts) => {
   });
   return app.listen(opts.port);
 };
-
-

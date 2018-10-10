@@ -1,1 +1,1 @@
-module.exports = require('./lib/agreed');
+module.exports = require("./lib/agreed");
