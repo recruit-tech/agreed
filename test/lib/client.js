@@ -164,3 +164,13 @@ test('feat(client): use specified content-type header', () => {
   assert.equal(Object.keys(options.headers).map(v => v.toLowerCase()).filter(v => v === 'content-type').length, 1);
   assert.equal(options.headers['Content-Type'], contentType);
 });
+
+test('feat(client): support single agree ts file', () => {
+  const client = new Client({
+    path: 'test/agrees/agrees.ts'
+  });
+
+  const agrees = client.getAgreement();
+  
+  assert(Array.isArray(agrees));
+});

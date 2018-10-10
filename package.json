@@ -28,10 +28,12 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^10.11.5",
     "json5": "^0.5.0",
     "jsonschema": "^1.2.4",
     "path-to-regexp": "^1.5.3",
     "stable": "^0.1.8",
+    "typescript": "^3.1.1",
     "yamljs": "^0.2.8"
   },
   "devDependencies": {
