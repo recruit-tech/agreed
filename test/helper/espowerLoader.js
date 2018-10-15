@@ -1,4 +1,4 @@
-require('espower-loader')({
+require("espower-loader")({
   cwd: process.cwd(),
-  pattern: 'test/**/*.js'
+  pattern: "test/**/*.js"
 });

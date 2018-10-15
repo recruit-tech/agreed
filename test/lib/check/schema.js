@@ -1,28 +1,28 @@
-'use strict';
+"use strict";
 
-const test = require('eater/runner').test;
+const test = require("eater/runner").test;
 const schemaValidator = require(`${process.cwd()}/lib/check/schemaValidator`);
-const assert = require('power-assert');
+const assert = require("power-assert");
 
-test('schema: check object is satisfied type', () => {
+test("schema: check object is satisfied type", () => {
   const object = {
-    abc: 'abc',
-    def: 'def',
-    ghi: 1,
+    abc: "abc",
+    def: "def",
+    ghi: 1
   };
 
   const schema = {
-    type: 'object',
+    type: "object",
     properties: {
       abc: {
-        type: 'string'
+        type: "string"
       },
       def: {
-        type: 'string'
+        type: "string"
       },
       ghi: {
-        type: 'number'
-      },
+        type: "number"
+      }
     }
   };
 
@@ -30,30 +30,29 @@ test('schema: check object is satisfied type', () => {
   assert(result.errors.length === 0);
 });
 
-test('schema: check object is not satisfied type', () => {
+test("schema: check object is not satisfied type", () => {
   const object = {
-    abc: 'abc',
-    def: 'def',
-    ghi: '1',
+    abc: "abc",
+    def: "def",
+    ghi: "1"
   };
 
   const schema = {
-    type: 'object',
+    type: "object",
     properties: {
       abc: {
-        type: 'string'
+        type: "string"
       },
       def: {
-        type: 'string'
+        type: "string"
       },
       ghi: {
-        type: 'number'
-      },
+        type: "number"
+      }
     }
   };
 
   const result = schemaValidator(object, schema);
   assert(result.errors.length === 1);
-  assert(result.errors[0].stack === 'instance.ghi is not of a type(s) number');
+  assert(result.errors[0].stack === "instance.ghi is not of a type(s) number");
 });
-

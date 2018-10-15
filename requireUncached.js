@@ -1,1 +1,1 @@
-module.exports = require('./lib/require_hook/requireUncached');
+module.exports = require("./lib/require_hook/requireUncached");
