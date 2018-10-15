@@ -3,7 +3,6 @@ node_js:
   - "6"
   - "8"
 script:
-  - npm ci
   - npm run bootstrap
   - make test
 sudo: false
