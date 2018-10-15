@@ -1,0 +1,11 @@
+{
+  request: {
+    method: 'GET',
+  },
+  response: {
+    status: 200, // default is 200
+    body: {
+      message: 'hello world'
+    }
+  }
+}

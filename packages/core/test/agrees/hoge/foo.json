@@ -1,0 +1,14 @@
+{
+  'request': {
+    method: 'POST',
+    path: '/hoge/:foo',
+    body: {
+      message: 'foobarbaz',
+    },
+  },
+  response: {
+    body: {
+      message: 'hello post',
+    },
+  },
+}

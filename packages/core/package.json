@@ -1,0 +1,62 @@
+{
+  "name": "agreed-core",
+  "version": "3.2.0",
+  "description": "agreed is a mock server and test client, agreed will be helper for Consumer Driven Contract",
+  "main": "index.js",
+  "scripts": {
+    "test": "eater",
+    "lcov": "nyc --reporter=lcov npm test",
+    "codecov": "npm run lcov && codecov",
+    "lint": "run-s lint:*",
+    "lint:lib": "eslint ./lib/**/*.js",
+    "lint:test": "eslint ./test/**/*.js",
+    "lint:root": "eslint ./*.js",
+    "fmt": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/recruit-tech/agreed-core"
+  },
+  "bugs": {
+    "url": "https://github.com/recruit-tech/agreed-core/issues"
+  },
+  "homepage": "https://github.com/recruit-tech/agreed-core",
+  "keywords": [
+    "agreed",
+    "consumer",
+    "driven",
+    "contract",
+    "mock",
+    "test",
+    "server"
+  ],
+  "author": "yosuke-furukawa",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^10.11.5",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "json5": "^0.5.0",
+    "jsonschema": "^1.2.4",
+    "npm-run-all": "^4.1.3",
+    "path-to-regexp": "^1.5.3",
+    "prettier": "^1.14.3",
+    "stable": "^0.1.8",
+    "typescript": "^3.1.1",
+    "yamljs": "^0.2.8"
+  },
+  "devDependencies": {
+    "assert-stream": "^1.0.0",
+    "body-parser": "^1.18.3",
+    "codecov": "^3.0.2",
+    "eater": "^3.2.0",
+    "espower-loader": "^1.0.0",
+    "express": "^4.16.3",
+    "is-empty": "^1.0.0",
+    "must-call": "^1.0.0",
+    "nyc": "^11.8.0",
+    "plz-port": "^1.0.0",
+    "power-assert": "^1.5.0"
+  }
+}
