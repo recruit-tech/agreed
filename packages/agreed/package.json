@@ -1,6 +1,6 @@
 {
-  "name": "agreed",
-  "version": "3.2.0",
+  "name": "@agreed/agreed",
+  "version": "4.0.0",
   "description": "Agreed is a tool for Consumer Driven Contract with JSON mock server",
   "main": "index.js",
   "bin": {
@@ -31,9 +31,9 @@
     "plz-port": "^1.0.0"
   },
   "dependencies": {
-    "agreed-client": "^3.0.0",
-    "agreed-server": "^3.0.0",
-    "agreed-ui": "^0.2.2",
+    "@agreed/agreed-client": "^4.0.0",
+    "@agreed/agreed-server": "^4.0.0",
+    "@agreed/agreed-ui": "^4.0.0",
     "colo": "^0.3.2",
     "json5": "^0.5.1",
     "lerna": "^3.4.3",

@@ -1,6 +1,6 @@
 {
-  "name": "agreed-ui",
-  "version": "0.2.2",
+  "name": "@agreed/agreed-ui",
+  "version": "4.0.0",
   "license": "MIT",
   "proxy": "http://localhost:3001/",
   "scripts": {
@@ -19,7 +19,7 @@
     "url": "git://github.com/recruit-tech/agreed-ui.git"
   },
   "dependencies": {
-    "agreed-core": "^3.1.0",
+    "@agreed/agreed-core": "^4.0.0",
     "colo": "^0.3.2",
     "express": "^4.16.3",
     "fs-extra": "^7.0.0",

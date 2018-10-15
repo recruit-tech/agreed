@@ -1,6 +1,6 @@
 {
-  "name": "agreed-server",
-  "version": "3.0.0",
+  "name": "@agreed/agreed-server",
+  "version": "4.0.0",
   "description": "agreed server",
   "main": "index.js",
   "bin": "bin/agreed-server.js",
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
   "dependencies": {
-    "agreed-core": "^3.0.0",
+    "@agreed/agreed-core": "^4.0.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-http-proxy": "1.0.5",
