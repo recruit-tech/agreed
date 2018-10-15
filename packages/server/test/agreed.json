@@ -1,0 +1,64 @@
+[
+  {
+    request: {
+      path: "/users/:id"
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+      }
+    }
+  },
+  {
+    request: {
+      path: "/users/header/:id",
+      values: {
+        jwt: 'testtesttesttest'
+      },
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+      }
+    }
+  },
+  {
+    request: {
+      path: "/shops/:id",
+    },
+    response: {
+      body: {
+        message: 'shop {:id}',
+      }
+    }
+  },
+  {
+    request: {
+      path: "/urlencoded/test",
+      method: "POST",
+      body: {
+        foo: "bar",
+        bar: "baz",
+        hoge: "fuga"
+      },
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+    },
+    response: {
+      body: {
+        message: 'hello wwwurlencoded',
+      }
+    }
+  },
+  {
+    request: {
+      path: "/bar"
+    },
+    response: {
+      body: {
+        message: 'hello foo',
+      }
+    }
+  }
+]
