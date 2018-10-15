@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const Agreed = require('agreed-core');
+const Agreed = require('@agreed/agreed-core');
 const httpProxy = require('express-http-proxy');
 const morgan = require('morgan');
 

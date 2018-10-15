@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('assert');
 const cp = require('child_process');
-const agreedServer = require('agreed-server');
+const agreedServer = require('@agreed/agreed-server');
 
 const path = './test/agreed.json5';
 

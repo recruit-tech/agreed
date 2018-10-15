@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('agreed-ui/bin/agreed-ui.js');
+require('@agreed/agreed-ui/bin/agreed-ui.js');

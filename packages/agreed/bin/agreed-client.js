@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('agreed-client/bin/agreed-client.js');
+require('@agreed/agreed-client/bin/agreed-client.js');

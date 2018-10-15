@@ -1,6 +1,6 @@
 'use strict';
 
-const Agreed = require('agreed-core');
+const Agreed = require('@agreed/agreed-core');
 const filter = require('./lib/filter');
 const requestPromise = require('./lib/requestPromise');
 const agreedReporter = require('./lib/reporter');

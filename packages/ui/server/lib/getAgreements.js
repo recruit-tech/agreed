@@ -1,10 +1,10 @@
 'use strict'
 
 const path = require('path')
-const register = require('agreed-core/lib/register')
-const completion = require('agreed-core/lib/check/completion')
-const requireUncached = require('agreed-core/lib/require_hook/requireUncached')
-const format = require('agreed-core/lib/template/format')
+const register = require('@agreed/agreed-core/lib/register')
+const completion = require('@agreed/agreed-core/lib/check/completion')
+const requireUncached = require('@agreed/agreed-core/lib/require_hook/requireUncached')
+const format = require('@agreed/agreed-core/lib/template/format')
 const { parseSchema } = require('json-schema-to-flow-type')
 
 module.exports = function(options) {

@@ -1,6 +1,6 @@
 'use strict';
 const agreedClient = require('../index');
-const agreedServer = require('agreed-server');
+const agreedServer = require('@agreed/agreed-server');
 const assert = require('assert');
 const test = require('eater/runner').test;
 
