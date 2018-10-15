@@ -1,0 +1,11 @@
+request: 
+  path: '/foo/:bar'
+  method: 'PUT'
+  body:
+    a: 'b'
+    c: 'd'
+response:
+  headers:
+    Content-Type: 'text'
+  body: 'hello put'
+
