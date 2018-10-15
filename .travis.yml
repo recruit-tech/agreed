@@ -2,5 +2,7 @@ language: node_js
 node_js:
   - "6"
   - "8"
-script: npm test
+script:
+  - npm run bootstrap
+  - make test
 sudo: false
