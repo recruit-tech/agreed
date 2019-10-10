@@ -1,0 +1,78 @@
+{
+  "name": "@agreed/typed",
+  "version": "0.0.0",
+  "main": "./lib/types.js",
+  "types": "./lib/types.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recruit-tech/agreed.git"
+  },
+  "author": {
+    "name": "Akito Ito",
+    "email": "akito_ito@r.recruit.co.jp"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "tslint ./src/**/*.ts",
+    "fmt": "tslint --fix",
+    "tsc": "yarn clean && tsc",
+    "clean": "rimraf ./lib/*"
+  },
+  "bin": {
+    "agreed-typed": "lib/bin/agreed-typed.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/power-assert": "^1.5.0",
+    "axios": "^0.19.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "get-port": "^5.0.0",
+    "jest": "^24.1.0",
+    "power-assert": "^1.6.1",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.1"
+  },
+  "jest": {
+    "testURL": "http://localhost/",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "helper.ts"
+    ]
+  },
+  "dependencies": {
+    "@types/estree": "0.0.39",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^12.0.0",
+    "@typescript-eslint/typescript-estree": "^1.9.0",
+    "@agreed/core": "file:../core",
+    "doctrine": "^3.0.0",
+    "json2yaml": "^1.1.0",
+    "minimist": "^1.2.0",
+    "typescript-json-schema": "^0.40.0"
+  }
+}

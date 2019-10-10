@@ -1,0 +1,18 @@
+[
+  {
+    request: {
+      path: "/users/:id"
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+      },
+      notify: {
+        body: {
+          message: 'hello {:id}',
+        }
+      }
+    }
+  },
+]
+

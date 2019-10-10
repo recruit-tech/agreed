@@ -1,0 +1,4 @@
+{
+  path: '/qux/fuga',
+  method: 'DELETE',
+}

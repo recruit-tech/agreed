@@ -1,0 +1,60 @@
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+.body {
+  color: var(--color1);
+  padding: 0;
+}
+
+.body > .buttonGroup {
+  margin-bottom: 1em;
+  padding: 0 30px;
+}
+
+.body > .code {
+  background: #efefef;
+  font-weight: 300;
+  font-size: 0.9rem;
+  max-height: 500px;
+  margin: 1em 0;
+  overflow: auto;
+  padding: 2em 2em;
+}
+
+.body > .code ul {
+  background: #efefef !important;
+}
+
+.buttonGroup button {
+  margin-right: 1em;
+}
+
+.tabButton {
+  box-sizing: border-box;
+  color: var(--color5);
+  opacity: 0.4;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0 1px 3px;
+}
+
+.tabButton:hover {
+  opacity: 1;
+}
+
+.tabButton:disabled {
+  color: var(--color5);
+  cursor: initial;
+  opacity: 1;
+  border-bottom: 2px solid var(--color5);
+}
+
+.onlyButton.tabButton:disabled {
+  border: none;
+}

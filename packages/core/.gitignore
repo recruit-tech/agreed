@@ -1,0 +1,6 @@
+*.swp
+node_modules
+.idea
+.nyc_output
+coverage
+.DS_Store
