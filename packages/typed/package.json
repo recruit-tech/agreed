@@ -69,7 +69,7 @@
     "@types/minimist": "^1.2.0",
     "@types/node": "^12.0.0",
     "@typescript-eslint/typescript-estree": "^1.9.0",
-    "@agreed/core": "file:../core",
+    "@agreed/core": "^0.0.0",
     "doctrine": "^3.0.0",
     "json2yaml": "^1.1.0",
     "minimist": "^1.2.0",

@@ -24,10 +24,10 @@
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
   "dependencies": {
-    "@agreed/core": "file:../core",
+    "@agreed/core": "^0.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "express-http-proxy": "^1.5.0",
+    "express-http-proxy": "^1.6.0",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

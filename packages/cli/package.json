@@ -31,9 +31,9 @@
     "plz-port": "1.0.0"
   },
   "dependencies": {
-    "@agreed/client": "file:../client",
-    "@agreed/server": "file:../server",
-    "@agreed/ui": "file:../ui",
+    "@agreed/client": "^0.0.0",
+    "@agreed/server": "^0.0.0",
+    "@agreed/ui": "^0.0.0",
     "colo": "^0.3.2",
     "json5": "^2.0.0",
     "minimist": "^1.2.0"

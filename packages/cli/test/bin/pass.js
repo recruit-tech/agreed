@@ -14,7 +14,7 @@ plzPort().then((port) => {
     setTimeout(() => {
       process.exit(0);
     }, 500);
-  }, 1000);
+  }, 10000);
 });
 
 plzPort().then((port) => {
@@ -28,5 +28,5 @@ plzPort().then((port) => {
     setTimeout(() => {
       process.exit(0);
     }, 500);
-  }, 1000);
+  }, 10000);
 });

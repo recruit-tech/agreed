@@ -16,5 +16,5 @@ plzPort().then((port) => {
         process.exit(0);
       });
     });
-  }, 3000)
+  }, 10000)
 });

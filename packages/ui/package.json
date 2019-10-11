@@ -19,7 +19,7 @@
     "url": "git+https://github.com/recruit-tech/agreed.git"
   },
   "dependencies": {
-    "@agreed/core": "file:../core",
+    "@agreed/core": "^0.0.0",
     "colo": "0.3.2",
     "express": "4.17.1",
     "fs-extra": "7.0.1",

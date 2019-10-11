@@ -20,12 +20,12 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
-    "@agreed/core": "file:../core",
+    "@agreed/core": "^0.0.0",
     "colo": "^0.3.2",
     "is-empty": "^1.0.0"
   },
   "devDependencies": {
-    "@agreed/server": "file:../server",
+    "@agreed/server": "^0.0.0",
     "eater": "^3.0.0-5",
     "plz-port": "^1.0.0"
   }
