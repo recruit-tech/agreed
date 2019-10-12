@@ -17,7 +17,8 @@
     "lint": "tslint ./src/**/*.ts",
     "fmt": "tslint --fix",
     "tsc": "yarn clean && tsc",
-    "clean": "rimraf ./lib/*"
+    "clean": "rimraf ./lib/*",
+    "prepublish": "yarn tsc"
   },
   "bin": {
     "agreed-typed": "lib/bin/agreed-typed.js"
