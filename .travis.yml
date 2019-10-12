@@ -2,5 +2,7 @@ language: node_js
 node_js:
   - "12"
   - "latest"
-script: npm test
+script: 
+  - npx lerna install
+  - npm test
 sudo: false
