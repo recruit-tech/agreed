@@ -3,6 +3,6 @@ node_js:
   - "12"
   - "latest"
 script: 
-  - npx lerna install
+  - npx lerna bootstrap
   - npm test
 sudo: false
