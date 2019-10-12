@@ -40,7 +40,8 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.1",
+    "yarn": "^1.19.1"
   },
   "jest": {
     "testURL": "http://localhost/",
@@ -78,5 +79,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "a1e6d815d42f1fb49faba63e04cf1252b8cf5bc6"
 }
