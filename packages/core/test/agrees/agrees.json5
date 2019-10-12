@@ -1,0 +1,284 @@
+[
+  {
+    request: {
+      path: '/hoge/fuga',
+      method: 'GET',
+      query: {
+        q: 'foo',
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        message: 'hello world',
+      },
+    },
+  },
+  './hoge/foo.json',
+  './foo/bar.yaml',
+  {
+    request: './qux/request.json',
+    response: './qux/response.json',
+  },
+  {
+    request: {
+      path: '/path/:id',
+      method: 'GET',
+      // value for test client
+      values: {
+        id: 'yosuke',
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        // :id is for request value
+        message: 'hello {:id}',
+      },
+    },
+  },
+  {
+    request: {
+      path: '/path/:id',
+      method: 'POST',
+      // query embed data, any query is ok.
+      query: {
+        meta: "{:meta}",
+      },
+      body: {
+        message: "{:message}"
+      },
+      // value for test client
+      values: {
+        id: 'yosuke',
+        meta: true,
+        message: 'foobarbaz'
+      },
+    },
+    response: {
+      headers: {
+        'x-csrf-token': 'csrf-token', 
+      },
+      body: {
+        // :id is for request value
+        message: 'hello {:id}, {:meta}, {:message}',
+      },
+    },
+  },
+  {
+    request: {
+      path: '/path/header/format',
+      method: 'GET',
+    },
+    response: {
+      headers: {
+        'access-control-allow-origin': '{:acao}'
+      },
+      body: {
+        message: 'hello',
+      },
+      values: {
+        'acao': '*'
+      }
+    },
+  },
+  {
+    request: {
+      path: '/path/default/header/',
+      method: 'GET',
+    },
+    response: {
+      body: {
+        message: 'hello',
+      },
+    },
+  },
+  {
+    request: {
+      path: '/path/default/request/header/',
+      method: 'GET',
+      headers: {
+        'x-forwarded-for': 'forward'
+      },
+    },
+    response: {
+      body: {
+        message: 'forward',
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/case/insensitive/headers',
+      method: 'GET',
+      headers: {
+        'This-Headers-Should-Be-Lower-Case': 'true'
+      },
+    },
+    response: {
+      body: {
+        message: 'hello case insensitive headers',
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/null/agreed/values',
+    },
+    response: {
+      body: {
+        messages: [
+          { message: '{:messages.0.message}' },
+          '{:messages.1-last}'
+        ],
+      },
+      values: {
+        messages: [
+          { message: null },
+          { message: 'test' },
+        ]
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/randomstring/agreed/values',
+    },
+    response: {
+      body: {
+        random: '{randomString:random}'
+      },
+      values: {
+        random: 8
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/randomint/agreed/values',
+    },
+    response: {
+      body: {
+        random: '{randomInt:random}'
+      },
+      values: {
+        random: '1-1000'
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/parseint/agreed/values/:id',
+    },
+    response: {
+      body: {
+        id: '{parseInt:id}'
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/agreed/messages',
+      method: 'POST',
+      body: {
+        messages: [
+          { message: '{:messages.0.message}' },
+          '{:messages.1-last}'
+        ]
+      },
+      values: {
+        messages: [
+          { message: null },
+          { message: 'test' },
+        ]
+      }
+    },
+    response: {
+      status: 201,
+      body: {
+        results: '{:messages}'
+      },
+      values: {
+        messages: [
+          { message: '{:message0}' },
+          { message: 'test' },
+        ]
+      }
+    },
+  },
+  {
+    request: {
+      path: '/test/agreed/use/null/obj',
+      method: 'POST',
+      body: {
+        test: '{:test}'
+      },
+      values: {
+        test: null,
+      }
+    },
+    response: {
+      status: 201,
+      body: {
+        results: '{:test}'
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/bind/nest/object',
+      method: 'POST',
+      body: {
+        time: {
+          start: '{:time.start}',
+          end: '{:time.end}',
+          break: {
+            start: '{:time.break.start}',
+            end: '{:time.break.end}',
+          }
+        },
+        members: [
+          {
+            id: '{:members.0.id}'
+          },
+          '{:members.1-last}'
+        ]
+      }
+    },
+    response: {
+      body: {
+        time: {
+          start: '{:time.start}',
+          end: '{:time.end}'
+        },
+        break: {
+          start: '{:time.break.start}',
+          end: '{:time.break.end}'
+        },
+        members: [
+          {
+            id: '{:id}'
+          },
+          '{:members.1-last}'
+        ]
+      },
+    },
+  },
+  {
+    request: {
+      path: '/test/unixtime/agreed/values',
+    },
+    response: {
+      body: {
+        unixtime: '{unixtime:time}',
+      },
+      values: {
+        time: 12344556677,
+      }
+    },
+  },
+]

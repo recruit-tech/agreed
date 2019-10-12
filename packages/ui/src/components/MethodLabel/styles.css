@@ -1,0 +1,31 @@
+.method {
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: normal;
+  border: 1px solid #999;
+  color: #999;
+  border-radius: 2px;
+  padding: 2px 3px;
+  display: inline-block;
+}
+.method.get {
+  color: #66BB6A;
+  border-color: #66BB6A;
+}
+.method.delete {
+  color: #999;
+  border-color: #999;
+}
+.method.put { 
+  color: #9E9D24;
+  border-color: #9E9D24;
+}
+.method.post {
+  color: #F9A825;
+  border-color: #F9A825;
+}
+.method.patch {
+  color: #9C27B0;
+  border-color: #9C27B0;
+}

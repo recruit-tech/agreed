@@ -1,0 +1,12 @@
+.contents section h2 {
+  color: var(--color);
+  border-left: 2px #aaa solid;
+  padding-left: 28px;
+}
+
+.contents {
+  position: absolute;
+  width: 100%;
+}
+
+

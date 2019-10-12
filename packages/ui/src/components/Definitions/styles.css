@@ -1,0 +1,32 @@
+.definitions {
+  color: var(--color1);
+  margin: 1.5em 0;
+}
+
+.definitions h1 {
+  font-size: 1em;
+  color: var(--color5);
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-left: 0;
+}
+
+.definitions > p,
+.definitions > dl {
+  margin: 0.25em 1em;
+}
+
+.definitions dl dt {
+  color: var(--color3);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.definitions dl dt:after {
+  content: ': ';
+}
+
+.definitions dl > * {
+  display: inline-block;
+  margin-right: 0.5em;
+}

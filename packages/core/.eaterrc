@@ -1,0 +1,6 @@
+{
+  dir: 'test/lib/',
+  require: [
+    './test/helper/espowerLoader.js'
+  ]
+}

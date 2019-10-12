@@ -1,0 +1,19 @@
+{
+    "extends": [
+        "prettier"
+    ],
+
+    "env": {
+        "node": true,
+        "jest": true,
+        "es6": true
+    },
+
+    "plugins": [
+        "prettier"
+    ],
+
+    "rules": {
+        "prettier/prettier": ["error"]
+    }
+}

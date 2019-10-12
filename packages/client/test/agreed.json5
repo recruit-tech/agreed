@@ -1,0 +1,50 @@
+[
+  {
+    request: {
+      path: "/users/:id",
+      method: "GET",
+      values: {
+        id: 'foo'
+      }
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+        id: '{:val}',
+      },
+      values: {
+        id: 2
+      }
+    }
+  },
+  {
+    request: {
+      path: "/users/schema/:id",
+      method: "GET",
+      values: {
+        id: 'foo'
+      }
+    },
+    response: {
+      body: {
+        message: 'hello {:id}',
+        id: '{:val}',
+      },
+      schema: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string',
+          },
+          id: {
+            type: 'integer',
+          }
+        }
+      },
+      values: {
+        id: 2
+      }
+    }
+  }
+]
+
