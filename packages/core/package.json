@@ -58,5 +58,8 @@
     "plz-port": "1.0.0",
     "power-assert": "1.6.1",
     "prettier": "1.18.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

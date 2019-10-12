@@ -35,5 +35,8 @@
     "eater": "3.2.0",
     "must-call": "1.0.0",
     "plz-port": "1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

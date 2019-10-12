@@ -38,5 +38,8 @@
     "json5": "^2.0.0",
     "minimist": "^1.2.0"
   },
-  "homepage": "https://github.com/recruit-tech/agreed#readme"
+  "homepage": "https://github.com/recruit-tech/agreed#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
