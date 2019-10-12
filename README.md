@@ -14,7 +14,7 @@ agreed has 3 features.
 # Install
 
 ```
-$ npm install agreed -g
+$ npm install @agreed/cli -g
 ```
 
 # Usage
