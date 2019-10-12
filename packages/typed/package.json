@@ -1,6 +1,6 @@
 {
   "name": "@agreed/typed",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./lib/types.js",
   "types": "./lib/types.d.ts",
   "license": "MIT",
@@ -67,7 +67,7 @@
     ]
   },
   "dependencies": {
-    "@agreed/core": "^0.0.2",
+    "@agreed/core": "^0.0.3",
     "@types/estree": "0.0.39",
     "@types/minimist": "^1.2.0",
     "@types/node": "^12.0.0",
