@@ -34,6 +34,7 @@
     "@agreed/client": "^0.0.3",
     "@agreed/server": "^0.0.3",
     "@agreed/ui": "^0.0.3",
+    "@agreed/typed": "^0.0.3",
     "colo": "^0.3.2",
     "json5": "^2.0.0",
     "minimist": "^1.2.0"
