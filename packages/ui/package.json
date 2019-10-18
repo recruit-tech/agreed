@@ -24,8 +24,10 @@
     "colo": "0.3.2",
     "express": "4.17.1",
     "json-schema-to-flow-type": "1.0.0",
+    "fs-extra": "8.1.0",
+    "serialize-javascript": "2.1.0",
     "lodash.template": "4.5.0",
-    "minimist": "1.2.0"
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "axios": "0.19.0",
@@ -35,14 +37,12 @@
     "eslint-config-prettier": "6.4.0",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-react": "7.16.0",
-    "fs-extra": "8.1.0",
     "prettier": "1.18.2",
     "prop-types": "15.6.2",
     "react": "16.10.2",
     "react-dom": "16.10.2",
     "react-json-tree": "0.11.2",
-    "react-scripts": "3.2.0",
-    "serialize-javascript": "2.1.0"
+    "react-scripts": "3.2.0"
   },
   "browserslist": [
     ">0.2%",
