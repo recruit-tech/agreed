@@ -6,13 +6,15 @@ import './styles.css'
 function Agrees({ agrees }) {
   return (
     <div className="contents">
-      {agrees.map((agree) => <Agree key={agree.id} agree={agree} />)}
+      {agrees.map(agree => (
+        <Agree key={agree.id} agree={agree} />
+      ))}
     </div>
   )
 }
 
 Agrees.propTypes = {
-  agrees: PropTypes.array.isRequired,
+  agrees: PropTypes.array.isRequired
 }
 
 export default Agrees

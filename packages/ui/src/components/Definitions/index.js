@@ -15,7 +15,7 @@ const Definitions = ({ title, description, children }) => {
 Definitions.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  children: PropTypes.any,
+  children: PropTypes.any
 }
 
 export default Definitions
