@@ -13,16 +13,13 @@ const filterAgrees = (search, agrees) => {
   const check = shoudDisplay(search)
 
   return agrees.filter(
-    (agree) =>
-      check(agree.title) ||
-      check(agree.request.path) ||
-      check(agree.request.method),
+    agree => check(agree.title) || check(agree.request.path) || check(agree.request.method)
   )
 }
 
-const shoudDisplay = (search) => (value) => value && value.indexOf(search) > -1
+const shoudDisplay = search => value => value && value.indexOf(search) > -1
 
-const insertId = (agrees) => agrees.map((agree, i) => ({...agree, id: `agree_${i}`}))
+const insertId = agrees => agrees.map((agree, i) => ({ ...agree, id: `agree_${i}` }))
 
 class App extends Component {
   constructor(props) {
@@ -32,14 +29,14 @@ class App extends Component {
       search: '',
       grouped: false,
       agreesFiltered: null,
-      title: '',
+      title: ''
     }
   }
 
   defaultTitle = 'Agreed UI'
 
   componentDidMount() {
-    const title = window.TITLE === titlePlaceHolder ? '' : (window.TITLE || '')
+    const title = window.TITLE === titlePlaceHolder ? '' : window.TITLE || ''
 
     const grouped = localStorage.getItem('grouped') === 'true' || this.state.grouped
 
@@ -57,14 +54,14 @@ class App extends Component {
   onSearchTextChange(value) {
     this.setState({
       search: value,
-      agreesFiltered: filterAgrees(value, this.state.agrees),
+      agreesFiltered: filterAgrees(value, this.state.agrees)
     })
   }
 
   onFilterChange(value) {
     localStorage.setItem('grouped', value)
     this.setState({
-      grouped: value,
+      grouped: value
     })
   }
 
@@ -90,15 +87,16 @@ class App extends Component {
                 className="search__input"
                 placeholder="Search"
                 value={search}
-                onChange={(e) => this.onSearchTextChange(e.target.value)}
+                onChange={e => this.onSearchTextChange(e.target.value)}
               />
               <span className="search__group">
                 <label>
                   <input
                     type="checkbox"
                     checked={grouped}
-                    onChange={(e) => this.onFilterChange(e.target.checked)} />
-                    &nbsp;group by request.path
+                    onChange={e => this.onFilterChange(e.target.checked)}
+                  />
+                  &nbsp;group by request.path
                 </label>
               </span>
             </section>
