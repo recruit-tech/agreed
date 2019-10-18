@@ -14,9 +14,7 @@ const Agree = ({ agree }) => {
         <MethodLabel method={agree.request.method} status={status} />
         {agree.title || path}
       </h1>
-      <div className="description">
-        {agree.description || 'no description.'}
-      </div>
+      <div className="description">{agree.description || 'no description.'}</div>
 
       <h2>Request</h2>
       <Request data={agree.request} />
@@ -27,7 +25,7 @@ const Agree = ({ agree }) => {
 }
 
 Agree.propTypes = {
-  agree: PropTypes.object.isRequired,
+  agree: PropTypes.object.isRequired
 }
 
 export default Agree

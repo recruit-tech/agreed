@@ -21,7 +21,7 @@ class Body extends Component {
         <div className="buttonGroup">
           <button
             className={classNames('tabButton', {
-              onlyButton: !schema,
+              onlyButton: !schema
             })}
             onClick={() => this.onClick('body')}
             disabled={selected === 'body'}>
@@ -46,23 +46,17 @@ class Body extends Component {
         </div>
         {selected === 'schema' && (
           <div className="code">
-            <JSONTree
-              data={schema}
-              shouldExpandNode={(keyName, data, level) => level < 2}
-            />
+            <JSONTree data={schema} shouldExpandNode={(keyName, data, level) => level < 2} />
           </div>
         )}
         {selected === 'flowtype' && <pre className="code">{flowtype}</pre>}
         {selected === 'body' && (
-
           <div className="code">
-            {(formatted instanceof Object)
-              ? <JSONTree
-                  data={formatted}
-                  shouldExpandNode={(keyName, data, level) => level < 2}
-                />
-              : formatted
-            }
+            {formatted instanceof Object ? (
+              <JSONTree data={formatted} shouldExpandNode={(keyName, data, level) => level < 2} />
+            ) : (
+              formatted
+            )}
           </div>
         )}
       </section>
@@ -73,7 +67,7 @@ class Body extends Component {
 Body.propTypes = {
   formatted: PropTypes.any.isRequired,
   schema: PropTypes.object,
-  flowtype: PropTypes.any,
+  flowtype: PropTypes.any
 }
 
 export default Body

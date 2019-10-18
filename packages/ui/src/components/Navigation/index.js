@@ -3,22 +3,24 @@ import PropTypes from 'prop-types'
 import './styles.css'
 import MethodLabel from '../MethodLabel'
 
-const groupByRequestPath = (list) => {
+const MARKER = '__AGREED-UI-MARKER__'
+
+const groupByRequestPath = list => {
   const ret = {}
-  for(let i = 0, len = list.length; i < len; i++) {
+  for (let i = 0, len = list.length; i < len; i++) {
     const item = list[i]
-    const key = `${item.request.path}_${item.request.method}`
+    const key = `${item.request.path}${MARKER}${item.request.method}`
     ret[key] = [...(ret[key] || []), item]
   }
   return ret
 }
 
-const StatusLabel = ({status}) => (
-  <span className={`statusLabel statusLabel--${Math.floor(status/100)}`}>{status}</span>
+const StatusLabel = ({ status }) => (
+  <span className={`statusLabel statusLabel--${Math.floor(status / 100)}`}>{status}</span>
 )
 
 StatusLabel.propTypes = {
-  status: PropTypes.number.isRequired,
+  status: PropTypes.number.isRequired
 }
 
 const NaviItem = ({ agree }) => (
@@ -31,7 +33,7 @@ const NaviItem = ({ agree }) => (
 )
 
 NaviItem.propTypes = {
-  agree: PropTypes.object.isRequired,
+  agree: PropTypes.object.isRequired
 }
 
 const GroupedItem = ({ agree }) => (
@@ -44,58 +46,61 @@ const GroupedItem = ({ agree }) => (
 )
 
 GroupedItem.propTypes = {
-  agree: PropTypes.object.isRequired,
+  agree: PropTypes.object.isRequired
 }
 
-const Details = ({path, agrees}) => { 
-  const [name, method] = path.split('_')
+const Details = ({ path, agrees }) => {
+  const [name, method] = path.split(MARKER)
   return (
     <details open>
       <summary>
         <MethodLabel method={method} />
         <span>{name}</span>
-        { agrees.length > 1 && <span className="count">{agrees.length}</span>}
+        {agrees.length > 1 && <span className="count">{agrees.length}</span>}
       </summary>
-        {agrees.map((agree, i) =>
-          <GroupedItem key={agree.id} agree={agree} />
-        )}
+      {agrees.map(agree => (
+        <GroupedItem key={agree.id} agree={agree} />
+      ))}
     </details>
   )
 }
 
 Details.propTypes = {
   path: PropTypes.string.isRequired,
-  agrees: PropTypes.array.isRequired,
+  agrees: PropTypes.array.isRequired
 }
 
-const Grouped = ({agrees}) => {
+const Grouped = ({ agrees }) => {
   const grouped = groupByRequestPath(agrees)
   const pathList = Object.keys(grouped)
   return (
     <React.Fragment>
-      {pathList.map((path, i) => <Details key={path} path={path} agrees={grouped[path]} /> )}
+      {pathList.map(path => (
+        <Details key={path} path={path} agrees={grouped[path]} />
+      ))}
     </React.Fragment>
   )
 }
 
 Grouped.propTypes = {
-  agrees: PropTypes.array.isRequired,
+  agrees: PropTypes.array.isRequired
 }
 
 function Navigation({ agrees, grouped }) {
   return (
     <nav>
-      { grouped
-        ? <Grouped agrees={agrees} />
-        : agrees.map((agree, i) => <NaviItem key={i} agree={agree} />)
-      }
+      {grouped ? (
+        <Grouped agrees={agrees} />
+      ) : (
+        agrees.map((agree, i) => <NaviItem key={i} agree={agree} />)
+      )}
     </nav>
   )
 }
 
 Navigation.propTypes = {
   agrees: PropTypes.array.isRequired,
-  grouped: PropTypes.bool.isRequired,
+  grouped: PropTypes.bool.isRequired
 }
 
 export default Navigation

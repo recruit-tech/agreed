@@ -13,7 +13,7 @@ class JsonSchemaViewer extends Component {
     return (
       <div
         className="schemaViewer"
-        ref={(el) => {
+        ref={el => {
           if (el) this.mountViewer(el, schema)
         }}
       />
@@ -22,7 +22,7 @@ class JsonSchemaViewer extends Component {
 }
 
 JsonSchemaViewer.propTypes = {
-  schema: PropTypes.object,
+  schema: PropTypes.object
 }
 
 export default JsonSchemaViewer

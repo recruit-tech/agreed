@@ -8,15 +8,13 @@ const Response = ({ data }) => {
   return (
     <div>
       <Definitions title="statusCode" description={`${status}`} />
-      {formatted && (
-        <Body formatted={formatted} schema={schema} flowtype={flowtype} />
-      )}
+      {formatted && <Body formatted={formatted} schema={schema} flowtype={flowtype} />}
     </div>
   )
 }
 
 Response.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 }
 
 export default Response

@@ -8,7 +8,7 @@ function MethodLabel({ method }) {
 }
 
 MethodLabel.propTypes = {
-  method: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired
 }
 
 export default MethodLabel
