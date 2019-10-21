@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@agreed/core": "^0.0.6",
-    "colo": "^0.3.2",
+    "colo": "^1.0.0",
     "is-empty": "^1.0.0"
   },
   "devDependencies": {
