@@ -1,4 +1,5 @@
+const importFresh = require("import-fresh");
+
 module.exports = module => {
-  delete require.cache[require.resolve(module)];
-  return require(module);
+  return importFresh(module);
 };
