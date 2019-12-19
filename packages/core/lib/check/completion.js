@@ -2,14 +2,14 @@
 
 const pathToRegexp = require("path-to-regexp");
 const path = require("path");
-const requireUncached = require("../require_hook/requireUncached");
+const requireAgree = require("../require_hook/requireAgree");
 
 const DEFAULT_REQUEST = require("./defaultRequest");
 const DEFAULT_RESPONSE = require("./defaultResponse");
 
 module.exports = (agree, base, opts = {}) => {
   if (typeof agree === "string") {
-    agree = normalizedRequire(agree, base);
+    agree = normalizedRequire(agree, base, opts.hot);
   }
 
   if (!agree) {
@@ -17,11 +17,11 @@ module.exports = (agree, base, opts = {}) => {
   }
 
   if (typeof agree.request === "string") {
-    agree.request = normalizedRequire(agree.request, base);
+    agree.request = normalizedRequire(agree.request, base, opts.hot);
   }
 
   if (typeof agree.response === "string") {
-    agree.response = normalizedRequire(agree.response, base);
+    agree.response = normalizedRequire(agree.response, base, opts.hot);
   }
 
   if (!agree.request) {
@@ -110,16 +110,20 @@ module.exports = (agree, base, opts = {}) => {
   agree.response.body = agree.response.body || DEFAULT_RESPONSE.body;
 
   if (typeof agree.response.schema === "string") {
-    agree.response.schema = normalizedRequire(agree.response.schema, base);
+    agree.response.schema = normalizedRequire(
+      agree.response.schema,
+      base,
+      opts.hot
+    );
   }
 
   return agree;
 };
 
-function normalizedRequire(file, base) {
+function normalizedRequire(file, base, hot) {
   return path.isAbsolute(file)
-    ? requireUncached(file)
-    : requireUncached(path.join(base, file));
+    ? requireAgree(file, hot)
+    : requireAgree(path.join(base, file), hot);
 }
 
 function toLowerCaseKeys(obj) {
