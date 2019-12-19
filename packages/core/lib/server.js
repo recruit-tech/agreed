@@ -26,9 +26,9 @@ class Server {
     register(options.register);
   }
   useMiddleware(req, res, next) {
-    const agrees = (this.agrees || requireUncached(this.agreesPath)).map(
-      agree => completion(agree, this.base, this.options)
-    );
+    const agrees = (
+      this.agrees || requireUncached(this.agreesPath, this.options.hot)
+    ).map(agree => completion(agree, this.base, this.options));
 
     extract
       .incomingRequest(req)

@@ -12,14 +12,12 @@ const argv = minimist(process.argv.slice(2), {
     'proxy',
     'proxy-prefix-path'
   ],
-  boolean: [
-    'help',
-    'version',
-    'logging',
-    'strict'
-  ],
+  boolean: ['help', 'version', 'logging', 'strict', 'hot'],
   alias: {
     l: 'logging'
+  },
+  default: {
+    hot: true
   }
 });
 const path = require('path');
@@ -44,6 +42,7 @@ Options:
   --proxy-prefix-path <prefix>       Proxy server path prefix.
   -l, --logging                      Logs requests in console.
   --strict                           Run strict mode.
+  --hot                              Hot Replacement agree files. Default true
 
 Examples:
   agreed-server --path ./agreed.js --port 4000

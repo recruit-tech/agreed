@@ -1,4 +1,4 @@
-module.exports = module => {
-  delete require.cache[require.resolve(module)];
+module.exports = (module, hot = true) => {
+  if (hot) delete require.cache[require.resolve(module)];
   return require(module);
 };
