@@ -21,6 +21,12 @@ Usage as CLI
 $ agreed-server --path ./test/agreed.json --port 10101
 ```
 
+- if you want to boot agreed server as disable hot replacement.
+
+```
+$ agreed-server --path ./test/agreed.json --port 10101 --hot false
+```
+
 Usage as programming
 
 ```js

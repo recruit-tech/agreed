@@ -37,7 +37,8 @@ test("server: check strict mode - status code", () => {
       }
     ],
     port: 0,
-    strict: true
+    strict: true,
+    hot: true
   });
 
   server.on("listening", () => {
@@ -90,7 +91,8 @@ test("server: check strict mode - message", () => {
       }
     ],
     port: 0,
-    strict: true
+    strict: true,
+    hot: true
   });
 
   server.on("listening", () => {
@@ -156,7 +158,8 @@ test("server: check strict mode - candidates", () => {
       }
     ],
     port: 0,
-    strict: true
+    strict: true,
+    hot: true
   });
 
   server.on("listening", () => {

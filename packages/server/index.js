@@ -25,7 +25,7 @@ module.exports = (opts) => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  
+
   if (stat) {
     if (staticPrefixPath) {
       app.use(staticPrefixPath, express.static(path.join(process.cwd(), stat)));
@@ -72,12 +72,11 @@ module.exports = (opts) => {
 
   const notifier = agreed.server.notifier;
 
-  return { 
+  return {
     // low level
-    app, 
+    app,
     // high level
     createServer,
     notifier
   };
 };
-

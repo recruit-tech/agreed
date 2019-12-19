@@ -11,7 +11,8 @@ const register = require("./register");
 const format = require("./template/format");
 const hasTemplate = require("./template/hasTemplate").hasTemplate;
 const bind = require("./template/bind");
-const requireUncached = require("./require_hook/requireUncached");
+const requireAgree = require("./require_hook/requireAgree");
+const requireUncache = require("./require_hook/requireUncached");
 const EventEmitter = require("events").EventEmitter;
 
 class Server {
@@ -26,9 +27,9 @@ class Server {
     register(options.register);
   }
   useMiddleware(req, res, next) {
-    const agrees = (this.agrees || requireUncached(this.agreesPath)).map(
-      agree => completion(agree, this.base, this.options)
-    );
+    const agrees = (
+      this.agrees || requireAgree(this.agreesPath, this.options.hot)
+    ).map(agree => completion(agree, this.base, this.options));
 
     extract
       .incomingRequest(req)

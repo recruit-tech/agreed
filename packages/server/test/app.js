@@ -9,6 +9,7 @@ test('agreed-server: instance app', () => {
   const { app, createServer } = agreedServer({
     path: './test/agreed',
     port: '0',
+    hot: false
   });
 
   const server = createServer(app);
@@ -20,7 +21,7 @@ test('agreed-server: instance app', () => {
       path: '/shops/test',
       port: port,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     };
     http.get(options, (res) => {
@@ -38,7 +39,8 @@ test('agreed-server: call foobarbaz', () => {
   const { app, createServer } = agreedServer({
     path: './test/agreed',
     port: '0',
-    callNextWhenNotFound: true
+    callNextWhenNotFound: true,
+    hot: true
   });
 
   app.use('/foobarbaz', (req, res, next) => {
@@ -52,7 +54,7 @@ test('agreed-server: call foobarbaz', () => {
       host: 'localhost',
       method: 'GET',
       path: '/foobarbaz',
-      port: port,
+      port: port
     };
     http.get(options, (res) => {
       server.close();
@@ -62,4 +64,3 @@ test('agreed-server: call foobarbaz', () => {
     });
   });
 });
-
