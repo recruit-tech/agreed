@@ -12,7 +12,6 @@ const format = require("./template/format");
 const hasTemplate = require("./template/hasTemplate").hasTemplate;
 const bind = require("./template/bind");
 const requireAgree = require("./require_hook/requireAgree");
-const requireUncache = require("./require_hook/requireUncached");
 const EventEmitter = require("events").EventEmitter;
 
 class Server {
@@ -24,7 +23,7 @@ class Server {
     }
     this.options = options;
     this.notifier = new EventEmitter();
-    register(options.register);
+    register(options.register, this.options.hot);
   }
   useMiddleware(req, res, next) {
     const agrees = (

@@ -13,11 +13,13 @@ const transpile = (src, options = {}) => {
   return res;
 };
 
-module.exports = options => {
+module.exports = (options, hot) => {
   require.extensions[".ts"] = (module, file) => {
     const src = fs.readFileSync(file).toString("utf-8");
     const agree = transpile(src, options);
     module._compile(agree, file);
-    delete require.cache[file];
+    if (hot) {
+      delete require.cache[file];
+    }
   };
 };
