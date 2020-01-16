@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@agreed/core": "^5.0.1",
-    "@types/estree": "0.0.41",
+    "@types/estree": "0.0.42",
     "@types/minimist": "^1.2.0",
     "@types/node": "^12.0.0",
     "@typescript-eslint/typescript-estree": "^2.0.0",
