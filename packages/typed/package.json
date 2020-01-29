@@ -24,7 +24,7 @@
     "agreed-typed": "lib/bin/agreed-typed.js"
   },
   "devDependencies": {
-    "@types/jest": "24.9.1",
+    "@types/jest": "^25.1.0",
     "@types/power-assert": "1.5.3",
     "axios": "0.19.2",
     "body-parser": "1.19.0",
@@ -64,7 +64,8 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "helper.ts"
-    ]
+    ],
+    "testTimeout": 10000
   },
   "dependencies": {
     "@agreed/core": "^5.0.1",
