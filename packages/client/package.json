@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@agreed/server": "^5.0.2",
-    "eater": "4.0.1",
+    "eater": "4.0.2",
     "plz-port": "1.0.0"
   },
   "publishConfig": {

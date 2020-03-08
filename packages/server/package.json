@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "assert-stream": "1.1.1",
-    "eater": "4.0.1",
+    "eater": "4.0.2",
     "must-call": "1.0.0",
     "plz-port": "1.0.0"
   },
