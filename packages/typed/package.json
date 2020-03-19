@@ -41,7 +41,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.1.0",
     "typescript": "3.8.3",
-    "yarn": "1.22.0"
+    "yarn": "1.22.4"
   },
   "jest": {
     "testURL": "http://localhost/",
