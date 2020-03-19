@@ -2,9 +2,6 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "test": "lerna run test"
-  },
-  "devDependencies": {
-    "lerna": "3.20.2"
+    "test": "npx lerna run test"
   }
 }

@@ -50,34 +50,4 @@ test("server: check status template", () => {
 
     req.end();
   });
-  server.on(
-    "listening",
-    mustCall(() => {
-      const options = {
-        host: "localhost",
-        method: "GET",
-        path: "/test/custom/agreed/status?status=302",
-        port: server.address().port
-      };
-      const req = http
-        .request(
-          options,
-          mustCall(res => {
-            let data = "";
-            assert.strictEqual(res.statusCode, 302);
-            res.on("data", d => (data += d));
-            res.on(
-              "end",
-              mustCall(() => {
-                assert.strictEqual(data, '"OK"');
-              })
-            );
-            server.close();
-          })
-        )
-        .on("error", console.error);
-
-      req.end();
-    })
-  );
 });
