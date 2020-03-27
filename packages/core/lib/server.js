@@ -13,6 +13,7 @@ const hasTemplate = require("./template/hasTemplate").hasTemplate;
 const bind = require("./template/bind");
 const requireAgree = require("./require_hook/requireAgree");
 const EventEmitter = require("events").EventEmitter;
+const AGREED_CACHE_JSON = ".agreed.json";
 
 class Server {
   constructor(options = {}) {
@@ -23,7 +24,11 @@ class Server {
     }
     this.options = options;
     this.notifier = new EventEmitter();
-    register(options.register, this.options.hot);
+    const registerOpts = { 
+      typedCachePath: options.typedCachePath,
+      ...this.options.register,
+    };
+    register(registerOpts, this.options.hot);
   }
   useMiddleware(req, res, next) {
     const agrees = (
