@@ -13,7 +13,6 @@ const hasTemplate = require("./template/hasTemplate").hasTemplate;
 const bind = require("./template/bind");
 const requireAgree = require("./require_hook/requireAgree");
 const EventEmitter = require("events").EventEmitter;
-const AGREED_CACHE_JSON = ".agreed.json";
 
 class Server {
   constructor(options = {}) {
