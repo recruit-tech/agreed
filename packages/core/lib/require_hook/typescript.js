@@ -50,6 +50,15 @@ module.exports = (options, hot) => {
   cache = takeCache(options);
   writeCacheOnExit(options);
   require.extensions[".ts"] = (module, file) => {
+    if (!options.typedCachePath) {
+      const src = fs.readFileSync(file).toString("utf-8");
+      const agree = transpile(src, options);
+      module._compile(agree, file);
+      if (hot) {
+        delete require.cache[file];
+      }
+      return;
+    }
     const { mtimeMs } = fs.statSync(file);
     const cached = getCacheAgree(file, cache, mtimeMs);
     let agree = cached.agree;
