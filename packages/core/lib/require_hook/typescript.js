@@ -30,7 +30,6 @@ const takeCache = (options) => {
 const getCacheAgree = (file, cache, mtimeMs) => {
   if (cache && cache[file]) {
     if (cache[file].mtimeMs === mtimeMs) {
-      console.log("cached! %s", file);
       return cache[file];
     }
   }
