@@ -38,7 +38,10 @@ const getCacheAgree = (file, cache, mtimeMs) => {
 
 const writeCacheOnExit = (options) => {
   if (options.typedCachePath) {
-    process.once("exit", () => {
+    process.on("SIGINT", () => {
+      process.exit();
+    });
+    process.on("exit", () => {
       if (cache) {
         fs.writeFileSync(options.typedCachePath, JSON.stringify(cache));
       }
@@ -72,8 +75,11 @@ module.exports = (options, hot) => {
     }
     // TODO: need to embed cache hit or not 
     module._compile(agree, file);
-    if (hot && !cached.agree) {
-      delete require.cache[file];
+    if (hot) {
+      fs.watch(file, () => {
+        delete require.cache[file];
+        delete cache[file];
+      });
     }
   };
 };

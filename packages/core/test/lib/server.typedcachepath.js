@@ -41,6 +41,7 @@ test("server: POST API with ts agrees using typed cache path", () => {
           assert.expect({ result: "test" });
           res.pipe(assert);
           server.close();
+          process.kill(process.pid, "SIGHUP");
         })
         .on("error", console.error);
 
@@ -80,6 +81,7 @@ test("server: POST API with ts agrees using typed cache path using cache", () =>
           assert.expect({ result: "test" });
           res.pipe(assert);
           server.close();
+          process.kill(process.pid, "SIGHUP");
         })
         .on("error", console.error);
 
@@ -142,6 +144,7 @@ module.exports = [{
           assert.expect({ result: "test" });
           res.pipe(assert);
           server.close();
+          process.kill(process.pid, "SIGHUP");
         })
         .on("error", console.error);
 
@@ -176,6 +179,7 @@ test("server: use agreed-typed fixtures", () => {
           assert.expect({ message: "ok test" });
           res.pipe(assert);
           server.close();
+          process.kill(process.pid, "SIGHUP");
         })
         .on("error", console.error);
       req.end();
