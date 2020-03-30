@@ -18,7 +18,7 @@ const takeCache = (options) => {
   try {
     if (!cache && options.typedCachePath) {
       const data = fs.readFileSync(options.typedCachePath).toString("utf-8");
-      cache = JSON.parse(cache);
+      const cache = JSON.parse(data);
       return cache;
     }
     return {};
@@ -39,13 +39,15 @@ const getCacheAgree = (file, cache, mtimeMs) => {
 const writeCacheOnExit = (options) => {
   if (options.typedCachePath) {
     process.once("exit", () => {
-      fs.writeFileSync(options.typedCachePath, JSON.stringify(cache));
+      if (cache) {
+        fs.writeFileSync(options.typedCachePath, JSON.stringify(cache));
+      }
     });
   }
 }
 
 module.exports = (options, hot) => {
-  const cache = takeCache(options);
+  cache = takeCache(options);
   writeCacheOnExit(options);
   require.extensions[".ts"] = (module, file) => {
     const { mtimeMs } = fs.statSync(file);
@@ -59,6 +61,7 @@ module.exports = (options, hot) => {
         agree,
       };
     }
+    // TODO: need to embed cache hit or not 
     module._compile(agree, file);
     if (hot) {
       delete require.cache[file];

@@ -106,6 +106,7 @@ module.exports = (agree, base, opts = {}) => {
       agree.response.headers
     );
   }
+  console.log(agree);
 
   agree.response.body = agree.response.body || DEFAULT_RESPONSE.body;
 
