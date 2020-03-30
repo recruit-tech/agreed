@@ -10,7 +10,8 @@ const argv = minimist(process.argv.slice(2), {
     'default-response-headers',
     'default-request-headers',
     'proxy',
-    'proxy-prefix-path'
+    'proxy-prefix-path',
+    'typed-cache-path'
   ],
   boolean: ['help', 'version', 'logging', 'strict', 'hot'],
   alias: {
@@ -43,6 +44,7 @@ Options:
   -l, --logging                      Logs requests in console.
   --strict                           Run strict mode.
   --hot                              Hot Replacement agree files. Default true
+  --typed-cache-path                 Create Cached JSON to improve agreed typed performance.
 
 Examples:
   agreed-server --path ./agreed.js --port 4000
@@ -53,6 +55,8 @@ Examples:
   agreed-server --path ./agreed.js --port 4000 \\
                 --proxy example.com \\
                 --proxy-prefix-path /proxy
+  agreed-server --path ./agreed.js --port 4000 \\
+                --typed-cache-path ./.agreed.json
 `.trim();
 
 function showHelp(exitcode) {

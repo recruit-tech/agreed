@@ -22,6 +22,8 @@ module.exports = (opts) => {
   const proxy = opts.proxy;
   const proxyPrefixPath = opts['proxy-prefix-path'] || opts.proxyPrefixPath;
   const proxyOpts = opts.proxyOpts || {};
+  const typedCachePath = opts['typed-cache-path'] || opts.typedCachePath;
+  opts.typedCachePath = typedCachePath;
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));

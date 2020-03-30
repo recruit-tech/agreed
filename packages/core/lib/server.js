@@ -23,7 +23,11 @@ class Server {
     }
     this.options = options;
     this.notifier = new EventEmitter();
-    register(options.register, this.options.hot);
+    const registerOpts = { 
+      typedCachePath: options.typedCachePath,
+      ...this.options.register,
+    };
+    register(registerOpts, this.options.hot);
   }
   useMiddleware(req, res, next) {
     const agrees = (
