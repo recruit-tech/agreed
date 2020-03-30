@@ -33,7 +33,7 @@ class Server {
   useMiddleware(req, res, next) {
     const agrees = (
       this.agrees || requireAgree(this.agreesPath, this.options.hot)
-    ).map(agree => console.log(agree) || completion(agree, this.base, this.options));
+    ).map(agree => completion(agree, this.base, this.options));
 
     extract
       .incomingRequest(req)

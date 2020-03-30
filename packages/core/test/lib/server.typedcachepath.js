@@ -1,3 +1,4 @@
+// eater:only
 "use strict";
 
 const agreedServer = require("../helper/server.js");
@@ -146,6 +147,38 @@ module.exports = [{
         .on("error", console.error);
 
       req.write(postData);
+      req.end();
+    });
+  });
+});
+
+test("server: use agreed-typed fixtures", () => {
+  plzPort().then(port => {
+    const cachePath = `${os.tmpdir()}/.agreed.json`;
+    const server = agreedServer({
+      path: "../typed/src/__tests__/data/agreed.ts",
+      port: port,
+      typedCachePath: cachePath,
+    });
+
+    server.on("listening", () => {
+      const options = {
+        host: "localhost",
+        method: "GET",
+        path: "/ping/test",
+        port: port,
+        headers: {
+          "Content-Type": "application/json",
+        }
+      };
+      const req = http
+        .request(options, res => {
+          const assert = new AssertStream();
+          assert.expect({ message: "ok test" });
+          res.pipe(assert);
+          server.close();
+        })
+        .on("error", console.error);
       req.end();
     });
   });

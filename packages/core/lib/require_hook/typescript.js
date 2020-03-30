@@ -30,6 +30,7 @@ const takeCache = (options) => {
 const getCacheAgree = (file, cache, mtimeMs) => {
   if (cache && cache[file]) {
     if (cache[file].mtimeMs === mtimeMs) {
+      console.log("cached! %s", file);
       return cache[file];
     }
   }
@@ -63,7 +64,7 @@ module.exports = (options, hot) => {
     }
     // TODO: need to embed cache hit or not 
     module._compile(agree, file);
-    if (hot) {
+    if (hot && !cached.agree) {
       delete require.cache[file];
     }
   };
