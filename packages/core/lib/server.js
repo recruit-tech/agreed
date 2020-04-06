@@ -207,6 +207,9 @@ class Server {
         }
 
         res.end(messageBody);
+        if (agree.request.values) {
+          delete agree.request.values;
+        }
       })
       .catch(e => {
         typeof next === "function" && next(e);

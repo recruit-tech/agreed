@@ -3,13 +3,11 @@
 const pathToRegexp = require("path-to-regexp");
 const path = require("path");
 const requireAgree = require("../require_hook/requireAgree");
-const clone = require("lodash.clone");
 
 const DEFAULT_REQUEST = require("./defaultRequest");
 const DEFAULT_RESPONSE = require("./defaultResponse");
 
-module.exports = (agr, base, opts = {}) => {
-  let agree = clone(agr);
+module.exports = (agree, base, opts = {}) => {
   if (typeof agree === "string") {
     agree = normalizedRequire(agree, base, opts.hot);
   }
