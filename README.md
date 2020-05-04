@@ -8,7 +8,7 @@ agreed is Consumer Driven Contract tool with JSON mock server.
 agreed has 3 features.
 
 1. Create contract file as json(json5/yaml/etc) file
-1. mock server for frontend development.
+1. mock server for frontend development
 1. test client for backend development
 
 # Install
