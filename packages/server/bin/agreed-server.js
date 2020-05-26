@@ -13,7 +13,7 @@ const argv = minimist(process.argv.slice(2), {
     'proxy-prefix-path',
     'typed-cache-path'
   ],
-  boolean: ['help', 'version', 'logging', 'strict', 'hot'],
+  boolean: ['help', 'version', 'logging', 'strict', 'hot', 'cors'],
   alias: {
     l: 'logging'
   },
@@ -42,6 +42,7 @@ Options:
   --proxy <hostname>                 Proxy host.
   --proxy-prefix-path <prefix>       Proxy server path prefix.
   -l, --logging                      Logs requests in console.
+  --cors                             Enable CORS.
   --strict                           Run strict mode.
   --hot                              Hot Replacement agree files. Default true
   --typed-cache-path                 Create Cached JSON to improve agreed typed performance.
