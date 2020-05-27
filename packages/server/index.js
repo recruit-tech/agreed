@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const Agreed = require('@agreed/core');
 const httpProxy = require('express-http-proxy');
 const morgan = require('morgan');
+const cors = require('cors');
 
 module.exports = (opts) => {
   if (!opts) {
@@ -55,6 +56,10 @@ module.exports = (opts) => {
 
   if (opts.logging) {
     app.use(morgan('tiny'));
+  }
+
+  if (opts.cors) {
+    app.use(cors());
   }
 
   const agreed = new Agreed();

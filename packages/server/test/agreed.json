@@ -53,6 +53,17 @@
   },
   {
     request: {
+      path: "/cors/test",
+      method: "POST"
+    },
+    response: {
+      body: {
+        message: 'hello cors',
+      }
+    }
+  },
+  {
+    request: {
       path: "/bar"
     },
     response: {
