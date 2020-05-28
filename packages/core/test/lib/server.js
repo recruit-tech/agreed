@@ -325,7 +325,7 @@ test("server: response header using default request headers", () => {
       const options = {
         host: "localhost",
         method: "GET",
-        path: "/path/default/request/header",
+        path: "/path/default/request/header/",
         port: port,
         headers: {
           "x-forwarded-for": "forward",

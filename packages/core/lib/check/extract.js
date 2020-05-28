@@ -2,7 +2,7 @@
 
 const url = require("url");
 const qs = require("querystring");
-const pathToRegexp = require("path-to-regexp");
+const { pathToRegexp } = require("path-to-regexp");
 const format = require("../template/format");
 
 module.exports.incomingRequest = (req) => {
