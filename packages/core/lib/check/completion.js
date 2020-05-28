@@ -1,6 +1,6 @@
 "use strict";
 
-const pathToRegexp = require("path-to-regexp");
+const { pathToRegexp } = require("path-to-regexp");
 const path = require("path");
 const requireAgree = require("../require_hook/requireAgree");
 
