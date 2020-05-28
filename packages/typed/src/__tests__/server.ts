@@ -5,7 +5,7 @@ import * as cors from "cors";
 import * as express from "express";
 import * as getPort from "get-port";
 import * as path from "path";
-import * as assert from "power-assert";
+import * as assert from "assert";
 
 const setupServer = (agreed) => {
   const app = express();
