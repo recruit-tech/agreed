@@ -7,13 +7,13 @@ import * as getPort from "get-port";
 import * as path from "path";
 import * as assert from "power-assert";
 
-const setupServer = agreed => {
+const setupServer = (agreed) => {
   const app = express();
   app.use(bodyParser.json());
   app.use(cors());
   app.use(
     agreed.middleware({
-      path: path.resolve(__dirname, "./data/agreed.ts")
+      path: path.resolve(__dirname, "./data/agreed.ts"),
     })
   );
   app.use((err, _, res) => {
@@ -25,7 +25,7 @@ const setupServer = agreed => {
   return app;
 };
 
-test("register ts agrees with get", async done => {
+test("register ts agrees with get", async (done) => {
   const port = await getPort();
   const agreed = new Agreed();
 
@@ -45,7 +45,7 @@ test("register ts agrees with get", async done => {
   });
 });
 
-test("register ts agrees with get and query", async done => {
+test("register ts agrees with get and query", async (done) => {
   const port = await getPort();
   const agreed = new Agreed();
 
@@ -66,7 +66,7 @@ test("register ts agrees with get and query", async done => {
   });
 });
 
-test("register ts agrees with post", async done => {
+test("register ts agrees with post", async (done) => {
   const port = await getPort();
   const agreed = new Agreed();
 
@@ -79,12 +79,12 @@ test("register ts agrees with post", async done => {
         {
           email: "hoge@hoge.comaaa",
           id: 123,
-          genderId: 2
+          genderId: 2,
         },
         {
           headers: {
-            apiKey: "aaa"
-          }
+            apiKey: "aaa",
+          },
         }
       );
       assert.strictEqual(response.status, 201);

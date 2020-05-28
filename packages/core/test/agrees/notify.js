@@ -4,50 +4,50 @@ module.exports = [
       path: "/messages",
       method: "POST",
       body: {
-        message: "{:message}"
+        message: "{:message}",
       },
       values: {
-        message: "test"
-      }
+        message: "test",
+      },
     },
     response: {
       body: {
-        result: "{:message}"
+        result: "{:message}",
       },
       values: {
-        message: "test"
+        message: "test",
       },
       notify: {
         event: "message2",
         body: {
-          message: "message! {:message}"
-        }
-      }
-    }
+          message: "message! {:message}",
+        },
+      },
+    },
   },
   {
     request: {
       path: "/messages2",
       method: "POST",
       body: {
-        message: "{:message}"
+        message: "{:message}",
       },
       values: {
-        message: "test"
-      }
+        message: "test",
+      },
     },
     response: {
       body: {
-        result: "{:message}"
+        result: "{:message}",
       },
       values: {
-        message: "test"
+        message: "test",
       },
       notify: {
         body: {
-          message: "message2 {:message}"
-        }
-      }
-    }
-  }
+          message: "message2 {:message}",
+        },
+      },
+    },
+  },
 ];

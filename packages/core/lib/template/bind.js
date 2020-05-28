@@ -6,7 +6,7 @@ module.exports = function bind(hasFormatObj, hasValueObj, result, original) {
   if (!result) result = {};
   if (!original) original = hasValueObj;
   if (typeof hasFormatObj === "object") {
-    Object.keys(hasFormatObj).forEach(key => {
+    Object.keys(hasFormatObj).forEach((key) => {
       if (hasTemplate(hasFormatObj[key])) {
         const formatName = hasFormatObj[key].replace(
           constants.TEMPLATE_REGEXP,
@@ -14,7 +14,7 @@ module.exports = function bind(hasFormatObj, hasValueObj, result, original) {
         );
         const formatParts = formatName.split(".");
         if (formatParts.length > 1) {
-          formatParts.forEach(part => {
+          formatParts.forEach((part) => {
             if (hasValueObj[part]) {
               result[part] = hasValueObj[part];
             } else if (original[part]) {

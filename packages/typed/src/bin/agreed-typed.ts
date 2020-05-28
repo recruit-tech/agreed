@@ -19,10 +19,10 @@ Examples:
 function main() {
   const argv = minimist(process.argv.slice(2), {
     stopEarly: true,
-    string: ["help", "version"]
+    string: ["help", "version"],
   });
   const commands = {
-    ["gen-swagger"]: generate
+    ["gen-swagger"]: generate,
   };
 
   if (argv.help) {

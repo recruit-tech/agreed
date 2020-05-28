@@ -11,7 +11,7 @@ const mustCall = require("must-call");
 test("server: check headers when case insensitive", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -21,11 +21,11 @@ test("server: check headers when case insensitive", () => {
       path: "/test/case/insensitive/headers",
       port: server.address().port,
       headers: {
-        "This-Headers-Should-Be-Lower-Case": "true"
-      }
+        "This-Headers-Should-Be-Lower-Case": "true",
+      },
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         const assert = new AssertStream();
         assert.expect({ message: "hello case insensitive headers" });
         res.pipe(assert);
@@ -40,7 +40,7 @@ test("server: check headers when case insensitive", () => {
 test("server: check headers when case insensitive", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -50,11 +50,11 @@ test("server: check headers when case insensitive", () => {
       path: "/test/case/insensitive/headers",
       port: server.address().port,
       headers: {
-        "THIS-HEADERS-SHOULD-BE-LOWER-CASE": "true"
-      }
+        "THIS-HEADERS-SHOULD-BE-LOWER-CASE": "true",
+      },
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         const assert = new AssertStream();
         assert.expect({ message: "hello case insensitive headers" });
         res.pipe(assert);

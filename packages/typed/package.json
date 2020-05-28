@@ -15,7 +15,7 @@
   "scripts": {
     "test": "jest",
     "lint": "tslint ./src/**/*.ts",
-    "fmt": "tslint --fix",
+    "fmt": "tslint ./src/**/*.ts --fix",
     "tsc": "yarn clean && tsc",
     "clean": "rimraf ./lib/*",
     "prepublish": "yarn tsc"

@@ -11,7 +11,7 @@ const os = require("os");
 const fs = require("fs");
 
 test("server: POST API with ts agrees using typed cache path", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const dest = `${os.tmpdir()}/agrees.ts`;
     const cachePath = `${os.tmpdir()}/.agreed.json`;
     fs.copyFileSync("test/agrees/agrees.ts", dest);
@@ -23,7 +23,7 @@ test("server: POST API with ts agrees using typed cache path", () => {
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "test"
+        message: "test",
       });
       const options = {
         host: "localhost",
@@ -32,11 +32,11 @@ test("server: POST API with ts agrees using typed cache path", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ result: "test" });
           res.pipe(assert);
@@ -52,7 +52,7 @@ test("server: POST API with ts agrees using typed cache path", () => {
 });
 
 test("server: POST API with ts agrees using typed cache path using cache", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const dest = `${os.tmpdir()}/agrees.ts`;
     const cachePath = `${os.tmpdir()}/.agreed.json`;
     const server = agreedServer({
@@ -63,7 +63,7 @@ test("server: POST API with ts agrees using typed cache path using cache", () =>
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "test"
+        message: "test",
       });
       const options = {
         host: "localhost",
@@ -72,11 +72,11 @@ test("server: POST API with ts agrees using typed cache path using cache", () =>
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ result: "test" });
           res.pipe(assert);
@@ -92,7 +92,7 @@ test("server: POST API with ts agrees using typed cache path using cache", () =>
 });
 
 test("server: POST API with ts agrees using typed cache path using cache", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const dest = `${os.tmpdir()}/agrees.ts`;
     const cachePath = `${os.tmpdir()}/.agreed.json`;
     const content = `
@@ -126,7 +126,7 @@ module.exports = [{
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "test"
+        message: "test",
       });
       const options = {
         host: "localhost",
@@ -135,11 +135,11 @@ module.exports = [{
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ result: "test" });
           res.pipe(assert);
@@ -155,7 +155,7 @@ module.exports = [{
 });
 
 test("server: use agreed-typed fixtures", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const cachePath = `${os.tmpdir()}/.agreed.json`;
     const server = agreedServer({
       path: "../typed/src/__tests__/data/agreed.ts",
@@ -171,10 +171,10 @@ test("server: use agreed-typed fixtures", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ message: "ok test" });
           res.pipe(assert);

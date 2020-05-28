@@ -14,16 +14,16 @@ test("server: check status template", () => {
         request: {
           path: "/test/custom/agreed/status",
           query: {
-            status: "{:status}"
-          }
+            status: "{:status}",
+          },
         },
         response: {
           status: "{:status}",
-          body: "OK"
-        }
-      }
+          body: "OK",
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -31,13 +31,13 @@ test("server: check status template", () => {
       host: "localhost",
       method: "GET",
       path: "/test/custom/agreed/status?status=404",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
         assert.strictEqual(res.statusCode, 404);
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

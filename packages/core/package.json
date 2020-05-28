@@ -11,7 +11,10 @@
     "lint:lib": "eslint ./lib/**/*.js",
     "lint:test": "eslint ./test/**/*.js",
     "lint:root": "eslint ./*.js",
-    "fmt": "eslint --fix"
+    "lintfix:lib": "eslint ./lib/**/*.js --fix",
+    "lintfix:test": "eslint ./test/**/*.js --fix",
+    "lintfix:root": "eslint ./*.js --fix",
+    "lintfix": "run-s lintfix:*"
   },
   "repository": {
     "type": "git",

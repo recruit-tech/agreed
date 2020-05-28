@@ -10,15 +10,15 @@ const mustCall = require("must-call");
 const ts = require("typescript");
 
 test("server: POST API", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "foobarbaz"
+        message: "foobarbaz",
       });
       const options = {
         host: "localhost",
@@ -27,11 +27,11 @@ test("server: POST API", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ message: "hello post" });
           res.pipe(assert);
@@ -46,16 +46,16 @@ test("server: POST API", () => {
 });
 
 test("server: PUT API", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
       const postData = JSON.stringify({
         a: "b",
-        c: "d"
+        c: "d",
       });
       const options = {
         host: "localhost",
@@ -64,11 +64,11 @@ test("server: PUT API", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect("hello put");
           res.pipe(assert);
@@ -83,10 +83,10 @@ test("server: PUT API", () => {
 });
 
 test("server: DELETE API", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.json5",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
@@ -94,10 +94,10 @@ test("server: DELETE API", () => {
         host: "localhost",
         method: "DELETE",
         path: "/qux/fuga",
-        port: port
+        port: port,
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 204);
           server.close();
         })
@@ -108,10 +108,10 @@ test("server: DELETE API", () => {
 });
 
 test("server: GET with :id ", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
@@ -119,10 +119,10 @@ test("server: GET with :id ", () => {
         host: "localhost",
         method: "GET",
         path: "/path/fuga",
-        port: port
+        port: port,
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 200);
           const assertStream = new AssertStream();
           assertStream.expect({ message: "hello fuga" });
@@ -136,15 +136,15 @@ test("server: GET with :id ", () => {
 });
 
 test("server: POST with :id ", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "foobarbaz"
+        message: "foobarbaz",
       });
       const options = {
         host: "localhost",
@@ -153,11 +153,11 @@ test("server: POST with :id ", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 200);
           const assertStream = new AssertStream();
           assertStream.expect({ message: "hello fuga, fooo, foobarbaz" });
@@ -172,15 +172,15 @@ test("server: POST with :id ", () => {
 });
 
 test("server: check response when expect is filled", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "foobarbaz"
+        message: "foobarbaz",
       });
       const options = {
         host: "localhost",
@@ -189,11 +189,11 @@ test("server: check response when expect is filled", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 200);
           const assertStream = new AssertStream();
           assertStream.expect({
@@ -202,12 +202,12 @@ test("server: check response when expect is filled", () => {
               "http://imgfp.hotp.jp/SYS/cmn/images/front_002/logo_hotopepper_264x45.png",
             topics: [
               {
-                a: "a"
+                a: "a",
               },
               {
-                b: "b"
-              }
-            ]
+                b: "b",
+              },
+            ],
           });
           res.pipe(assertStream);
           server.close();
@@ -220,10 +220,10 @@ test("server: check response when expect is filled", () => {
 });
 
 test("server: check response when header values are exists", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.js",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
@@ -234,15 +234,15 @@ test("server: check response when header values are exists", () => {
         port: port,
         headers: {
           "x-token": "abcdefghi",
-          "x-api-key": "123456789"
-        }
+          "x-api-key": "123456789",
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 200);
           const assertStream = new AssertStream();
           assertStream.expect({
-            result: "dunke abcdefghi 123456789"
+            result: "dunke abcdefghi 123456789",
           });
           res.pipe(assertStream);
           server.close();
@@ -254,10 +254,10 @@ test("server: check response when header values are exists", () => {
 });
 
 test("server: response header has format string", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.json5",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
@@ -265,10 +265,10 @@ test("server: response header has format string", () => {
         host: "localhost",
         method: "GET",
         path: "/path/header/format",
-        port: port
+        port: port,
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           assert(res.statusCode === 200);
           assert(res.headers["access-control-allow-origin"] === "*");
           server.close();
@@ -280,13 +280,13 @@ test("server: response header has format string", () => {
 });
 
 test("server: response header using default response headers", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.json5",
       port: port,
       defaultResponseHeaders: {
-        "access-control-allow-origin": "test"
-      }
+        "access-control-allow-origin": "test",
+      },
     });
 
     server.on("listening", () => {
@@ -294,12 +294,12 @@ test("server: response header using default response headers", () => {
         host: "localhost",
         method: "GET",
         path: "/path/default/header/",
-        port: port
+        port: port,
       };
       const req = http
         .request(
           options,
-          mustCall(res => {
+          mustCall((res) => {
             assert(res.statusCode === 200);
             assert(res.headers["access-control-allow-origin"] === "test");
             server.close();
@@ -312,13 +312,13 @@ test("server: response header using default response headers", () => {
 });
 
 test("server: response header using default request headers", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.json5",
       port: port,
       defaultRequestHeaders: {
-        "x-forwarded-for": "forward"
-      }
+        "x-forwarded-for": "forward",
+      },
     });
 
     server.on("listening", () => {
@@ -328,17 +328,17 @@ test("server: response header using default request headers", () => {
         path: "/path/default/request/header",
         port: port,
         headers: {
-          "x-forwarded-for": "forward"
-        }
+          "x-forwarded-for": "forward",
+        },
       };
       const req = http
         .request(
           options,
-          mustCall(res => {
+          mustCall((res) => {
             assert(res.statusCode === 200);
             const assertStream = new AssertStream();
             assertStream.expect({
-              message: "forward"
+              message: "forward",
             });
             res.pipe(assertStream);
             server.close();
@@ -351,15 +351,15 @@ test("server: response header using default request headers", () => {
 });
 
 test("server: POST API with ts agrees", () => {
-  plzPort().then(port => {
+  plzPort().then((port) => {
     const server = agreedServer({
       path: "test/agrees/agrees.ts",
-      port: port
+      port: port,
     });
 
     server.on("listening", () => {
       const postData = JSON.stringify({
-        message: "test"
+        message: "test",
       });
       const options = {
         host: "localhost",
@@ -368,11 +368,11 @@ test("server: POST API with ts agrees", () => {
         port: port,
         headers: {
           "Content-Type": "application/json",
-          "Content-Length": Buffer.byteLength(postData)
-        }
+          "Content-Length": Buffer.byteLength(postData),
+        },
       };
       const req = http
-        .request(options, res => {
+        .request(options, (res) => {
           const assert = new AssertStream();
           assert.expect({ result: "test" });
           res.pipe(assert);

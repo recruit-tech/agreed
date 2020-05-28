@@ -130,7 +130,7 @@ function toLowerCaseKeys(obj) {
   const keys = Object.keys(obj);
   const result = {};
 
-  keys.forEach(key => {
+  keys.forEach((key) => {
     result[key.toLowerCase()] = obj[key];
   });
   return result;

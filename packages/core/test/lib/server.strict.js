@@ -13,32 +13,32 @@ test("server: check strict mode - status code", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
-      }
+            id: 2,
+          },
+        },
+      },
     ],
     port: 0,
     strict: true,
-    hot: true
+    hot: true,
   });
 
   server.on("listening", () => {
@@ -46,10 +46,10 @@ test("server: check strict mode - status code", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         assert.strictEqual(res.statusCode, 500);
         res.resume();
         server.close();
@@ -67,32 +67,32 @@ test("server: check strict mode - message", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
-      }
+            id: 2,
+          },
+        },
+      },
     ],
     port: 0,
     strict: true,
-    hot: true
+    hot: true,
   });
 
   server.on("listening", () => {
@@ -100,12 +100,12 @@ test("server: check strict mode - message", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -128,38 +128,38 @@ test("server: check strict mode - candidates", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
+            id: 2,
+          },
+        },
       },
       {
         request: {
-          path: "/test/agreed/3"
+          path: "/test/agreed/3",
         },
-        response: {}
-      }
+        response: {},
+      },
     ],
     port: 0,
     strict: true,
-    hot: true
+    hot: true,
   });
 
   server.on("listening", () => {
@@ -167,12 +167,12 @@ test("server: check strict mode - candidates", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

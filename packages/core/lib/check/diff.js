@@ -3,7 +3,7 @@
 const {
   hasTemplate,
   hasTemplateWithAnyString,
-  isRestArrayTemplate
+  isRestArrayTemplate,
 } = require("../template/hasTemplate");
 const toRegexp = require("../template/toRegexp");
 

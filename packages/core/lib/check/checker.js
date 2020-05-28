@@ -80,7 +80,7 @@ class Checker {
     let valuesSimilarity = 1;
     if (pathToRegexpKeys.length !== 0) {
       let matched = 0;
-      Object.keys(paths).forEach(k => {
+      Object.keys(paths).forEach((k) => {
         if (paths[k] === values[k] + "") {
           matched++;
         }

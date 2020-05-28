@@ -16,25 +16,25 @@ test("server: check custom function", () => {
           query: {
             a: "{:a}",
             b: "{:b}",
-            c: "{:c}"
+            c: "{:c}",
           },
           values: {
             a: 1,
             b: 2,
-            c: 3
-          }
+            c: 3,
+          },
         },
         response: {
           body: {
-            sum: "{sum:a,b,c}"
+            sum: "{sum:a,b,c}",
           },
           funcs: {
-            sum: (a, b, c) => parseInt(a) + parseInt(b) + parseInt(c)
-          }
-        }
-      }
+            sum: (a, b, c) => parseInt(a) + parseInt(b) + parseInt(c),
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -42,12 +42,12 @@ test("server: check custom function", () => {
       host: "localhost",
       method: "GET",
       path: "/test/custom/agreed/values?a=1&b=2&c=4",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -72,17 +72,17 @@ test("server: check custom function with array response", () => {
           query: {
             a: "{:a}",
             b: "{:b}",
-            c: "{:c}"
+            c: "{:c}",
           },
           values: {
             a: 1,
             b: 2,
-            c: 3
-          }
+            c: 3,
+          },
         },
         response: {
           body: {
-            sum: "{sum:a,b,c}"
+            sum: "{sum:a,b,c}",
           },
           funcs: {
             sum: (a, b, c) => {
@@ -90,12 +90,12 @@ test("server: check custom function with array response", () => {
               var B = parseInt(b);
               var C = parseInt(c);
               return [A + B + C, A * B * C, A - B - C];
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -103,12 +103,12 @@ test("server: check custom function with array response", () => {
       host: "localhost",
       method: "GET",
       path: "/test/custom/agreed/values?a=20&b=30&c=40",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
