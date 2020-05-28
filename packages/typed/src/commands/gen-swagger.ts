@@ -8,7 +8,7 @@ import { showHelp } from "../util";
 import { AST_NODE_TYPES, parse } from "@typescript-eslint/typescript-estree";
 import {
   TSTypeAliasDeclaration,
-  TSTypeReference
+  TSTypeReference,
 } from "@typescript-eslint/typescript-estree/dist/ts-estree/ts-estree";
 import { ExportNamedDeclaration, Identifier } from "estree";
 import * as fs from "fs";
@@ -44,9 +44,9 @@ export function generate(arg) {
       "depth",
       "output",
       "host",
-      "format"
+      "format",
     ],
-    boolean: ["dry-run", "disable-path-number", "minify"]
+    boolean: ["dry-run", "disable-path-number", "minify"],
   });
 
   if (argv.help) {
@@ -68,14 +68,14 @@ export function generate(arg) {
     depth,
     title: argv.title,
     host: argv.host,
-    disablePathNumber: argv["disable-path-number"]
+    disablePathNumber: argv["disable-path-number"],
   });
 
   write(swagger, {
     dryRun: argv["dry-run"],
     format: argv.format,
     filename: argv.output,
-    minify: argv.minify
+    minify: argv.minify,
   });
 }
 
@@ -85,7 +85,7 @@ function write(
     dryRun: true,
     format: "json",
     filename: "schema",
-    minify: false
+    minify: false,
   }
 ) {
   const output =
@@ -112,38 +112,38 @@ export function run({
   description,
   version,
   host,
-  disablePathNumber
+  disablePathNumber,
 }) {
   const agreedPath = path.resolve(process.cwd(), pt);
   require(agreedPath);
 
   const currentModule = require.main.children.find(
-    m => m.filename === __filename
+    (m) => m.filename === __filename
   );
 
   const agreedRoot = currentModule.children.find(
-    m => m.filename === agreedPath
+    (m) => m.filename === agreedPath
   );
 
   const { mods, files } = aggregateModules(agreedRoot, depth);
 
   const metaInfos = mods.reduce((p, a) => {
-    p = p.concat(...a.asts.map(m => m.meta));
+    p = p.concat(...a.asts.map((m) => m.meta));
     return p;
   }, []);
 
   const schemas = generateSchema(files, metaInfos);
   const defs = schemas
-    .filter(s => s.schema.definitions)
+    .filter((s) => s.schema.definitions)
     .reduce((p, c) => {
       return {
         ...p,
-        ...c.schema.definitions
+        ...c.schema.definitions,
       };
     }, {});
 
   const specs = schemas.reduce((prev: ReducedSpec[], current) => {
-    const exist = prev.find(p => {
+    const exist = prev.find((p) => {
       return isSamePath(p.path, current.path);
     });
     if (exist) {
@@ -166,12 +166,12 @@ export function run({
 
 export interface ReducedSpec {
   path: string[];
-  schemas: Array<{
+  schemas: {
     name: string;
     path: string[];
     doc: object;
     schema: Definition;
-  }>;
+  }[];
 }
 
 function aggregateModules(mod: NodeModule, lim = 2) {
@@ -189,7 +189,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
       const ast = parse(file, { comment: true });
 
       const docs = ast.comments
-        .filter(c => {
+        .filter((c) => {
           return c.type === "Block";
         })
         .reduce((p, d) => {
@@ -224,7 +224,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
         if ((annotation.typeName as Identifier).name === "APIDef") {
           const params: any = annotation.typeParameters;
 
-          const pathArr = params.params[1].elementTypes.map(p => {
+          const pathArr = params.params[1].elementTypes.map((p) => {
             if (p.literal) {
               return p.literal.value; // string
             }
@@ -236,9 +236,9 @@ function aggregateModules(mod: NodeModule, lim = 2) {
             meta: {
               name: declaration.id.name,
               path: pathArr,
-              doc
+              doc,
             },
-            ast: current
+            ast: current,
           });
         }
 
@@ -250,7 +250,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
       }
     }
 
-    module.children.forEach(m => {
+    module.children.forEach((m) => {
       rec(m, asts, depth + 1, limit);
     });
 

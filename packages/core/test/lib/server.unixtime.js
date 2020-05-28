@@ -10,7 +10,7 @@ const mustCall = require("must-call");
 test("server: check unixtime", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -18,13 +18,13 @@ test("server: check unixtime", () => {
       host: "localhost",
       method: "GET",
       path: "/test/unixtime/agreed/values",
-      port: server.address().port
+      port: server.address().port,
     };
     const currentUnix = parseInt(Date.now() / 1000);
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

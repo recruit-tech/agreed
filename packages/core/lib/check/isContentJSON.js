@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = obj => {
+module.exports = (obj) => {
   const isContentJSON =
     obj.headers &&
     obj.headers["Content-Type"] &&

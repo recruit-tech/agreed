@@ -8,7 +8,7 @@ const transpile = (src, options = {}) => {
   const res = ts.transpileModule(
     src,
     options || {
-      compilerOptions: { module: ts.ModuleKind.CommonJS }
+      compilerOptions: { module: ts.ModuleKind.CommonJS },
     }
   ).outputText;
   return res;
@@ -22,10 +22,10 @@ const takeCache = (options) => {
       return cache;
     }
     return {};
-  } catch(e) {
+  } catch (e) {
     return {};
   }
-}
+};
 
 const getCacheAgree = (file, cache, mtimeMs) => {
   if (cache && cache[file]) {
@@ -34,7 +34,7 @@ const getCacheAgree = (file, cache, mtimeMs) => {
     }
   }
   return {};
-}
+};
 
 const writeCacheOnExit = (options) => {
   if (options.typedCachePath) {
@@ -47,7 +47,7 @@ const writeCacheOnExit = (options) => {
       }
     });
   }
-}
+};
 
 module.exports = (options, hot) => {
   cache = takeCache(options);
@@ -73,7 +73,7 @@ module.exports = (options, hot) => {
         agree,
       };
     }
-    // TODO: need to embed cache hit or not 
+    // TODO: need to embed cache hit or not
     module._compile(agree, file);
     if (hot) {
       fs.watch(file, () => {

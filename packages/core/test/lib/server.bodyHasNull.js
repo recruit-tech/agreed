@@ -10,12 +10,12 @@ const mustCall = require("must-call");
 test("server: check post to list", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
     const body = {
-      test: null
+      test: null,
     };
     const bodyString = JSON.stringify(body);
     const options = {
@@ -25,15 +25,15 @@ test("server: check post to list", () => {
       port: server.address().port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": bodyString.length
-      }
+        "Content-Length": bodyString.length,
+      },
     };
     const req = http
       .request(
         options,
-        mustCall(res => {
+        mustCall((res) => {
           let data = "";
-          res.on("data", d => (data += d));
+          res.on("data", (d) => (data += d));
           res.on(
             "end",
             mustCall(() => {

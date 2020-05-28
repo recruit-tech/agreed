@@ -10,7 +10,7 @@ const mustCall = require("must-call");
 test("server: check parseInt", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -18,12 +18,12 @@ test("server: check parseInt", () => {
       host: "localhost",
       method: "GET",
       path: "/test/parseint/agreed/values/1000",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

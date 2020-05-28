@@ -18,7 +18,7 @@ test("feat(middleware): http GET API", () => {
 
   server.on("listening", () => {
     const port = server.address().port;
-    http.get("http://localhost:" + port + "/hoge/fuga?q=foo", res => {
+    http.get("http://localhost:" + port + "/hoge/fuga?q=foo", (res) => {
       const assert = new AssertStream();
       assert.expect({ message: "hello world" });
       res.pipe(assert);
@@ -27,7 +27,7 @@ test("feat(middleware): http GET API", () => {
   });
 });
 
-test("feat(middleware): http PORT API", done => {
+test("feat(middleware): http PORT API", (done) => {
   const agreedServer = new Server({ path: "test/agrees/agrees.js" });
   const server = http
     .createServer((req, res) => {
@@ -39,7 +39,7 @@ test("feat(middleware): http PORT API", done => {
     const port = server.address().port;
     const postData = JSON.stringify({
       message: "foobarbaz",
-      abc: "foobarbaz"
+      abc: "foobarbaz",
     });
     const options = {
       host: "localhost",
@@ -48,10 +48,10 @@ test("feat(middleware): http PORT API", done => {
       port: port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": Buffer.byteLength(postData)
-      }
+        "Content-Length": Buffer.byteLength(postData),
+      },
     };
-    const req = http.request(options, res => {
+    const req = http.request(options, (res) => {
       const assert = new AssertStream();
       assert.expect({ message: "hello post" });
       res.pipe(assert);
@@ -63,7 +63,7 @@ test("feat(middleware): http PORT API", done => {
   });
 });
 
-test("error (middleware): http GET 404 API when nullish", done => {
+test("error (middleware): http GET 404 API when nullish", (done) => {
   const agreedServer = new Server({ path: "test/agrees/agrees.js" });
   const server = http
     .createServer((req, res) => {
@@ -77,13 +77,13 @@ test("error (middleware): http GET 404 API when nullish", done => {
       host: "localhost",
       method: "GET",
       path: "/headers/null",
-      port: port
+      port: port,
     };
-    const req = http.request(options, res => {
+    const req = http.request(options, (res) => {
       server.close();
       assert(res.statusCode === 404);
       let content = "";
-      res.on("data", chunk => (content += chunk));
+      res.on("data", (chunk) => (content += chunk));
       res.on("end", () => console.log(content));
     });
 
@@ -91,7 +91,7 @@ test("error (middleware): http GET 404 API when nullish", done => {
   });
 });
 
-test("error (middleware): http GET 404 API when nullish headers", done => {
+test("error (middleware): http GET 404 API when nullish headers", (done) => {
   const agreedServer = new Server({ path: "test/agrees/agrees.js" });
   const server = http
     .createServer((req, res) => {
@@ -106,15 +106,15 @@ test("error (middleware): http GET 404 API when nullish headers", done => {
       method: "GET",
       path: "/headers/test/1",
       headers: {
-        "x-test-token": "null"
+        "x-test-token": "null",
       },
-      port: port
+      port: port,
     };
-    const req = http.request(options, res => {
+    const req = http.request(options, (res) => {
       server.close();
       assert(res.statusCode === 404);
       let content = "";
-      res.on("data", chunk => (content += chunk));
+      res.on("data", (chunk) => (content += chunk));
       res.on("end", () => console.log(content));
     });
 
@@ -122,10 +122,10 @@ test("error (middleware): http GET 404 API when nullish headers", done => {
   });
 });
 
-test("feat(middleware): http notfound called next", done => {
+test("feat(middleware): http notfound called next", (done) => {
   const agreedServer = new Server({
     path: "test/agrees/agrees.js",
-    callNextWhenNotFound: true
+    callNextWhenNotFound: true,
   });
   const server = http
     .createServer((req, res) => {

@@ -1,6 +1,6 @@
 {
   "name": "@agreed/typed",
-  "version": "5.1.5",
+  "version": "5.1.6",
   "main": "./lib/types.js",
   "types": "./lib/types.d.ts",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "scripts": {
     "test": "jest",
     "lint": "tslint ./src/**/*.ts",
-    "fmt": "tslint --fix",
+    "fmt": "tslint ./src/**/*.ts --fix",
     "tsc": "yarn clean && tsc",
     "clean": "rimraf ./lib/*",
     "prepublish": "yarn tsc"
@@ -24,22 +24,22 @@
     "agreed-typed": "lib/bin/agreed-typed.js"
   },
   "devDependencies": {
-    "@types/jest": "25.1.3",
+    "@types/jest": "25.2.1",
     "@types/power-assert": "1.5.3",
     "axios": "0.19.2",
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "4.17.1",
     "get-port": "5.1.1",
-    "jest": "25.1.0",
+    "jest": "26.0.1",
     "power-assert": "1.6.1",
-    "prettier": "1.19.1",
+    "prettier": "2.0.5",
     "rimraf": "3.0.2",
-    "ts-jest": "25.2.1",
-    "ts-node": "8.6.2",
-    "tslint": "6.1.1",
+    "ts-jest": "25.5.1",
+    "ts-node": "8.10.1",
+    "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
-    "tslint-plugin-prettier": "2.1.0",
+    "tslint-plugin-prettier": "2.3.0",
     "typescript": "3.8.3",
     "yarn": "1.22.4"
   },
@@ -68,8 +68,8 @@
     "testTimeout": 10000
   },
   "dependencies": {
-    "@agreed/core": "^5.1.5",
-    "@types/estree": "0.0.42",
+    "@agreed/core": "^5.1.6",
+    "@types/estree": "0.0.44",
     "@types/minimist": "^1.2.0",
     "@types/node": "^12.0.0",
     "@typescript-eslint/typescript-estree": "^2.0.0",

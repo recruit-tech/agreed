@@ -10,7 +10,7 @@ const mustCall = require("must-call");
 test("server: check parseInt", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -18,12 +18,12 @@ test("server: check parseInt", () => {
       time: { start: 1, end: 3, break: { start: 2, end: 5 } },
       members: [
         {
-          id: 1
+          id: 1,
         },
         {
-          id: 2
-        }
-      ]
+          id: 2,
+        },
+      ],
     };
     const bodyStr = JSON.stringify(body);
     const options = {
@@ -33,13 +33,13 @@ test("server: check parseInt", () => {
       port: server.address().port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": bodyStr.length
-      }
+        "Content-Length": bodyStr.length,
+      },
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -47,7 +47,7 @@ test("server: check parseInt", () => {
             const expected = {
               time: { start: 1, end: 3 },
               break: { start: 2, end: 5 },
-              members: [{ id: 1 }, { id: 2 }]
+              members: [{ id: 1 }, { id: 2 }],
             };
             assert.deepStrictEqual(result, expected);
           })

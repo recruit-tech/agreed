@@ -6,7 +6,7 @@ import './styles.css'
 function Agrees({ agrees }) {
   return (
     <div className="contents">
-      {agrees.map(agree => (
+      {agrees.map((agree) => (
         <Agree key={agree.id} agree={agree} />
       ))}
     </div>

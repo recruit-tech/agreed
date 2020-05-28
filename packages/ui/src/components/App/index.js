@@ -13,13 +13,13 @@ const filterAgrees = (search, agrees) => {
   const check = shoudDisplay(search)
 
   return agrees.filter(
-    agree => check(agree.title) || check(agree.request.path) || check(agree.request.method)
+    (agree) => check(agree.title) || check(agree.request.path) || check(agree.request.method)
   )
 }
 
-const shoudDisplay = search => value => value && value.indexOf(search) > -1
+const shoudDisplay = (search) => (value) => value && value.indexOf(search) > -1
 
-const insertId = agrees => agrees.map((agree, i) => ({ ...agree, id: `agree_${i}` }))
+const insertId = (agrees) => agrees.map((agree, i) => ({ ...agree, id: `agree_${i}` }))
 
 class App extends Component {
   constructor(props) {
@@ -87,14 +87,14 @@ class App extends Component {
                 className="search__input"
                 placeholder="Search"
                 value={search}
-                onChange={e => this.onSearchTextChange(e.target.value)}
+                onChange={(e) => this.onSearchTextChange(e.target.value)}
               />
               <span className="search__group">
                 <label>
                   <input
                     type="checkbox"
                     checked={grouped}
-                    onChange={e => this.onFilterChange(e.target.checked)}
+                    onChange={(e) => this.onFilterChange(e.target.checked)}
                   />
                   &nbsp;group by request.path
                 </label>

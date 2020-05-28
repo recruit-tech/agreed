@@ -1,6 +1,6 @@
 {
   "name": "@agreed/server",
-  "version": "5.1.5",
+  "version": "5.1.6",
   "description": "agreed server",
   "main": "index.js",
   "bin": "bin/agreed-server.js",
@@ -24,15 +24,16 @@
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
   "dependencies": {
-    "@agreed/core": "^5.1.5",
+    "@agreed/core": "^5.1.6",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-http-proxy": "^1.6.0",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
     "assert-stream": "1.1.1",
-    "eater": "4.0.2",
+    "eater": "4.0.3",
     "must-call": "1.0.0",
     "plz-port": "1.0.0"
   },
