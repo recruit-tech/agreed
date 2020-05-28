@@ -1,7 +1,6 @@
 # <img src="https://recruit-tech.github.io/agreed/media/logo-with-text.svg" width="300" />
 
-[![Build Status](https://travis-ci.org/recruit-tech/agreed.svg?branch=master)](https://travis-ci.org/recruit-tech/agreed)
-
+![Node.js CI](https://github.com/recruit-tech/agreed/workflows/Node.js%20CI/badge.svg)
 
 agreed is Consumer Driven Contract tool with JSON mock server.
 
