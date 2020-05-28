@@ -40,7 +40,7 @@
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
-    "typescript": "3.8.3",
+    "typescript": "3.9.3",
     "yarn": "1.22.4"
   },
   "jest": {
