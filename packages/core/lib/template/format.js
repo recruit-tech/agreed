@@ -28,7 +28,7 @@ function format(template, args, funcs = {}) {
 
   if (!matches) return result;
 
-  matches.forEach(match => {
+  matches.forEach((match) => {
     var rawKey = match.replace(constants.TEMPLATE_REGEXP, "$2");
 
     // brackets notation like '{:array[:index]}'
@@ -36,7 +36,7 @@ function format(template, args, funcs = {}) {
       const matches = rawKey.match(constants.TEMPLATE_BRACKETS_REGEXP_GLOBAL);
 
       matches &&
-        matches.forEach(match => {
+        matches.forEach((match) => {
           const key = match.replace(constants.TEMPLATE_BRACKETS_REGEXP, "$1");
           const value = "." + key.split(".").reduce((o, i) => o && o[i], args);
 
@@ -46,7 +46,7 @@ function format(template, args, funcs = {}) {
         });
     }
 
-    var value = rawKey.split(",").map(key => {
+    var value = rawKey.split(",").map((key) => {
       if (key && args[key]) {
         return args[key];
       }
@@ -98,7 +98,7 @@ function formatObject(obj, args, funcs) {
     return obj;
   }
 
-  Object.keys(obj).forEach(key => {
+  Object.keys(obj).forEach((key) => {
     const value = obj[key];
     result[key] = format(value, args, funcs);
   });
@@ -111,10 +111,10 @@ function formatArray(array, args, funcs) {
     return array;
   }
 
-  array.forEach(item => {
+  array.forEach((item) => {
     const formattedItem = format(item, args, funcs);
     if (formattedItem.__spread) {
-      formattedItem.forEach(item => {
+      formattedItem.forEach((item) => {
         result.push(item);
       });
     } else {

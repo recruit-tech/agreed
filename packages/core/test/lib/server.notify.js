@@ -10,7 +10,7 @@ const mustCall = require("must-call");
 test("server: check notify", () => {
   const { server, notifier } = agreedServer({
     path: "test/agrees/notify.js",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -23,15 +23,15 @@ test("server: check notify", () => {
       port: server.address().port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": bodyString.length
-      }
+        "Content-Length": bodyString.length,
+      },
     };
     const req = http
       .request(
         options,
-        mustCall(res => {
+        mustCall((res) => {
           let data = "";
-          res.on("data", d => (data += d));
+          res.on("data", (d) => (data += d));
           res.on(
             "end",
             mustCall(() => {
@@ -47,7 +47,7 @@ test("server: check notify", () => {
 
     notifier.on(
       "message2",
-      mustCall(actual => {
+      mustCall((actual) => {
         const expected = { message: "message! hoge" };
         assert.deepStrictEqual(actual, expected);
       })
@@ -62,7 +62,7 @@ test("server: check notify", () => {
 test("server: check notify default message", () => {
   const { server, notifier } = agreedServer({
     path: "test/agrees/notify.js",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -75,15 +75,15 @@ test("server: check notify default message", () => {
       port: server.address().port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": bodyString.length
-      }
+        "Content-Length": bodyString.length,
+      },
     };
     const req = http
       .request(
         options,
-        mustCall(res => {
+        mustCall((res) => {
           let data = "";
-          res.on("data", d => (data += d));
+          res.on("data", (d) => (data += d));
           res.on(
             "end",
             mustCall(() => {
@@ -99,7 +99,7 @@ test("server: check notify default message", () => {
 
     notifier.on(
       "message",
-      mustCall(actual => {
+      mustCall((actual) => {
         const expected = { message: "message2 hoge" };
         assert.deepStrictEqual(actual, expected);
       })

@@ -12,14 +12,14 @@ test("feat(client): check broken response - 1", () => {
     agrees: [
       {
         request: {
-          path: "/content"
+          path: "/content",
         },
         response: {
-          status: 204
-        }
-      }
+          status: 204,
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -27,16 +27,16 @@ test("feat(client): check broken response - 1", () => {
       agrees: [
         {
           request: {
-            path: "/content"
+            path: "/content",
           },
           response: {
             body: {
-              id: 1
-            }
-          }
-        }
+              id: 1,
+            },
+          },
+        },
       ],
-      port: server.address().port
+      port: server.address().port,
     });
 
     const agrees = client.getAgreement();
@@ -47,10 +47,10 @@ test("feat(client): check broken response - 1", () => {
       request.end();
       request.on(
         "response",
-        mustCall(response => {
+        mustCall((response) => {
           client.checkResponse(response, agrees[i]).on(
             "result",
-            mustCall(result => {
+            mustCall((result) => {
               assert(result.error.length > 0);
               finishedCount++;
               if (finishedCount === requests.length) {
@@ -69,17 +69,17 @@ test("feat(client): check broken response - 2", () => {
     agrees: [
       {
         request: {
-          path: "/content"
+          path: "/content",
         },
         response: {
           headers: {
-            "Content-Type": "application/octet-stream"
+            "Content-Type": "application/octet-stream",
           },
-          body: "{broken:'json'"
-        }
-      }
+          body: "{broken:'json'",
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -87,16 +87,16 @@ test("feat(client): check broken response - 2", () => {
       agrees: [
         {
           request: {
-            path: "/content"
+            path: "/content",
           },
           response: {
             body: {
-              id: 1
-            }
-          }
-        }
+              id: 1,
+            },
+          },
+        },
       ],
-      port: server.address().port
+      port: server.address().port,
     });
 
     const agrees = client.getAgreement();
@@ -107,10 +107,10 @@ test("feat(client): check broken response - 2", () => {
       request.end();
       request.on(
         "response",
-        mustCall(response => {
+        mustCall((response) => {
           client.checkResponse(response, agrees[i]).on(
             "result",
-            mustCall(result => {
+            mustCall((result) => {
               assert(result.error.length > 0);
               finishedCount++;
               if (finishedCount === requests.length) {

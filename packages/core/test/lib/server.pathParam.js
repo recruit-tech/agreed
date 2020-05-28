@@ -14,43 +14,43 @@ test("server: check path params priority - 1", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
+            id: 2,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 3
-          }
+            id: 3,
+          },
         },
         response: {
           body: {
-            id: 3
-          }
-        }
-      }
+            id: 3,
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -58,12 +58,12 @@ test("server: check path params priority - 1", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -86,43 +86,43 @@ test("server: check path params priority - 2", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
+            id: 2,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 3
-          }
+            id: 3,
+          },
         },
         response: {
           body: {
-            id: 3
-          }
-        }
-      }
+            id: 3,
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -130,12 +130,12 @@ test("server: check path params priority - 2", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/2",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -158,43 +158,43 @@ test("server: check path params priority - 3", () => {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 1
-          }
+            id: 1,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 2
-          }
+            id: 2,
+          },
         },
         response: {
           body: {
-            id: 2
-          }
-        }
+            id: 2,
+          },
+        },
       },
       {
         request: {
           path: "/test/agreed/:id",
           values: {
-            id: 3
-          }
+            id: 3,
+          },
         },
         response: {
           body: {
-            id: 3
-          }
-        }
-      }
+            id: 3,
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -202,12 +202,12 @@ test("server: check path params priority - 3", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/3",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -231,27 +231,27 @@ test("server: check path params priority - 4", () => {
           path: "/test/agreed/:foo/:bar",
           values: {
             foo: 1,
-            bar: 2
-          }
+            bar: 2,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
-          path: "/test/agreed/1/3"
+          path: "/test/agreed/1/3",
         },
         response: {
           body: {
-            id: 2
-          }
-        }
-      }
+            id: 2,
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -259,12 +259,12 @@ test("server: check path params priority - 4", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1/2",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {
@@ -288,27 +288,27 @@ test("server: check path params priority - 5", () => {
           path: "/test/agreed/:foo/:bar",
           values: {
             foo: 1,
-            bar: 2
-          }
+            bar: 2,
+          },
         },
         response: {
           body: {
-            id: 1
-          }
-        }
+            id: 1,
+          },
+        },
       },
       {
         request: {
-          path: "/test/agreed/1/3"
+          path: "/test/agreed/1/3",
         },
         response: {
           body: {
-            id: 2
-          }
-        }
-      }
+            id: 2,
+          },
+        },
+      },
     ],
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -316,12 +316,12 @@ test("server: check path params priority - 5", () => {
       host: "localhost",
       method: "GET",
       path: "/test/agreed/1/3",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

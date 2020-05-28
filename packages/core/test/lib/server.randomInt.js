@@ -10,7 +10,7 @@ const mustCall = require("must-call");
 test("server: check randomInt", () => {
   const server = agreedServer({
     path: "test/agrees/agrees.json5",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
@@ -18,12 +18,12 @@ test("server: check randomInt", () => {
       host: "localhost",
       method: "GET",
       path: "/test/randomint/agreed/values",
-      port: server.address().port
+      port: server.address().port,
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         let data = "";
-        res.on("data", d => (data += d));
+        res.on("data", (d) => (data += d));
         res.on(
           "end",
           mustCall(() => {

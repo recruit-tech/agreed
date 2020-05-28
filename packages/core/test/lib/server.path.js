@@ -8,12 +8,12 @@ const AssertStream = require("assert-stream");
 test("server: `path` option can be directory index", () => {
   const server = agreedServer({
     path: "test/agrees",
-    port: 0
+    port: 0,
   });
 
   server.on("listening", () => {
     const postData = JSON.stringify({
-      message: "foobarbaz"
+      message: "foobarbaz",
     });
     const options = {
       host: "localhost",
@@ -22,11 +22,11 @@ test("server: `path` option can be directory index", () => {
       port: server.address().port,
       headers: {
         "Content-Type": "application/json",
-        "Content-Length": Buffer.byteLength(postData)
-      }
+        "Content-Length": Buffer.byteLength(postData),
+      },
     };
     const req = http
-      .request(options, res => {
+      .request(options, (res) => {
         const assert = new AssertStream();
         assert.expect({ message: "hello post" });
         res.pipe(assert);

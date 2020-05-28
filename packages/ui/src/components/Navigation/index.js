@@ -5,7 +5,7 @@ import MethodLabel from '../MethodLabel'
 
 const MARKER = '__AGREED-UI-MARKER__'
 
-const groupByRequestPath = list => {
+const groupByRequestPath = (list) => {
   const ret = {}
   for (let i = 0, len = list.length; i < len; i++) {
     const item = list[i]
@@ -58,7 +58,7 @@ const Details = ({ path, agrees }) => {
         <span>{name}</span>
         {agrees.length > 1 && <span className="count">{agrees.length}</span>}
       </summary>
-      {agrees.map(agree => (
+      {agrees.map((agree) => (
         <GroupedItem key={agree.id} agree={agree} />
       ))}
     </details>
@@ -75,7 +75,7 @@ const Grouped = ({ agrees }) => {
   const pathList = Object.keys(grouped)
   return (
     <React.Fragment>
-      {pathList.map(path => (
+      {pathList.map((path) => (
         <Details key={path} path={path} agrees={grouped[path]} />
       ))}
     </React.Fragment>
