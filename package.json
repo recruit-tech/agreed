@@ -3,5 +3,8 @@
   "private": true,
   "scripts": {
     "test": "npx lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.0"
   }
 }
