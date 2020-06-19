@@ -2,9 +2,11 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "test": "npx lerna run test"
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "allinstall": "lerna bootstrap"
   },
   "devDependencies": {
-    "lerna": "3.22.0"
+    "lerna": "^3.22.0"
   }
 }
