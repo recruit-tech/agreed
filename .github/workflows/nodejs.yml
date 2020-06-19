@@ -25,6 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install --no-save
+    - run: npm i typescript -g
     - run: npm run allinstall
     - run: npm run lint
     - run: npm test
