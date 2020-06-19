@@ -16,9 +16,9 @@
     "test": "jest",
     "lint": "tslint ./src/**/*.ts",
     "fmt": "tslint ./src/**/*.ts --fix",
-    "tsc": "yarn clean && tsc",
+    "tsc": "npm run clean && tsc",
     "clean": "rimraf ./lib/*",
-    "prepublish": "yarn tsc"
+    "prepublish": "npm run tsc"
   },
   "bin": {
     "agreed-typed": "lib/bin/agreed-typed.js"
@@ -38,8 +38,7 @@
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
-    "typescript": "3.9.5",
-    "yarn": "1.22.4"
+    "typescript": "3.9.5"
   },
   "jest": {
     "testURL": "http://localhost/",
