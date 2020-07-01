@@ -51,7 +51,7 @@
     "eater": "4.0.3",
     "eslint": "7.2.0",
     "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-prettier": "3.1.4",
     "espower-loader": "1.2.2",
     "express": "4.17.1",
     "is-empty": "1.2.0",
