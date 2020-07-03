@@ -127,14 +127,19 @@ class Checker {
   }
 
   static body(entryBody, reqBody, options) {
-    const result = { similarity: 1 };
-    if (!entryBody) return result;
-    if (!isInclude(entryBody, reqBody)) {
+    if (!entryBody) return { similarity: 1 };
+    const result = { similarity: 0 };
+    const keys = Object.keys(entryBody);
+    keys.forEach((key) => {
+      if (isInclude(entryBody[key], reqBody[key])) {
+        result.similarity += 1;
+      }
+    });
+    if (result.similarity === 0) {
       result.type = "BODY";
       result.error = `Does not include body, expect ${JSON.stringify(
         entryBody
       )} but ${JSON.stringify(reqBody)}`;
-      result.similarity = 0;
     }
     return result;
   }
