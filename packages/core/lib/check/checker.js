@@ -131,7 +131,8 @@ class Checker {
     const result = { similarity: 0 };
     const keys = Object.keys(entryBody);
     keys.forEach((key) => {
-      if (isInclude(entryBody[key], reqBody[key])) {
+      const normalizedKey = key.normalize("NFC");
+      if (isInclude(entryBody[key], reqBody[normalizedKey])) {
         result.similarity += 1;
       }
     });
