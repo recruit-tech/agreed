@@ -130,18 +130,20 @@ class Checker {
     if (!entryBody) return { similarity: 1 };
     const result = { similarity: 0 };
     const keys = Object.keys(entryBody);
+    const numberOfKeys = keys.length;
+    let match = 0;
     keys.forEach((key) => {
-      const normalizedKey = key.normalize("NFC");
-      if (isInclude(entryBody[key], reqBody[normalizedKey])) {
-        result.similarity += 1;
+      if (isInclude(entryBody[key], reqBody[key])) {
+        match += 1;
       }
     });
-    if (result.similarity === 0) {
+    if (match === 0) {
       result.type = "BODY";
       result.error = `Does not include body, expect ${JSON.stringify(
         entryBody
       )} but ${JSON.stringify(reqBody)}`;
     }
+    result.similarity = match / numberOfKeys;
     return result;
   }
 
