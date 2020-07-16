@@ -3,6 +3,7 @@
 const isInclude = require("./isInclude");
 const url = require("url");
 const logger = require("../utils/logger");
+const getObjectSimilarity = require("../utils/getObjectSimilarity");
 
 const nullishStrings = ["undefined", "null", ""];
 
@@ -127,23 +128,18 @@ class Checker {
   }
 
   static body(entryBody, reqBody, options) {
-    if (!entryBody) return { similarity: 1 };
-    const result = { similarity: 0 };
-    const keys = Object.keys(entryBody);
-    const numberOfKeys = keys.length;
-    let match = 0;
-    keys.forEach((key) => {
-      if (isInclude(entryBody[key], reqBody[key])) {
-        match += 1;
-      }
-    });
-    if (match === 0) {
+    const [numberOfKeys, numberOfMatches] = getObjectSimilarity(
+      entryBody,
+      reqBody
+    );
+    if (numberOfKeys === 0) return { similarity: 1 };
+    const result = { similarity: numberOfMatches / numberOfKeys };
+    if (numberOfMatches === 0) {
       result.type = "BODY";
       result.error = `Does not include body, expect ${JSON.stringify(
         entryBody
       )} but ${JSON.stringify(reqBody)}`;
     }
-    result.similarity = match / numberOfKeys;
     return result;
   }
 
