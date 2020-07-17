@@ -1,5 +1,5 @@
 "use strict";
-// eater:only
+
 const test = require("eater/runner").test;
 const checker = require(`${process.cwd()}/lib/check/checker`);
 const assert = require("power-assert");

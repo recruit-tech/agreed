@@ -5,17 +5,17 @@ const getObjectSimilarity = require(`${process.cwd()}/lib/utils/getObjectSimilar
 const assert = require("power-assert");
 
 test('getObjectSimilarity: flat objects', ()=>{
-        const obj1 = {
-            key: "foo"
-        };
+    const obj1 = {
+        key: "foo"
+    };
 
-        const obj2 = {
-            key: "bar"
-        };
+    const obj2 = {
+        key: "bar"
+    };
 
-        const result = getObjectSimilarity(obj1,obj2)
+    const result = getObjectSimilarity(obj1,obj2)
 
-        assert.deepEqual(result,[1,1])
+    assert.deepEqual(result,[1,1])
     }
 )
 
