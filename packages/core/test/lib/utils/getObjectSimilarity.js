@@ -4,7 +4,7 @@ const test = require("eater/runner").test;
 const getObjectSimilarity = require(`${process.cwd()}/lib/utils/getObjectSimilarity`);
 const assert = require("power-assert");
 
-test('', ()=>{
+test('getObjectSimilarity: flat objects', ()=>{
         const obj1 = {
             key: "foo"
         };
@@ -19,7 +19,7 @@ test('', ()=>{
     }
 )
 
-test('', ()=>{
+test('getObjectSimilarity: nested objects', ()=>{
     const obj1 = {
         key: {foo: "foo"}
     }
@@ -36,7 +36,7 @@ test('', ()=>{
 
 )
 
-test('', ()=>{
+test('getObjectSimilarity: double nested objects', ()=>{
     const obj1 = {
         key1: "foo",
         key2: {
@@ -67,7 +67,5 @@ test('', ()=>{
 
     assert.deepEqual(result,[8,6])
 
-
     }
-
 )

@@ -60,7 +60,7 @@ test('checker[body]: check nested objects returns similarity: 5/6', () => {
   assert.deepEqual(checker.body(entryBody, requestBody), {similarity: 5/6});
 });
 
-test('checker[body]: check nested objects returns similarity: 1/6', () => {
+test('checker[body]: check nested objects returns similarity: 0.5', () => {
   const entryBody = {
     key: "foo",
     key2:{
@@ -73,8 +73,12 @@ test('checker[body]: check nested objects returns similarity: 1/6', () => {
   };
 
   const requestBody = {
-    key: "foo"
+    key2:{
+      key2_2: {
+        key2_2_1: "baz",
+      }
+    }
   };
 
-  assert.deepEqual(checker.body(entryBody, requestBody), {similarity: 1/6});
+  assert.deepEqual(checker.body(entryBody, requestBody), {similarity: 0.5});
 });
