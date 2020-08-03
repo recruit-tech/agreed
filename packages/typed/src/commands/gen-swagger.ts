@@ -186,7 +186,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
     ) {
       files.push(module.filename);
       const file = fs.readFileSync(module.filename, "utf-8");
-      const ast = parse(file, { comment: true });
+      const ast = parse(file, { comment: true, loc: true });
 
       const docs = ast.comments
         .filter((c) => {
