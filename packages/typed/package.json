@@ -23,7 +23,7 @@
     "agreed-typed": "lib/bin/agreed-typed.js"
   },
   "devDependencies": {
-    "@types/jest": "26.0.7",
+    "@types/jest": "26.0.8",
     "axios": "0.19.2",
     "body-parser": "1.19.0",
     "cors": "2.8.5",
