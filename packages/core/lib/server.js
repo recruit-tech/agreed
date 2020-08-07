@@ -95,9 +95,9 @@ class Server {
             delete agree.request.pathToRegexpKeys;
             res.end(
               `Agree Not Found, actual request is ${JSON.stringify(
-                req
+                req, null, 2
               )}, but similar agree request is ${JSON.stringify(
-                agree.request
+                agree.request, null, 2
               )}, error: ${error}`
             );
           } else {
