@@ -27,7 +27,7 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "devDependencies": {
-    "eater": "4.0.3",
+    "eater": "4.0.4",
     "plz-port": "1.0.0"
   },
   "dependencies": {

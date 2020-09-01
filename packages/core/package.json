@@ -48,7 +48,7 @@
     "assert-stream": "1.1.1",
     "body-parser": "1.19.0",
     "codecov": "3.7.2",
-    "eater": "4.0.3",
+    "eater": "4.0.4",
     "eslint": "7.8.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
