@@ -9,7 +9,7 @@ import { AST_NODE_TYPES, parse } from "@typescript-eslint/typescript-estree";
 import {
   TSTypeAliasDeclaration,
   TSTypeReference,
-} from "@typescript-eslint/typescript-estree/dist/ts-estree/ts-estree";
+} from "@typescript-eslint/types/dist/ts-estree";
 import { ExportNamedDeclaration, Identifier } from "estree";
 import * as fs from "fs";
 import * as YAML from "json2yaml";
