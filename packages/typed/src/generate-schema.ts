@@ -64,13 +64,19 @@ const transformPropertySignature = <T extends ts.Node>(
     if (!ts.isPropertySignature(node)) {
       return node;
     }
-    const ps = node as ts.PropertySignature;
+    const ps = node;
     if (!ps.type || !ts.isTypeReferenceNode(ps.type)) {
       return node;
     }
-    const tr = ps.type as ts.TypeReferenceNode;
+    const tr = ps.type;
     if ((tr.typeName as any).escapedText === "Placeholder") {
-      ps.type = tr.typeArguments[0];
+      return ts.factory.updatePropertySignature(
+        ps,
+        ps.modifiers,
+        ps.name,
+        ps.questionToken,
+        tr.typeArguments[0]
+      );
     }
     return node;
   }
@@ -86,7 +92,7 @@ const transformTypeReferenceNode = <T extends ts.Node>(
     if (!ts.isTypeReferenceNode(node)) {
       return node;
     }
-    const tr = node as ts.TypeReferenceNode;
+    const tr = node;
     if (!tr.typeArguments) {
       return tr;
     }
@@ -94,14 +100,13 @@ const transformTypeReferenceNode = <T extends ts.Node>(
       if (!ts.isTypeReferenceNode(ta)) {
         return ta;
       }
-      const tref = ta as ts.TypeReferenceNode;
+      const tref = ta;
       if ((tref.typeName as any).escapedText === "Placeholder") {
         return tref.typeArguments[0];
       }
       return tref;
     }) as any;
-    tr.typeArguments = args;
-    return tr;
+    return ts.factory.updateTypeReferenceNode(tr, tr.typeName, args);
   }
   return ts.visitNode(rootNode, visit);
 };
@@ -115,7 +120,7 @@ const transformCaptureTypeArguments = <T extends ts.Node>(
       return node;
     }
     const tp = node as ts.TupleTypeNode;
-    const et: ts.NodeArray<ts.TypeNode> = tp.elementTypes.map(e => {
+    const et: ts.NodeArray<ts.TypeNode> = tp.elements.map(e => {
       if (!ts.isTypeReferenceNode(e)) {
         return e;
       }
@@ -128,8 +133,7 @@ const transformCaptureTypeArguments = <T extends ts.Node>(
 
       return e;
     }) as any;
-    tp.elementTypes = et;
-    return tp;
+    return ts.factory.updateTupleTypeNode(tp, et);
   }
   return ts.visitNode(rootNode, visit);
 };
