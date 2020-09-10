@@ -27,7 +27,7 @@
     "json-schema-to-flow-type": "1.0.0",
     "lodash.template": "4.5.0",
     "minimist": "1.2.5",
-    "serialize-javascript": "5.0.0"
+    "serialize-javascript": "5.0.1"
   },
   "devDependencies": {
     "axios": "0.20.0",
