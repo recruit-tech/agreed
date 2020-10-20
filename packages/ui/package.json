@@ -42,7 +42,7 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-json-tree": "0.13.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.4"
   },
   "browserslist": [
     ">0.2%",
