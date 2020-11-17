@@ -30,7 +30,7 @@
     "serialize-javascript": "5.0.1"
   },
   "devDependencies": {
-    "axios": "0.20.0",
+    "axios": "0.21.0",
     "babel-eslint": "10.1.0",
     "classnames": "2.2.6",
     "eslint": "7.11.0",
