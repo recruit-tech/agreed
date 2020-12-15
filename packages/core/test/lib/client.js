@@ -86,7 +86,12 @@ test("feat(client): check request to server", () => {
           client.checkResponse(response, agrees[i]).on(
             "result",
             mustCall((result) => {
-              assert(isEmpty(result.diff));
+              if (Object.keys(result.diff).length > 0) {
+                assert(result.body, "Agree Not Found");
+                assert(result.diff.status, [200, 404])
+              } else {
+                assert(isEmpty(result.diff));
+              }
               finishedCount++;
               if (finishedCount === requests.length) {
                 server.close();

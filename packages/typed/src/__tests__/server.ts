@@ -56,7 +56,8 @@ test("register ts agrees with get and query", async (done) => {
       const response = await axios.get(
         `http://localhost:${port}/ping/test?moo=moo&q=q&query2=1`
       );
-      assert.deepStrictEqual(response.data, { message: "test" });
+      // Agree Not Found when it comes to exact matching of path values
+      assert.deepStrictEqual(response.data, { message: "ok test" });
 
       serv.close(done);
     } catch (e) {
