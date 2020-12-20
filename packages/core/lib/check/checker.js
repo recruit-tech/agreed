@@ -161,7 +161,8 @@ class Checker {
     // entryQuery = { q: "{:someQueryStrings }" }
     // reqQuery = { q: "bar" }
     const existEntryQuery = Object.keys(entryQuery).length > 0;
-    if (existEntryQuery) return this.queryWhenCarefulCheckRequired(reqQuery, entryQuery, options);
+    if (existEntryQuery)
+      return this.queryWhenCarefulCheckRequired(reqQuery, entryQuery, options);
 
     return result;
   }
@@ -200,7 +201,13 @@ class Checker {
     return result;
   }
 
-  static matchQueryWhenHasTmpl(reqQuery, entryQuery, options, reqValue, normalizedKey) {
+  static matchQueryWhenHasTmpl(
+    reqQuery,
+    entryQuery,
+    options,
+    reqValue,
+    normalizedKey
+  ) {
     // e.g.) { "someQueryStrings": "bar" }
     const calcEntryParameters = tmplBind(entryQuery, reqQuery);
     const calcEntryQueryValue = calcEntryParameters[normalizedKey];

@@ -88,7 +88,7 @@ test("feat(client): check request to server", () => {
             mustCall((result) => {
               if (Object.keys(result.diff).length > 0) {
                 assert(result.body, "Agree Not Found");
-                assert(result.diff.status, [200, 404])
+                assert(result.diff.status, [200, 404]);
               } else {
                 assert(isEmpty(result.diff));
               }
