@@ -72,7 +72,7 @@
     "doctrine": "^3.0.0",
     "json2yaml": "^1.1.0",
     "minimist": "^1.2.0",
-    "typescript-json-schema": "^0.45.0"
+    "typescript-json-schema": "^0.47.0"
   },
   "publishConfig": {
     "access": "public"
