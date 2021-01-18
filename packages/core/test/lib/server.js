@@ -385,3 +385,71 @@ test("server: POST API with ts agrees", () => {
     });
   });
 });
+
+test("server: POST with :id (when enable-prefer-query option is true)", () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: "test/agrees/agrees.js",
+      port: port,
+      enablePreferQuery: true,
+    });
+
+    server.on("listening", () => {
+      const postData = JSON.stringify({
+        message: "foobarbaz",
+      });
+      const options = {
+        host: "localhost",
+        method: "POST",
+        path: "/path/fuga?meta=fooo",
+        port: port,
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Length": Buffer.byteLength(postData),
+        },
+      };
+      const req = http
+        .request(options, (res) => {
+          assert(res.statusCode === 404);
+          server.close();
+        })
+        .on("error", console.error);
+      req.write(postData);
+      req.end();
+    });
+  });
+});
+
+test("server: check response when expect is filled (when enable-prefer-query option is true)", () => {
+  plzPort().then((port) => {
+    const server = agreedServer({
+      path: "test/agrees/agrees.js",
+      port: port,
+      enablePreferQuery: true,
+    });
+
+    server.on("listening", () => {
+      const postData = JSON.stringify({
+        message: "foobarbaz",
+      });
+      const options = {
+        host: "localhost",
+        method: "POST",
+        path: "/embed/from/response/fuga?meta=true",
+        port: port,
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Length": Buffer.byteLength(postData),
+        },
+      };
+      const req = http
+        .request(options, (res) => {
+          assert(res.statusCode === 404);
+          server.close();
+        })
+        .on("error", console.error);
+      req.write(postData);
+      req.end();
+    });
+  });
+});
