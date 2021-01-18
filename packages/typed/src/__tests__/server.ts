@@ -104,7 +104,7 @@ test("register ts agrees with get and query (when enable-prefer-query option is 
   const agreed = new Agreed();
 
   const app = setupServer(agreed, {
-    enablePreferQuery: true
+    enablePreferQuery: true,
   });
 
   const serv = app.listen(port, async () => {
