@@ -25,6 +25,8 @@ module.exports = (opts) => {
   const proxyOpts = opts.proxyOpts || {};
   const typedCachePath = opts['typed-cache-path'] || opts.typedCachePath;
   opts.typedCachePath = typedCachePath;
+  const enablePreferQuery = opts["enable-prefer-query"] || opts.enablePreferQuery;
+  opts.enablePreferQuery = enablePreferQuery;
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));

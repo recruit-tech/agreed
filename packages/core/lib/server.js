@@ -45,7 +45,8 @@ class Server {
               {
                 pathToRegexpKeys: agree.request.pathToRegexpKeys,
                 values: agree.request.values,
-                debug: this.options.debug
+                debug: this.options.debug,
+                enablePreferQuery: this.options.enablePreferQuery,
               }
             );
             return { agree, result, similarity, error };

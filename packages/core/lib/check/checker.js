@@ -157,12 +157,18 @@ class Checker {
       result.similarity = 0;
     }
 
-    // e.g.)
-    // entryQuery = { q: "{:someQueryStrings }" }
-    // reqQuery = { q: "bar" }
-    const existEntryQuery = Object.keys(entryQuery).length > 0;
-    if (existEntryQuery)
-      return this.queryWhenCarefulCheckRequired(reqQuery, entryQuery, options);
+    if (options.enablePreferQuery) {
+      // e.g.)
+      // entryQuery = { q: "{:someQueryStrings }" }
+      // reqQuery = { q: "bar" }
+      const existEntryQuery = Object.keys(entryQuery).length > 0;
+      if (existEntryQuery)
+        return this.queryWhenCarefulCheckRequired(
+          reqQuery,
+          entryQuery,
+          options
+        );
+    }
 
     return result;
   }
