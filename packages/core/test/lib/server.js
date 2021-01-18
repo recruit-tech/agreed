@@ -158,7 +158,10 @@ test("server: POST with :id ", () => {
       };
       const req = http
         .request(options, (res) => {
-          assert(res.statusCode === 404);
+          assert(res.statusCode === 200);
+          const assertStream = new AssertStream();
+          assertStream.expect({ message: "hello fuga, fooo, foobarbaz" });
+          res.pipe(assertStream);
           server.close();
         })
         .on("error", console.error);
@@ -191,7 +194,22 @@ test("server: check response when expect is filled", () => {
       };
       const req = http
         .request(options, (res) => {
-          assert(res.statusCode === 404);
+          assert(res.statusCode === 200);
+          const assertStream = new AssertStream();
+          assertStream.expect({
+            message: "hello fuga true foobarbaz",
+            image:
+              "http://imgfp.hotp.jp/SYS/cmn/images/front_002/logo_hotopepper_264x45.png",
+            topics: [
+              {
+                a: "a",
+              },
+              {
+                b: "b",
+              },
+            ],
+          });
+          res.pipe(assertStream);
           server.close();
         })
         .on("error", console.error);
