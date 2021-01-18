@@ -52,9 +52,9 @@ class Checker {
     similarity += result.similarity;
     if (
       !Checker.validRequest(result, request, req, options.debug) ||
-      result.similarity == 0
+      (result.similarity == 0 && options.enablePreferQuery)
     ) {
-      return { result: false, similarity: 0, error: result.error };
+      return { result: false, similarity, error: result.error };
     }
     return { result: true, similarity };
   }
