@@ -7,12 +7,13 @@ import * as getPort from "get-port";
 import * as path from "path";
 import * as assert from "assert";
 
-const setupServer = (agreed) => {
+const setupServer = (agreed, opts = {}) => {
   const app = express();
   app.use(bodyParser.json());
   app.use(cors());
   app.use(
     agreed.middleware({
+      ...opts,
       path: path.resolve(__dirname, "./data/agreed.ts"),
     })
   );
@@ -89,6 +90,30 @@ test("register ts agrees with post", async (done) => {
       );
       assert.strictEqual(response.status, 201);
       assert.deepStrictEqual(response.data, { message: "test" });
+
+      serv.close(done);
+    } catch (e) {
+      serv.close();
+      done(e);
+    }
+  });
+});
+
+test("register ts agrees with get and query (when enable-prefer-query option is true)", async (done) => {
+  const port = await getPort();
+  const agreed = new Agreed();
+
+  const app = setupServer(agreed, {
+    enablePreferQuery: true
+  });
+
+  const serv = app.listen(port, async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:${port}/ping/test?moo=moo&q=q&query2=1`
+      );
+      // Agree Not Found when it comes to exact matching of path values
+      assert.deepStrictEqual(response.data, { message: "ok test" });
 
       serv.close(done);
     } catch (e) {
