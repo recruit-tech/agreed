@@ -3,6 +3,8 @@
 const isInclude = require("./isInclude");
 const url = require("url");
 const logger = require("../utils/logger");
+const { hasTemplate } = require("../template/hasTemplate");
+const tmplBind = require("../template/bind");
 
 const nullishStrings = ["undefined", "null", ""];
 
@@ -39,14 +41,19 @@ class Checker {
     if (!Checker.validRequest(result, request, req, options.debug)) {
       return { result: false, similarity, error: result.error };
     }
-    result = Checker.query(request.query, req.query, options);
+    result = Checker.body(request.body, req.body, options);
     similarity += result.similarity;
     if (!Checker.validRequest(result, request, req, options.debug)) {
       return { result: false, similarity, error: result.error };
     }
-    result = Checker.body(request.body, req.body, options);
+    // query
+    // The value of the given query character.
+    result = Checker.query(request.query, req.query, options);
     similarity += result.similarity;
-    if (!Checker.validRequest(result, request, req, options.debug)) {
+    if (
+      !Checker.validRequest(result, request, req, options.debug) ||
+      (result.similarity == 0 && options.enablePreferQuery)
+    ) {
       return { result: false, similarity, error: result.error };
     }
     return { result: true, similarity };
@@ -149,7 +156,88 @@ class Checker {
       )} but ${JSON.stringify(reqQuery)}`;
       result.similarity = 0;
     }
+
+    if (options.enablePreferQuery) {
+      // e.g.)
+      // entryQuery = { q: "{:someQueryStrings }" }
+      // reqQuery = { q: "bar" }
+      const existEntryQuery = Object.keys(entryQuery).length > 0;
+      if (existEntryQuery)
+        return this.queryWhenCarefulCheckRequired(
+          reqQuery,
+          entryQuery,
+          options
+        );
+    }
+
     return result;
+  }
+
+  static queryWhenCarefulCheckRequired(reqQuery, entryQuery, options) {
+    const result = { similarity: 1 };
+    const isMatch = Object.keys(reqQuery).every((key) => {
+      if (entryQuery[key] != undefined) {
+        const tmpl = hasTemplate(entryQuery[key]);
+        const hasTmpl = tmpl !== null && tmpl.length > 0;
+        const reqValue = reqQuery[key];
+
+        if (hasTmpl) {
+          // e.g.) {":someQueryStrings"} => someQueryStrings
+          const normalizedKey = entryQuery[key].replace(/\{|\}|\:/g, "");
+          return this.matchQueryWhenHasTmpl(
+            reqQuery,
+            entryQuery,
+            options,
+            reqValue,
+            normalizedKey
+          );
+        } else {
+          // e.g.) entryQuery = { foo: "foo", bar: "bar" }
+          // e.g.) entryParameters = { id: "yosuke" }
+          const entryQueryValue = entryQuery[key];
+          return reqValue === entryQueryValue;
+        }
+      } else {
+        // An undefined query string may have been passed
+        return false;
+      }
+    });
+
+    result.similarity = isMatch ? 1 : 0;
+    return result;
+  }
+
+  static matchQueryWhenHasTmpl(
+    reqQuery,
+    entryQuery,
+    options,
+    reqValue,
+    normalizedKey
+  ) {
+    // e.g.) { "someQueryStrings": "bar" }
+    const calcEntryParameters = tmplBind(entryQuery, reqQuery);
+    const calcEntryQueryValue = calcEntryParameters[normalizedKey];
+
+    // e.g.) { id: "yosuke", someQueryStrings: "bar" }
+    // include path parameters
+    const entryParameters = options.values;
+
+    // Consideration when the query string is given in the path
+    //
+    // e.g.)
+    // path = "/test/arrayreqs/agreed/values?year_months[]=201708&year_months[]=201709&year_months[]=201810"
+    // options = { pathToRegexpKeys: [], values: undefined, debug: undefined }
+    if (entryParameters !== undefined) {
+      const entryQueryValue = entryParameters[normalizedKey];
+
+      // By definition, it can be defined as a numerical value, but in reality, only a numerical value as a character string can be passed.
+      return (
+        calcEntryQueryValue == String(entryQueryValue) &&
+        reqValue === String(entryQueryValue)
+      );
+    } else {
+      return reqValue == calcEntryQueryValue;
+    }
   }
 
   static checkNullish(obj = {}) {

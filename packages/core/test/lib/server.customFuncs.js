@@ -41,7 +41,7 @@ test("server: check custom function", () => {
     const options = {
       host: "localhost",
       method: "GET",
-      path: "/test/custom/agreed/values?a=1&b=2&c=4",
+      path: "/test/custom/agreed/values?a=1&b=2&c=3",
       port: server.address().port,
     };
     const req = http
@@ -52,7 +52,7 @@ test("server: check custom function", () => {
           "end",
           mustCall(() => {
             const result = JSON.parse(data);
-            assert.strictEqual(result.sum, 7);
+            assert.strictEqual(result.sum, 6);
           })
         );
         server.close();
@@ -102,7 +102,7 @@ test("server: check custom function with array response", () => {
     const options = {
       host: "localhost",
       method: "GET",
-      path: "/test/custom/agreed/values?a=20&b=30&c=40",
+      path: "/test/custom/agreed/values?a=1&b=2&c=3",
       port: server.address().port,
     };
     const req = http
@@ -113,7 +113,7 @@ test("server: check custom function with array response", () => {
           "end",
           mustCall(() => {
             const result = JSON.parse(data);
-            assert.deepStrictEqual(result.sum, [90, 24000, -50]);
+            assert.deepStrictEqual(result.sum, [6, 6, -4]);
           })
         );
         server.close();
