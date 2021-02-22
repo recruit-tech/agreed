@@ -25,7 +25,7 @@
     "is-empty": "^1.0.0"
   },
   "devDependencies": {
-    "@agreed/server": "^5.2.0",
+    "@agreed/server": "5.2.0",
     "eater": "4.0.4",
     "plz-port": "1.0.0"
   },
