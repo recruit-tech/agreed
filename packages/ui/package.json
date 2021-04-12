@@ -32,7 +32,7 @@
   "devDependencies": {
     "axios": "0.21.1",
     "babel-eslint": "10.1.0",
-    "classnames": "2.3.0",
+    "classnames": "2.3.1",
     "eslint": "7.24.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-prettier": "3.3.1",
