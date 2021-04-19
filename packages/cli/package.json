@@ -36,7 +36,7 @@
     "@agreed/typed": "^5.2.0",
     "@agreed/ui": "^5.2.0",
     "colo": "^1.0.0",
-    "json5": "^2.0.0",
+    "json5": "^2.1.0",
     "minimist": "^1.2.0"
   },
   "homepage": "https://github.com/recruit-tech/agreed#readme",

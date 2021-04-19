@@ -37,7 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "^10.11.5",
-    "json5": "^2.0.0",
+    "json5": "^2.1.0",
     "jsonschema": "^1.2.4",
     "path-to-regexp": "^6.0.0",
     "stable": "^0.1.8",
