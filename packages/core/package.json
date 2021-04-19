@@ -38,7 +38,7 @@
   "dependencies": {
     "@types/node": "^10.11.5",
     "json5": "^2.0.0",
-    "jsonschema": "^1.2.4",
+    "jsonschema": "^1.4.0",
     "path-to-regexp": "^6.0.0",
     "stable": "^0.1.8",
     "typescript": "^4.0.0",
