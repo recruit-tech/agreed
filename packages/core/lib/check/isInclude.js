@@ -9,7 +9,7 @@ module.exports = function isInclude(small, large) {
     return small.getTime() === large.getTime();
   }
 
-  if (typeof small != "object") {
+  if (typeof small != "object" || small === null) {
     if (hasTemplate(small) && large !== undefined) {
       return true;
     }

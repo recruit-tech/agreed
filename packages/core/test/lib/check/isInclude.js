@@ -96,3 +96,60 @@ test("isInclude: false, check large value is empty string", () => {
   const is = isInclude(small, large);
   assert(!is);
 });
+
+test("isInclude: check small value is null & large value is null", () => {
+  const small = {
+    abc: "abc",
+    def: "{:aaa}",
+    ghi: "{:hoo}",
+    jkl: null
+  };
+
+  const large = {
+    abc: "abc",
+    def: { a: "123" },
+    ghi: "",
+    jkl: null
+  };
+
+  const is = isInclude(small, large);
+  assert(is);
+});
+
+test("isInclude: check small value is null & large value is undefined", () => {
+  const small = {
+    abc: "abc",
+    def: "{:aaa}",
+    ghi: "{:hoo}",
+    jkl: null
+  };
+
+  const large = {
+    abc: "abc",
+    def: { a: "123" },
+    ghi: ""
+    // jkl is undefined
+  };
+
+  const is = isInclude(small, large);
+  assert(is);
+});
+
+test("isInclude: false, check small value is null & large value is empty string", () => {
+  const small = {
+    abc: "abc",
+    def: "{:aaa}",
+    ghi: "{:hoo}",
+    jkl: null
+  };
+
+  const large = {
+    abc: "abc",
+    def: { a: "123" },
+    ghi: "",
+    jkl: ""
+  };
+
+  const is = isInclude(small, large);
+  assert(!is);
+});
