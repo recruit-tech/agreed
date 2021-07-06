@@ -33,7 +33,7 @@
     "axios": "0.21.1",
     "babel-eslint": "10.1.0",
     "classnames": "2.3.1",
-    "eslint": "7.24.0",
+    "eslint": "7.30.0",
     "eslint-config-prettier": "8.2.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
