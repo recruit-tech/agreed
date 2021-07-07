@@ -211,7 +211,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
           return prev;
         }
 
-        const declaration = (c.declaration as any) as TSTypeAliasDeclaration;
+        const declaration = c.declaration as any as TSTypeAliasDeclaration;
 
         if (
           declaration.typeAnnotation.type !== AST_NODE_TYPES.TSTypeReference

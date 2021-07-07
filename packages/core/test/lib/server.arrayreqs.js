@@ -33,8 +33,7 @@ test("server: check custom function", () => {
     const options = {
       host: "localhost",
       method: "GET",
-      path:
-        "/test/arrayreqs/agreed/values?year_months[]=201708&year_months[]=201709&year_months[]=201810",
+      path: "/test/arrayreqs/agreed/values?year_months[]=201708&year_months[]=201709&year_months[]=201810",
       port: server.address().port,
     };
     const req = http
