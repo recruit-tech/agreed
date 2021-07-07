@@ -9,7 +9,8 @@
     "start:dev:server": "react-scripts start",
     "build": "node scripts/build.js",
     "build:dev": "PUBLIC_URL=./ react-scripts build",
-    "lint": "eslint 'src/**/*.js' --fix"
+    "lint": "eslint 'src/**/*.js' --fix",
+    "lintfix": "eslint 'src/**/*.js' --fix"
   },
   "bin": {
     "agreed-ui": "./bin/agreed-ui.js"
