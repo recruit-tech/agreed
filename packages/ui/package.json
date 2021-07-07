@@ -24,7 +24,7 @@
     "@agreed/core": "^5.2.1",
     "colo": "1.0.0",
     "express": "4.17.1",
-    "fs-extra": "9.1.0",
+    "fs-extra": "10.0.0",
     "json-schema-to-flow-type": "1.0.0",
     "lodash.template": "4.5.0",
     "minimist": "1.2.5",
