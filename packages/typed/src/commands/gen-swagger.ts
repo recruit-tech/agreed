@@ -6,11 +6,7 @@ import { generateSwagger } from "../generate-swagger";
 import { showHelp } from "../util";
 
 import { AST_NODE_TYPES, parse } from "@typescript-eslint/typescript-estree";
-import {
-  TSTypeAliasDeclaration,
-  TSTypeReference,
-} from "@typescript-eslint/types/dist/ts-estree";
-import { ExportNamedDeclaration, Identifier } from "estree";
+import { Identifier } from "estree";
 import * as fs from "fs";
 import * as YAML from "json2yaml";
 import { Definition } from "typescript-json-schema";
@@ -203,15 +199,15 @@ function aggregateModules(mod: NodeModule, lim = 2) {
         if (current.type !== AST_NODE_TYPES.ExportNamedDeclaration) {
           return prev;
         }
-        const c: ExportNamedDeclaration = current as any;
+        const c = current;
 
         if (
-          (c.declaration.type as any) !== AST_NODE_TYPES.TSTypeAliasDeclaration
+          c.declaration.type !== AST_NODE_TYPES.TSTypeAliasDeclaration
         ) {
           return prev;
         }
 
-        const declaration = c.declaration as any as TSTypeAliasDeclaration;
+        const declaration = c.declaration;
 
         if (
           declaration.typeAnnotation.type !== AST_NODE_TYPES.TSTypeReference
@@ -219,7 +215,7 @@ function aggregateModules(mod: NodeModule, lim = 2) {
           return prev;
         }
 
-        const annotation: TSTypeReference = declaration.typeAnnotation;
+        const annotation = declaration.typeAnnotation;
 
         if ((annotation.typeName as Identifier).name === "APIDef") {
           const params: any = annotation.typeParameters;

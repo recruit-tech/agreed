@@ -15,7 +15,7 @@ export function generateSchema(fileNames, meta): Spec[] {
     noEmitOnError: false,
     emitDecoratorMetadata: true,
     experimentalDecorators: true,
-    target: ts.ScriptTarget.ES5,
+    target: ts.ScriptTarget.ES2015,
     module: ts.ModuleKind.CommonJS,
     allowUnusedLabels: true
   };
@@ -48,6 +48,7 @@ export function generateSchema(fileNames, meta): Spec[] {
 
   const generator = TJS.buildGenerator(program, settings);
   return meta.map(m => {
+    console.log(generator.getSchemaForSymbol(m.name))
     return {
       ...m,
       schema: generator.getSchemaForSymbol(m.name)
@@ -70,6 +71,7 @@ const transformPropertySignature = <T extends ts.Node>(
     }
     const tr = ps.type;
     if ((tr.typeName as any).escapedText === "Placeholder") {
+      console.log(tr.typeArguments)
       return ts.factory.updatePropertySignature(
         ps,
         ps.modifiers,

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`e2e testing 1`] = `
+Object {
+  "consumes": Array [
+    "application/json",
+  ],
+  "definitions": Object {},
+  "host": "",
+  "info": Object {
+    "description": "test description",
+    "title": "testing",
+    "version": "test",
+  },
+  "paths": Object {},
+  "produces": Array [
+    "application/json",
+  ],
+  "swagger": "2.0",
+}
+`;
