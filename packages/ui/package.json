@@ -27,11 +27,11 @@
     "fs-extra": "10.0.0",
     "json-schema-to-flow-type": "1.0.0",
     "lodash.template": "4.5.0",
-    "minimist": "1.2.5",
+    "minimist": "1.2.6",
     "serialize-javascript": "6.0.0"
   },
   "devDependencies": {
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "babel-eslint": "10.1.0",
     "classnames": "2.3.1",
     "eslint": "7.32.0",
@@ -42,7 +42,7 @@
     "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-json-tree": "0.15.0",
+    "react-json-tree": "0.16.2",
     "react-scripts": "4.0.3"
   },
   "browserslist": [
