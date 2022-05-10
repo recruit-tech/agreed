@@ -36,7 +36,7 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^14.0.0",
+    "@types/node": "^16.0.0",
     "json5": "^2.0.0",
     "jsonschema": "^1.2.4",
     "path-to-regexp": "^6.0.0",
