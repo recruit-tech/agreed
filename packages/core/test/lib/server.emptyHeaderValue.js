@@ -101,9 +101,9 @@ test("server: check empty-header-value fail", () => {
           mustCall(() => {
             try {
               const result = JSON.parse(data);
+              assert.fail("shoul not be reached here.");
             } catch (e) {
-              // fail is OK
-              assert.strictEqual(1, 1);
+              // noop.
             }
           })
         );
