@@ -25,7 +25,7 @@ test("server: check empty-header-value skip", () => {
       },
     ],
     port: 0,
-    skipCheckHeaderValueNullable: true
+    skipCheckHeaderValueNullable: true,
   });
 
   server.on("listening", () => {
@@ -35,7 +35,7 @@ test("server: check empty-header-value skip", () => {
       path: "/test/agreed/1",
       port: server.address().port,
       headers: {
-        'empty-header': ''
+        "empty-header": "",
       },
     };
     const req = http
@@ -49,7 +49,7 @@ test("server: check empty-header-value skip", () => {
               const result = JSON.parse(data);
               assert.strictEqual(result.id, 1);
             } catch (e) {
-              console.error()
+              console.error();
             }
           })
         );
@@ -79,7 +79,7 @@ test("server: check empty-header-value fail", () => {
       },
     ],
     port: 0,
-    skipCheckHeaderValueNullable: false
+    skipCheckHeaderValueNullable: false,
   });
 
   server.on("listening", () => {
@@ -89,8 +89,8 @@ test("server: check empty-header-value fail", () => {
       path: "/test/agreed/1",
       port: server.address().port,
       headers: {
-        'empty-header': ''
-      }
+        "empty-header": "",
+      },
     };
     const req = http
       .request(options, (res) => {
