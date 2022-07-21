@@ -1,6 +1,6 @@
 {
   "name": "@agreed/client",
-  "version": "5.2.1",
+  "version": "5.3.0",
   "description": "agreed client, testing utilities",
   "main": "index.js",
   "bin": "bin/agreed-client.js",
@@ -20,12 +20,12 @@
   "author": "yosuke-furukawa",
   "license": "MIT",
   "dependencies": {
-    "@agreed/core": "^5.2.1",
+    "@agreed/core": "^5.3.0",
     "colo": "^1.0.0",
     "is-empty": "^1.0.0"
   },
   "devDependencies": {
-    "@agreed/server": "^5.2.1",
+    "@agreed/server": "^5.3.0",
     "eater": "4.0.4",
     "plz-port": "1.0.0"
   },
