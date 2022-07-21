@@ -27,6 +27,8 @@ module.exports = (opts) => {
   opts.typedCachePath = typedCachePath;
   const enablePreferQuery = opts["enable-prefer-query"] || opts.enablePreferQuery;
   opts.enablePreferQuery = enablePreferQuery;
+  const skipCheckHeaderValueNullable = opts["skip-check-header-value-nullable"] || opts.skipCheckHeaderValueNullable;
+  opts.skipCheckHeaderValueNullable = skipCheckHeaderValueNullable;
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
