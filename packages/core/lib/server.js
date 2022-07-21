@@ -47,6 +47,7 @@ class Server {
                 values: agree.request.values,
                 debug: this.options.debug,
                 enablePreferQuery: this.options.enablePreferQuery,
+                skipCheckHeaderValueNullable: this.options.skipCheckHeaderValueNullable,
               }
             );
             return { agree, result, similarity, error };

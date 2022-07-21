@@ -121,14 +121,16 @@ class Checker {
       return result;
     }
 
-    const nullish = Checker.checkNullish(reqHeaders);
-    const nullishError = nullish.error;
-    const nullishSimilarity = nullish.similarity;
-    if (nullish) {
-      result.type = "HEADERS";
-      result.error = nullishError;
-      result.similarity = nullishSimilarity;
-      return result;
+    if (!options.skipCheckHeaderValueNullable) {
+      const nullish = Checker.checkNullish(reqHeaders);
+      const nullishError = nullish.error;
+      const nullishSimilarity = nullish.similarity;
+      if (nullish) {
+        result.type = "HEADERS";
+        result.error = nullishError;
+        result.similarity = nullishSimilarity;
+        return result;
+      }
     }
     return result;
   }
