@@ -10,7 +10,7 @@ export interface Spec {
 
 export function generateSchema(fileNames, meta): Spec[] {
   const settings: TJS.PartialArgs = { required: true, ignoreErrors: true };
-  const compilerOptions: TJS.CompilerOptions = {
+  const compilerOptions: ts.CompilerOptions = {
     noEmit: true,
     noEmitOnError: false,
     emitDecoratorMetadata: true,
@@ -46,7 +46,7 @@ export function generateSchema(fileNames, meta): Spec[] {
 
   const program = ts.createProgram(fileNames, compilerOptions, host);
 
-  const generator = TJS.buildGenerator(program, settings);
+  const generator = TJS.buildGenerator(program as unknown as TJS.Program, settings);
   return meta.map(m => {
     return {
       ...m,
