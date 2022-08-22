@@ -8,7 +8,7 @@
     "allinstall": "lerna bootstrap"
   },
   "devDependencies": {
-    "lerna": "5.4.2"
+    "lerna": "5.4.3"
   },
   "version": "0.1.0"
 }
