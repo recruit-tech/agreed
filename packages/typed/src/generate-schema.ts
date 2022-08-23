@@ -44,7 +44,7 @@ export function generateSchema(fileNames, meta): Spec[] {
   };
   host.getSourceFileByPath = undefined;
 
-  const program = ts.createProgram(fileNames, compilerOptions, host);
+  const program = TJS.getProgramFromFiles(fileNames, compilerOptions);
 
   const generator = TJS.buildGenerator(program as unknown as TJS.Program, settings);
   return meta.map(m => {
