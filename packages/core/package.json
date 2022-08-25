@@ -1,6 +1,6 @@
 {
   "name": "@agreed/core",
-  "version": "5.3.1",
+  "version": "5.3.2-alpha.0",
   "description": "agreed is a mock server and test client, agreed will be helper for Consumer Driven Contract",
   "main": "index.js",
   "scripts": {
