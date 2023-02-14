@@ -60,7 +60,7 @@
     "nyc": "15.1.0",
     "plz-port": "1.0.0",
     "power-assert": "1.6.1",
-    "prettier": "2.7.1"
+    "prettier": "2.8.4"
   },
   "publishConfig": {
     "access": "public"
