@@ -32,7 +32,7 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@agreed/core": "^5.3.2-alpha.0",
+    "@agreed/core": "^6.0.0",
     "@types/estree": "1.0.0",
     "@types/minimist": "^1.2.0",
     "@types/node": "^18.0.0",

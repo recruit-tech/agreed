@@ -8,7 +8,8 @@ const format = require('@agreed/core/lib/template/format')
 const { parseSchema } = require('json-schema-to-flow-type')
 
 module.exports = function (options) {
-  const agreesPath = path.resolve(options.path ?? '')
+  console.log(options)
+  const agreesPath = path.resolve(options.path)
   const base = path.dirname(agreesPath)
 
   register()

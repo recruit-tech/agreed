@@ -31,10 +31,10 @@
     "plz-port": "1.0.0"
   },
   "dependencies": {
-    "@agreed/client": "^5.3.2-alpha.0",
-    "@agreed/server": "^5.3.2-alpha.0",
-    "@agreed/typed": "^5.3.2-alpha.0",
-    "@agreed/ui": "^5.3.2-alpha.0",
+    "@agreed/client": "^6.0.0",
+    "@agreed/server": "^6.0.0",
+    "@agreed/typed": "^6.0.0",
+    "@agreed/ui": "^6.0.0",
     "colo": "^1.0.0",
     "json5": "^2.0.0",
     "minimist": "^1.2.0"
