@@ -1,9 +1,11 @@
 {
   "name": "@agreed/server",
-  "version": "5.3.2-alpha.0",
+  "version": "6.0.0",
   "description": "agreed server",
   "main": "index.js",
-  "bin": "bin/agreed-server.js",
+  "bin": {
+    "server": "bin/agreed-server.js"
+  },
   "scripts": {
     "test": "eater"
   },
@@ -24,7 +26,7 @@
   },
   "homepage": "https://github.com/recruit-tech/agreed-server#readme",
   "dependencies": {
-    "@agreed/core": "^5.3.2-alpha.0",
+    "@agreed/core": "^6.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -40,5 +42,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "a1e6d815d42f1fb49faba63e04cf1252b8cf5bc6"
+  "directories": {
+    "test": "test"
+  }
 }
