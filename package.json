@@ -1,14 +1,14 @@
 {
   "name": "root",
   "private": true,
-  "scripts": {
-    "test": "lerna run test",
-    "lint": "lerna run lint",
-    "lint-fix": "lerna run lintfix",
-    "allinstall": "lerna bootstrap"
-  },
-  "devDependencies": {
-    "lerna": "6.5.1"
-  },
-  "version": "0.1.0"
+  "scripts": {},
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/cli",
+    "packages/client",
+    "packages/core",
+    "packages/server",
+    "packages/typed",
+    "packages/ui"
+  ]
 }

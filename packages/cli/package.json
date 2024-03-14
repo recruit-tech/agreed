@@ -1,12 +1,12 @@
 {
   "name": "@agreed/cli",
-  "version": "5.3.2-alpha.0",
+  "version": "6.0.0",
   "description": "Agreed is a tool for Consumer Driven Contract with JSON mock server",
   "main": "index.js",
   "bin": {
-    "agreed-server": "./bin/agreed-server.js",
-    "agreed-client": "./bin/agreed-client.js",
-    "agreed-ui": "./bin/agreed-ui.js"
+    "agreed-server": "bin/agreed-server.js",
+    "agreed-client": "bin/agreed-client.js",
+    "agreed-ui": "bin/agreed-ui.js"
   },
   "scripts": {
     "test": "eater"
@@ -43,5 +43,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "a1e6d815d42f1fb49faba63e04cf1252b8cf5bc6"
+  "directories": {
+    "test": "test"
+  }
 }

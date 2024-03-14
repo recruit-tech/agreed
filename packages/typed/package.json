@@ -1,6 +1,6 @@
 {
   "name": "@agreed/typed",
-  "version": "5.3.2-alpha.0",
+  "version": "6.0.0",
   "main": "./lib/types.js",
   "types": "./lib/types.d.ts",
   "license": "MIT",
@@ -8,12 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/recruit-tech/agreed.git"
   },
-  "author": {
-    "name": "Akito Ito",
-    "email": "akito_ito@r.recruit.co.jp"
-  },
+  "author": "Akito Ito <akito_ito@r.recruit.co.jp>",
   "scripts": {
-    "test": "jest",
+    "test": "node --import tsx --test src/__tests__/server.ts",
     "lint": "tslint ./src/**/*.ts",
     "lintfix": "tslint ./src/**/*.ts --fix",
     "tsc": "tsc",
@@ -23,44 +20,16 @@
     "agreed-typed": "lib/bin/agreed-typed.js"
   },
   "devDependencies": {
-    "@types/jest": "27.5.2",
-    "axios": "0.27.2",
     "body-parser": "1.20.0",
     "cors": "2.8.5",
     "express": "4.18.2",
-    "get-port": "5.1.1",
-    "jest": "26.6.3",
     "prettier": "2.8.4",
-    "ts-jest": "26.5.6",
-    "ts-node": "10.9.1",
+    "ts-node": "^10.9.2",
     "tslint": "6.1.3",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
+    "tsx": "^4.7.1",
     "typescript": "4.7.4"
-  },
-  "jest": {
-    "testURL": "http://localhost/",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "tsconfig.json"
-      }
-    },
-    "testMatch": [
-      "**/__tests__/*.+(ts|tsx|js)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "helper.ts"
-    ],
-    "testTimeout": 10000
   },
   "dependencies": {
     "@agreed/core": "^5.3.2-alpha.0",
@@ -77,5 +46,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "a1e6d815d42f1fb49faba63e04cf1252b8cf5bc6"
+  "description": "[![Greenkeeper badge](https://badges.greenkeeper.io/akito0107/agreed-typed.svg)](https://greenkeeper.io/)",
+  "bugs": {
+    "url": "https://github.com/recruit-tech/agreed/issues"
+  },
+  "homepage": "https://github.com/recruit-tech/agreed#readme",
+  "keywords": [
+    "typescript",
+    "agreed"
+  ]
 }

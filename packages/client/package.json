@@ -1,9 +1,11 @@
 {
   "name": "@agreed/client",
-  "version": "5.3.2-alpha.0",
+  "version": "6.0.0",
   "description": "agreed client, testing utilities",
   "main": "index.js",
-  "bin": "bin/agreed-client.js",
+  "bin": {
+    "client": "bin/agreed-client.js"
+  },
   "scripts": {
     "test": "eater"
   },
@@ -32,5 +34,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "a1e6d815d42f1fb49faba63e04cf1252b8cf5bc6"
+  "bugs": {
+    "url": "https://github.com/recruit-tech/agreed/issues"
+  },
+  "homepage": "https://github.com/recruit-tech/agreed#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
