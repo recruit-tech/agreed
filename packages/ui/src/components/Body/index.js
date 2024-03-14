@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import JSONTree from 'react-json-tree'
+import { JSONTree } from 'react-json-tree'
 import classNames from 'classnames'
 import './styles.css'
 

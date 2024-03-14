@@ -9,8 +9,8 @@
     "start:dev:server": "react-scripts start",
     "build": "node scripts/build.js",
     "build:dev": "PUBLIC_URL=./ react-scripts build",
-    "lint": "eslint 'src/**/*.js' --fix",
-    "lintfix": "eslint 'src/**/*.js' --fix"
+    "lint": "eslint -c .eslintrc.json 'src/**/*.js' --fix",
+    "lintfix": "eslint -c .eslintrc.json 'src/**/*.js' --fix"
   },
   "bin": {
     "agreed-ui": "bin/agreed-ui.js"
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@agreed/core": "^5.3.2-alpha.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "colo": "1.0.0",
     "express": "4.18.2",
     "fs-extra": "11.1.0",
@@ -31,8 +32,9 @@
     "serialize-javascript": "6.0.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.23.10",
+    "@babel/preset-react": "^7.23.3",
     "axios": "0.27.2",
-    "babel-eslint": "10.1.0",
     "classnames": "2.3.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.7.0",
