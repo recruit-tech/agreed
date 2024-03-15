@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@agreed/core": "^6.0.0",
-    "@types/estree": "1.0.0",
+    "@types/estree": "1.0.5",
     "@types/minimist": "^1.2.0",
     "@types/node": "^18.0.0",
     "@typescript-eslint/types": "^7.2.0",
