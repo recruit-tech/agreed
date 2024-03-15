@@ -1,6 +1,6 @@
 {
   "name": "@agreed/typed",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "main": "./lib/types.js",
   "types": "./lib/types.d.ts",
   "license": "MIT",
