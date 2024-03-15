@@ -1,8 +1,10 @@
 import * as path from "path";
 import "../../hook";
 import { run } from "../gen-swagger";
+import test from "node:test";
+import assert from "node:assert";
 
-test.skip("e2e testing", () => {
+test("e2e testing", () => {
   const agreedPath = path.resolve(__dirname, "../../__tests__/data/agreed.ts");
   const swagger = run({
     path: agreedPath,
@@ -13,6 +15,5 @@ test.skip("e2e testing", () => {
     host: "",
     disablePathNumber: false
   });
-
-  expect(swagger).toMatchSnapshot();
+  assert.strictEqual(swagger.info.title, "testing");
 });
