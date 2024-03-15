@@ -1,6 +1,6 @@
 {
   "name": "@agreed/typed",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "main": "./lib/types.js",
   "types": "./lib/types.d.ts",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "author": "Akito Ito <akito_ito@r.recruit.co.jp>",
   "scripts": {
-    "test": "node --import tsx --test src/__tests__/server.ts",
+    "test": "node --import tsx --test src/__tests__/**.ts src/**/__tests__/**.ts",
     "lint": "tslint ./src/**/*.ts",
     "lintfix": "tslint ./src/**/*.ts --fix",
     "tsc": "tsc",
