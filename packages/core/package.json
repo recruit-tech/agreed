@@ -56,7 +56,7 @@
     "express": "4.18.2",
     "is-empty": "1.2.0",
     "must-call": "1.0.0",
-    "npm-run-all": "4.1.5",
+    "npm-run-all2": "5.0.0",
     "nyc": "15.1.0",
     "plz-port": "1.0.0",
     "power-assert": "1.6.1",
